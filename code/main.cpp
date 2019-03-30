@@ -1,7 +1,6 @@
-#include "hwlib.hpp"
-#include "test_arm_c.h"
-#include "robot_arm_interface_c.h"
-#include "test_arm_c.h"
+#include <hwlib.hpp>
+#include <../headers/robot_arm_interface_c.hpp>
+#include <../headers/test_arm_c.hpp>
 
 
 int main(void) {

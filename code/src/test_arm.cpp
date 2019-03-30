@@ -1,7 +1,7 @@
-#include "test_arm_c.h"
+#include <../headers/test_arm_c.hpp>
 
 
-void r2d2::robot_arm::test_arm_c::move_head_to_coordinate_impl(const uint16_t &x, const uint16_t &y, const uint16_t &z) {
+void r2d2::robot_arm::test_arm_c::move_head_to_coordinate_impl(const int16_t &x, const int16_t &y, const int16_t &z) {
     if (in_range(x, y, z)) {
         hwlib::cout << "checks out move head " << "x " << x << "y " << y << "z " << z << "\n";
     }
@@ -13,7 +13,7 @@ void r2d2::robot_arm::test_arm_c::rotate_head_impl(const uint16_t &r) {
     }
 }
 
-bool r2d2::robot_arm::test_arm_c::in_range(const uint16_t &x, const uint16_t &y, const uint16_t &z) {
+bool r2d2::robot_arm::test_arm_c::in_range(const int16_t &x, const int16_t &y, const int16_t &z) {
     hwlib::cout << x << " " << y << " " << z << " " << max_range_x << " " << max_range_y << " " << max_range_z << " "
                 << min_range_x << " " << min_range_y << " " << min_range_z << "\n";
 

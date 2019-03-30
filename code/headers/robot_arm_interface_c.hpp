@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "hwlib.hpp"
+#include <hwlib.hpp>
 
 
 namespace r2d2::robot_arm {
@@ -25,7 +25,7 @@ namespace r2d2::robot_arm {
         * @param z
         * @return bool
         */
-        void move_head_to_coordinate(const uint16_t &x, const uint16_t &y, const uint16_t &z) {
+        void move_head_to_coordinate(const int16_t &x, const int16_t &y, const int16_t &z) {
             static_cast<T *>(this)->move_head_to_coordinate_impl(x, y, z);
         }
 
@@ -50,7 +50,7 @@ namespace r2d2::robot_arm {
          * @param z
          * @return bool
          */
-        void move_head_to_coordinate_impl(const uint16_t &x, const uint16_t &y, const uint16_t &z) {
+        void move_head_to_coordinate_impl(const int16_t &x, const int16_t &y, const int16_t &z) {
             // Default implementation
         }
 
