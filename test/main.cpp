@@ -6,6 +6,12 @@
 
 #include <iostream>
 
+TEST_CASE("Operator==") {
+    r2d2::robot_arm::coordinate_3D_c c(10, 10, 10);
+    r2d2::robot_arm::coordinate_3D_c c2(10, 10, 10);
+    REQUIRE(c == c2);
+}
+
 TEST_CASE("Default constructor") {
     r2d2::robot_arm::coordinate_3D_c c;
     REQUIRE(c == r2d2::robot_arm::coordinate_3D_c(0, 0, 0));
