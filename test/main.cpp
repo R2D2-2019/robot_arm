@@ -7,8 +7,8 @@
 #include <iostream>
 
 TEST_CASE("Operator==") {
-    r2d2::robot_arm::coordinate_3D_c c(10, 10, 10);
-    r2d2::robot_arm::coordinate_3D_c c2(10, 10, 10);
+    r2d2::robot_arm::coordinate_3D_c c(1, 5, 6);
+    r2d2::robot_arm::coordinate_3D_c c2(1, 5, 6);
     REQUIRE(c == c2);
 }
 
