@@ -52,8 +52,7 @@ namespace r2d2::robot_arm {
     }
 
     coordinate_3D_c& coordinate_3D_c::operator-=(const int &rhs) {
-        *this = *this - rhs;
-        return *this;
+        return *this -= coordinate_3D_c(rhs);
     }
 
     coordinate_3D_c& coordinate_3D_c::operator--(int) {
