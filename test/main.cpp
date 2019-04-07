@@ -1,5 +1,5 @@
 #include "coordinate_3D_c.hpp"
-#include "uArm_gcode_generator.hpp"
+#include "uArm_gcode_generator_c.hpp"
 #include <iostream>
 
 #define CATCH_CONFIG_MAIN
