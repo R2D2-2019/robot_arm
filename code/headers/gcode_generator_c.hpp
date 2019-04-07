@@ -10,7 +10,7 @@ namespace r2d2::robot_arm {
      * Has a few helper functions such as converting an int to a char.
      * */
 
-    class gcode_generator {
+    class gcode_generator_c {
     private:
         void reverse(char *string, uint8_t length) const;
 
@@ -18,12 +18,12 @@ namespace r2d2::robot_arm {
         /**
          * Default constructor
          * */
-        gcode_generator() = default;
+        gcode_generator_c() = default;
 
         /**
          * Default destructor
          * */
-        virtual ~gcode_generator() = default;
+        virtual ~gcode_generator_c() = default;
 
         /**
          * Converts an int to a string.

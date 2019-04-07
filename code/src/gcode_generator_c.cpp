@@ -1,7 +1,7 @@
-#include "gcode_generator.hpp"
+#include "gcode_generator_c.hpp"
 #include <iostream>
 namespace r2d2::robot_arm {
-    void gcode_generator::reverse(char *string, uint8_t length) const {
+    void gcode_generator_c::reverse(char *string, uint8_t length) const {
         int start = 0;
         length -= 1;
         while (start < length) {
@@ -11,7 +11,7 @@ namespace r2d2::robot_arm {
         }
     }
 
-    char *gcode_generator::int_to_string(int axis, char *destination) const {
+    char *gcode_generator_c::int_to_string(int axis, char *destination) const {
         uint8_t i = 0;
         uint8_t individual_digit;
         bool is_negative = axis < 0;
@@ -37,7 +37,7 @@ namespace r2d2::robot_arm {
         return destination;
     }
 
-    char *gcode_generator::append(char *destination, const char *source) {
+    char *gcode_generator_c::append(char *destination, const char *source) {
         int i = 0;
         size_t start = std::strlen(destination) + 1;
         while (source[i]) {
@@ -46,7 +46,7 @@ namespace r2d2::robot_arm {
         return destination;
     }
 
-    char *gcode_generator::append_front(char *destination, const char *source) {
+    char *gcode_generator_c::append_front(char *destination, const char *source) {
         const size_t length = std::strlen(source);
         unsigned int i = 0;
         for (; destination[i]; i++) {
