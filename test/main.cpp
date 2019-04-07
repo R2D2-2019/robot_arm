@@ -8,7 +8,7 @@
 #include <iostream>
 
 TEST_CASE("Appending") {
-    r2d2::robot_arm::uArm_gcode_generator generator;
+    r2d2::robot_arm::uArm_gcode_generator_c generator;
     char buf[100] = "test";
     generator.append(buf, " appending works!\n");
 
@@ -16,7 +16,7 @@ TEST_CASE("Appending") {
 }
 
 TEST_CASE("Appending in front") {
-    r2d2::robot_arm::uArm_gcode_generator generator;
+    r2d2::robot_arm::uArm_gcode_generator_c generator;
     char buf[100] = "testing";
     generator.append_front(buf, "Does it work? We're ");
 
