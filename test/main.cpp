@@ -14,3 +14,11 @@ TEST_CASE("Appending") {
 
     REQUIRE(strcmp(buf, "test appending works!"));
 }
+
+TEST_CASE("Appending in front") {
+    r2d2::robot_arm::uArm_gcode_generator generator;
+    char buf[100] = "testing";
+    generator.append_front(buf, "Does it work? We're ");
+
+    REQUIRE(strcmp(buf, "Does it work? We're testing"));
+}

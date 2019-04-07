@@ -36,7 +36,24 @@ namespace r2d2::robot_arm {
          * */
         char *int_to_string(int axis, char *destination) const;
 
+        /**
+         * Appends a string (source) at the end of the destination (array)
+         *
+         * @param char[] destination
+         * @param const char* source
+         * @return char* to destination
+         * */
         char *append(char *destination, const char *source);
+
+        /**
+         * Appends a string (source) at the front of destination (array)
+         *
+         * @param char[] destination
+         * @param const char* source
+         * @preturn char* to destination
+         * */
+        char *append_front(char *destination, const char *source);
+
         /**
          * Pure virtual function for gcode command.
          * Every robot arm might have different gcode commands.

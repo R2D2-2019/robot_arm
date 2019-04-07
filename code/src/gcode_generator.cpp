@@ -47,4 +47,17 @@ namespace r2d2::robot_arm {
         }
         return destination;
     }
+
+    char *gcode_generator::append_front(char *destination, const char *source) {
+        const size_t length = std::strlen(source);
+        unsigned int i = 0;
+        for (; destination[i]; i++) {
+            destination[i] = destination[i + length];
+        }
+        i = 0;
+        for (; source[i]; i++) {
+            destination[i] = source[i];
+        }
+        return destination;
+    }
 } // namespace r2d2::robot_arm
