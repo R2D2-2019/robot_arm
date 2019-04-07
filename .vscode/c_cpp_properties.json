@@ -5,7 +5,8 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/../../libraries/hwlib/library",
-                "${workspaceFolder}/../../programs/bmptk/targets/cortex/atmel"
+                "${workspaceFolder}/../../programs/bmptk/targets/cortex/atmel",
+                "${workspaceFolder}/../../libraries/Catch2/include/*"
             ],
             "defines": [
                 "_DEBUG",

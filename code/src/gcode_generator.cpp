@@ -1,5 +1,5 @@
 #include "gcode_generator.hpp"
-
+#include <iostream>
 namespace r2d2::robot_arm {
     void gcode_generator::reverse(char *string, uint8_t length) const {
         int start = 0;
