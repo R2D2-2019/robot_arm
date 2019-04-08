@@ -10,11 +10,28 @@
 #include <iostream>
 
 TEST_CASE("Appending") {
-    r2d2::robot_arm::uArm_gcode_generator_c generator;
     char buf[100] = "";
-    generator.append(buf, "a");
-    generator.append(buf, "b");
-    REQUIRE(strcmp(buf, "ab") == 0);
+    r2d2::robot_arm::uArm_gcode_generator_c generator(buf);
+    generator.append("a");
+    generator.append("b");
+    REQUIRE(std::strcmp(buf, "ab") == 0);
+}
+
+TEST_CASE("Appending front") {
+    char buf[100] = "";
+    r2d2::robot_arm::uArm_gcode_generator_c generator(buf);
+    generator.append("123");
+    std::cout << buf << std::endl;
+    generator.append_front("abc");
+    std::cout << buf << std::endl;
+    REQUIRE(std::strcmp(buf, "abc123") == 0);
+}
+
+TEST_CASE("Converting vector to gcode command") {
+    char buf[100] = "";
+    r2d2::robot_arm::uArm_gcode_generator_c generator(buf);
+    generator.coordinate_to_gcode(r2d2::robot_arm::vector3i_c(1, 2, 3), 200);
+    REQUIRE(std::strcmp(buf, "#n G0 X1 Y2 Z3 F200\n") == 0);
 }
 
 TEST_CASE("Operator==") {
