@@ -1,43 +1,32 @@
 #include "gcode_generator_c.hpp"
 #include <iostream>
 namespace r2d2::robot_arm {
-    void gcode_generator_c::reverse(char *string, uint8_t length) const {
-        int start = 0;
-        length -= 1;
-        while (start < length) {
-            std::swap(*(string + start), *(string + length));
-            start++;
-            length--;
-        }
-    }
-
     char *gcode_generator_c::int_to_string(int axis, char *destination) const {
-        uint8_t i = 0;
-        uint8_t individual_digit;
+        int i = 0;
         bool is_negative = axis < 0;
-
-        if (axis == 0) {
-            destination[i++] = '0';
-            destination[i] = '\0';
+        unsigned int n = is_negative ? -axis : axis;
+        if (n == 0) {
+            destination[0] = '0';
+            destination[1] = '\0';
             return destination;
         }
-        if (is_negative) {
-            axis = -axis;
-        }
-        while (axis != 0) {
-            individual_digit = axis % 10;
-            destination[i++] = axis > 9 ? (individual_digit - 10) + 'a'
-                                        : individual_digit + '0';
-            axis /= 10;
+        while (n != 0) {
+            destination[i++] = n % 10 + '0';
+            n /= 10;
         }
         if (is_negative) {
             destination[i++] = '-';
         }
         destination[i] = '\0';
+        for (int t = 0; t < i / 2; t++)	{ // Reverse string
+		    destination[t] ^= destination[i - t - 1];
+		    destination[i - t - 1] ^= destination[t];
+		    destination[t] ^= destination[i - t - 1];
+	    }
         return destination;
     }
 
-    char *gcode_generator_c::append(char *destination, const char *source) {
+    char *gcode_generator_c::append(char *destination, const char *source) const {
         int i = 0;
         size_t start = std::strlen(destination) + 1;
         while (source[i]) {
@@ -46,7 +35,7 @@ namespace r2d2::robot_arm {
         return destination;
     }
 
-    char *gcode_generator_c::append_front(char *destination, const char *source) {
+    char *gcode_generator_c::append_front(char *destination, const char *source) const {
         const size_t length = std::strlen(source);
         unsigned int i = 0;
         for (; destination[i]; i++) {

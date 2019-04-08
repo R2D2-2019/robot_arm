@@ -11,9 +11,17 @@ namespace r2d2::robot_arm {
      * */
 
     class gcode_generator_c {
-    private:
-        void reverse(char *string, uint8_t length) const;
-
+    protected:
+        /**
+         * Converts an int to a string.
+         * Please note that the destination size must be 11 if you
+         * want to store a max integer value (2.147.483.647) + '\0' = 11
+         *
+         * @param int axis
+         * @param char array
+         * @return char* to destination
+         * */
+        char *int_to_string(int axis, char *destination) const;
     public:
         /**
          * Default constructor
@@ -26,24 +34,13 @@ namespace r2d2::robot_arm {
         virtual ~gcode_generator_c() = default;
 
         /**
-         * Converts an int to a string.
-         * Please note that the destination size must be 11 if you
-         * want to store a max integer value (2.147.483.647) + '\0' = 11
-         *
-         * @param int axis
-         * @param char array
-         * @return char* to destination
-         * */
-        char *int_to_string(int axis, char *destination) const;
-
-        /**
          * Appends a string (source) at the end of the destination (array)
          *
          * @param char[] destination
          * @param const char* source
          * @return char* to destination
          * */
-        char *append(char *destination, const char *source);
+        char *append(char *destination, const char *source) const;
 
         /**
          * Appends a string (source) at the front of destination (array)
@@ -52,7 +49,7 @@ namespace r2d2::robot_arm {
          * @param const char* source
          * @preturn char* to destination
          * */
-        char *append_front(char *destination, const char *source);
+        char *append_front(char *destination, const char *source) const;
 
         /**
          * Pure virtual function for gcode command.
