@@ -227,4 +227,6 @@ namespace r2d2::robot_arm {
             return *this /= vector3_c<Type>(rhs);
         }
     };
+
+    typdef vector3_c<int> vector3i_c;
 } // namespace r2d2::robot_arm
