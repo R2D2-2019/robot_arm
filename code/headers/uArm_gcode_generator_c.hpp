@@ -7,7 +7,7 @@ namespace r2d2::robot_arm {
         uArm_gcode_generator_c() = default;
         ~uArm_gcode_generator_c() = default;
 
-        char *coordinate_to_gcode(const coordinate_3D_c &coordinate,
-                                  char *destination) const override;
+        char *coordinate_to_gcode(const vector3i_c &coordinate,
+                                  char *destination, const uint8_t &speed) const override;
     };
 } // namespace r2d2::robot_arm

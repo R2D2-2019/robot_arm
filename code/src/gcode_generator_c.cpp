@@ -28,10 +28,11 @@ namespace r2d2::robot_arm {
 
     char *gcode_generator_c::append(char *destination, const char *source) const {
         int i = 0;
-        size_t start = std::strlen(destination) + 1;
+        size_t start = std::strlen(destination); 
         while (source[i]) {
             destination[start++] = source[i++];
         }
+        destination[start] = '\0';
         return destination;
     }
 

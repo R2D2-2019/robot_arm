@@ -1,5 +1,5 @@
 #pragma once
-#include "coordinate_3D_c.hpp"
+#include "vector3_c.hpp"
 #include <algorithm> //std::swap
 #include <cstring>
 #include <stdint.h> //uint
@@ -55,11 +55,13 @@ namespace r2d2::robot_arm {
          * Pure virtual function for gcode command.
          * Every robot arm might have different gcode commands.
          *
+         * 
          * @param coordinate_3D_c
          * @char char array
+         * @param uint8_t speed = 0
          * @return char* to destination
          * */
-        virtual char *coordinate_to_gcode(const coordinate_3D_c &coordinate,
-                                          char *destination) const = 0;
+        virtual char *coordinate_to_gcode(const vector3i_c &coordinate,
+                                          char *destination, const uint8_t &speed = 0) const = 0;
     };
 } // namespace r2d2::robot_arm
