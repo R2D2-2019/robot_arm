@@ -228,5 +228,5 @@ namespace r2d2::robot_arm {
         }
     };
 
-    typdef vector3i_c<int> vector3i_c;
+    typedef vector3_c<int> vector3i_c;
 } // namespace r2d2::robot_arm
