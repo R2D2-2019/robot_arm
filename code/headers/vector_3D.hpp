@@ -5,7 +5,7 @@
  */
 
 namespace r2d2::robot_arm {
-    template<class Type>
+    template <class Type>
     class vector_3D {
     public:
         /**
@@ -29,15 +29,14 @@ namespace r2d2::robot_arm {
          **/
         bool operator==(const vector_3D<Type> &rhs) const {
             return x == rhs.x && y == rhs.y && z == rhs.z;
-        } 
+        }
 
         /**
         * vector_3D
          default constructor.
         **/
-        vector_3D():
-            x(), y(), z()
-        {}
+        vector_3D() : x(), y(), z() {
+        }
 
         /**
          * vector_3D constructor.
@@ -47,9 +46,9 @@ namespace r2d2::robot_arm {
          * @param y
          * @param z
          **/
-        vector_3D(const Type &x, const Type &y, const Type &z):
-            x(x), y(y), z(z)
-        {}
+        vector_3D(const Type &x, const Type &y, const Type &z)
+            : x(x), y(y), z(z) {
+        }
 
         /**
          * vector_3D constructor.
@@ -57,9 +56,9 @@ namespace r2d2::robot_arm {
          *
          * @param int all_values
          **/
-        vector_3D(const Type &all_values):
-            vector_3D(all_values, all_values, all_values)
-        {}
+        vector_3D(const Type &all_values)
+            : vector_3D(all_values, all_values, all_values) {
+        }
 
         /**
          * vector_3D default destructor.
@@ -111,7 +110,7 @@ namespace r2d2::robot_arm {
          **/
         vector_3D<Type> &operator+=(const Type &rhs) {
             return *this += vector_3D(rhs);
-        }   
+        }
 
         /**
          * vector_3D operator++.
@@ -153,7 +152,7 @@ namespace r2d2::robot_arm {
          * @param vector_3D rhs
          * @return vector_3D&
          **/
-        vector_3D<Type> &operator-=(const vector_3D<Type> &rhs){
+        vector_3D<Type> &operator-=(const vector_3D<Type> &rhs) {
             *this = *this - rhs;
             return *this;
         }
@@ -188,9 +187,7 @@ namespace r2d2::robot_arm {
          * @return vector_3D
          **/
         vector_3D<Type> operator/(const vector_3D<Type> &rhs) const {
-        return vector_3D<Type>((x / rhs.x),
-                                     (y / rhs.y),
-                                     (z / rhs.z));
+            return vector_3D<Type>((x / rhs.x), (y / rhs.y), (z / rhs.z));
         }
 
         /**
@@ -201,7 +198,7 @@ namespace r2d2::robot_arm {
          * @param int rhs
          * @return vector_3D
          **/
-        vector_3D<Type> operator/(const Type &rhs)const {
+        vector_3D<Type> operator/(const Type &rhs) const {
             return *this / vector_3D<Type>(rhs);
         }
 
@@ -226,7 +223,7 @@ namespace r2d2::robot_arm {
          * @param int rhs
          * @return vector_3D&
          **/
-        vector_3D<Type> &operator/=(const Type &rhs){
+        vector_3D<Type> &operator/=(const Type &rhs) {
             return *this /= vector_3D<Type>(rhs);
         }
     };
