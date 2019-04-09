@@ -1,8 +1,7 @@
 #pragma once
 #include "vector3_c.hpp"
-#include <algorithm> //std::swap
-#include <cstring>
-#include <stdint.h> //uint
+#include "hwlib.hpp"
+#include <cstring> //std::strcmp
 
 namespace r2d2::robot_arm {
     /**
@@ -35,8 +34,7 @@ namespace r2d2::robot_arm {
 
         /**
          * Constructor to construct a buffer array.
-         * NOTE: Always initialize your buffer with char buf[] = -> "" <-
-         * Throws a std::invalid_argument when buffer is not initialized with ""
+         * Initializes buffer with '\0'
          * 
          * @param char *buffer
          * */

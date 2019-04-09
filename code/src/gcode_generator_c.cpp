@@ -1,12 +1,9 @@
 #include "gcode_generator_c.hpp"
-#include <stdexcept>
-
+#include <iostream>
 namespace r2d2::robot_arm {
     gcode_generator_c::gcode_generator_c(char *buffer):
         buffer(buffer) {
-            if (!strcmp(buffer, "") == 0) { // if buffer is not initialized with ""
-                throw std::invalid_argument("Error: buffer is empty. Initialize buffer with \"\"");
-            }
+            buffer[0] = '\0';
         }
 
     char *gcode_generator_c::get_buffer() {
@@ -54,6 +51,7 @@ namespace r2d2::robot_arm {
         for (; source[i]; i++) { // Make space for source
             buffer[i + length] = buffer[i];
         }
+        buffer[i + length] = '\0';
         for (i = 0; i < length; i++) { // Put source in front of buffer
             buffer[i] = source[i];
         }

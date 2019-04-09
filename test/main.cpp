@@ -10,7 +10,7 @@
 #include <iostream>
 
 TEST_CASE("Appending") {
-    char buf[100] = "";
+    char buf[100];
     r2d2::robot_arm::uArm_gcode_generator_c generator(buf);
     generator.append("a");
     generator.append("b");
@@ -18,19 +18,18 @@ TEST_CASE("Appending") {
 }
 
 TEST_CASE("Appending front") {
-    char buf[100] = "";
+    char buf[100];
     r2d2::robot_arm::uArm_gcode_generator_c generator(buf);
     generator.append("123");
-    std::cout << buf << std::endl;
-    generator.append_front("abc");
-    std::cout << buf << std::endl;
-    REQUIRE(std::strcmp(buf, "abc123") == 0);
+    generator.append_front("abcd");
+    REQUIRE(std::strcmp(buf, "abcd123") == 0);
 }
 
 TEST_CASE("Converting vector to gcode command") {
-    char buf[100] = "";
+    char buf[100];
     r2d2::robot_arm::uArm_gcode_generator_c generator(buf);
     generator.coordinate_to_gcode(r2d2::robot_arm::vector3i_c(1, 2, 3), 200);
+    std::cout << buf << std::endl;
     REQUIRE(std::strcmp(buf, "#n G0 X1 Y2 Z3 F200\n") == 0);
 }
 

@@ -6,7 +6,7 @@ namespace r2d2::robot_arm {
     public:
         /**
          * Constructor to construct a buffer array.
-         * NOTE: Always initialize your buffer with char buf[] = -> "" <-
+         * Initializes buffer with '\0'
          * 
          * @param char *buffer
          * */
