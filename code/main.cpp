@@ -1,4 +1,5 @@
 #include "hwlib.hpp"
+#include "robot_arm.hpp"
 #include "robot_arm_interface_c.h"
 #include "test_arm_c.h"
 #include "uarm_swift.hpp"
@@ -19,10 +20,17 @@ int main(void) {
         testArm2;
     testArm2.rotate_head(4);
 
-    r2d2::uart_ports_c uart_port_one = r2d2::uart_ports_c::uart1;
-    // r2d2::hardware_usart_c usart_bus(115200, uart_port_one);
+    r2d2::uart_ports_c port_one = r2d2::uart_ports_c::uart1;
+    auto uarm = r2d2::robot_arm::uarm_swift_c(115200, port_one);
 
-        auto uarm = r2d2::robot_arm::uarm_swift_c(115200, uart_port_one);
-    hwlib::cout << "beep\n";
-    uarm.move_joint(0, 50);
+    uarm.send_command("#n M17\n");
+
+    uarm.send_command("#n M2122 V1\n");
+
+    // while (1) {
+    uarm.send_command("#n G0 X320 Y100 Z120 F4000\n");
+
+    uarm.send_command("#n G0 X80 Y80 Z50 F6000\n");
+
+    // }
 }

@@ -11,40 +11,18 @@ namespace r2d2::robot_arm {
         : robot_arm_c({bautrate, usart_port}) {
     }
 
-    bool uarm_swift_c::move_joint(int joint_id, int angle) {
+    bool uarm_swift_c::send_command(const char *command) {
+        this->usart_bus << command;
+
+        return 1;
+    }
+
+    void uarm_swift_c::move_joint(int joint_id, int angle) {
+    }
+
+    void uarm_swift_c::move_head_towards(int X, int Y, int Z, int speed) {
         char command[] = "#n G0 X100 Y100 Z100 F1000\n";
-
-        /*char ch_joint[] = " N"; // + (char)joint_id;
-        char ch_angle[] = " V"; //+ (char)angle;
-        char *j = intToChar(joint_id, j);
-        char *a = intToChar(angle, a);
-
-        strncat(ch_joint, j, sizeof(ch_joint) - strlen(j) - 1);
-        strncat(ch_angle, a, sizeof(ch_angle) - strlen(a) - 1);
-
-        strncat(command, ch_joint, sizeof(command) - strlen(ch_joint) - 1);
-        strncat(command, ch_angle, sizeof(command) - strlen(ch_angle) -
-        1);*/
-
         usart_bus << command;
-        hwlib::cout << command;
-
-        // hwlib::cout << command;
-
-        return true;
-    };
-
-    /*char *uarm_swift_c::int_to_char(int number, char *dest) {
-        if ((number / 10) == 0) {
-            *dest++ = number + '0';
-            *dest = '\0';
-            return dest;
-        }
-
-        dest = int_to_char(number / 10, dest);
-        *dest++ = (number % 10) + '0';
-        *dest = '\0';
-        return dest;
-    };*/
+    }
 
 } // namespace r2d2::robot_arm
