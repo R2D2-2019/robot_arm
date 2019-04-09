@@ -20,8 +20,9 @@ int main(void) {
     testArm2.rotate_head(4);
 
     r2d2::uart_ports_c uart_port_one = r2d2::uart_ports_c::uart1;
-    r2d2::hardware_usart_c usart_bus(115200, uart_port_one);
+    // r2d2::hardware_usart_c usart_bus(115200, uart_port_one);
 
-    auto uarm = r2d2::robot_arm::uarm_swift_c(usart_bus);
+        auto uarm = r2d2::robot_arm::uarm_swift_c(115200, uart_port_one);
+    hwlib::cout << "beep\n";
     uarm.move_joint(0, 50);
 }

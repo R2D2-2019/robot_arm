@@ -6,8 +6,13 @@ namespace r2d2::robot_arm {
         : robot_arm_c(usart_bus) {
     }
 
+    uarm_swift_c::uarm_swift_c(unsigned int bautrate,
+                               r2d2::uart_ports_c usart_port)
+        : robot_arm_c({bautrate, usart_port}) {
+    }
+
     bool uarm_swift_c::move_joint(int joint_id, int angle) {
-        char command[40] = "#n G2202 N0 V10\n";
+        char command[] = "#n G0 X100 Y100 Z100 F1000\n";
 
         /*char ch_joint[] = " N"; // + (char)joint_id;
         char ch_angle[] = " V"; //+ (char)angle;
@@ -20,11 +25,10 @@ namespace r2d2::robot_arm {
         strncat(command, ch_joint, sizeof(command) - strlen(ch_joint) - 1);
         strncat(command, ch_angle, sizeof(command) - strlen(ch_angle) -
         1);*/
-        for (char j : command) {
 
-            this->usart_bus.putc(j);
-            hwlib::cout << j;
-        };
+        usart_bus << command;
+        hwlib::cout << command;
+
         // hwlib::cout << command;
 
         return true;

@@ -12,6 +12,11 @@
 # add Catch
 SEARCH            += ../../../libraries/Catch2/single_include/catch2
 
+USART             ?= ../../../libraries/USART_library
+include           $(USART)/Makefile.inc
+
+DATA              ?= ../../../libraries/datastructures/code/headers/queue.hpp
+
 # add hwlib
 HWLIB             ?= ../../../libraries/hwlib
 include           $(HWLIB)/Makefile.inc

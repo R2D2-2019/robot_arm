@@ -9,7 +9,7 @@ namespace r2d2::robot_arm {
     private:
     public:
         uarm_swift_c(r2d2::hardware_usart_c usart_bus);
-        // uarm_swift_c(unsigned int bautrate);
+        uarm_swift_c(unsigned int bautrate, r2d2::uart_ports_c usart_port);
         bool send_command(const char *command) override {
             return true;
         };
