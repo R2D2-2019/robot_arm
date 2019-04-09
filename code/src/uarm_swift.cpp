@@ -8,12 +8,14 @@ namespace r2d2::robot_arm {
 
     uarm_swift_c::uarm_swift_c(unsigned int bautrate,
                                r2d2::uart_ports_c usart_port)
-        : robot_arm_c({bautrate, usart_port}) {
+        : robot_arm_c(bautrate, usart_port) {
     }
 
     bool uarm_swift_c::send_command(const char *command) {
         this->usart_bus << command;
-
+        // hwlib::wait_ms(1000);
+        // auto c = this->usart_bus.receive();
+        // hwlib::cout << c;
         return 1;
     }
 

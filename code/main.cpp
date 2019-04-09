@@ -24,13 +24,13 @@ int main(void) {
     auto uarm = r2d2::robot_arm::uarm_swift_c(115200, port_one);
 
     uarm.send_command("#n M17\n");
-
     uarm.send_command("#n M2122 V1\n");
 
-    // while (1) {
-    uarm.send_command("#n G0 X320 Y100 Z120 F4000\n");
+    while (1) {
+        uarm.send_command("#n G0 X320 Y100 Z120 F4000\n");
+        uarm.send_command("#n G0 X320 Y100 Z20 F4000\n");
+        uarm.send_command("#n G0 X80 Y80 Z50 F6000\n");
 
-    uarm.send_command("#n G0 X80 Y80 Z50 F6000\n");
-
-    // }
+        // hwlib::wait_ms(1000);
+    }
 }
