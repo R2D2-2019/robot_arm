@@ -1,6 +1,4 @@
 #include "uarm_gcode_generator_c.hpp"
-#include "vector3_c.hpp"
-#include <iostream>
 #define CATCH_CONFIG_MAIN
 #include <catch.hpp>
 

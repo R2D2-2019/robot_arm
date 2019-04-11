@@ -1,14 +1,14 @@
 #pragma once
-#include "hwlib.hpp"
 #include "vector3_c.hpp"
-
+#include <hwlib.hpp> // size_t, (u)intx_t
 
 namespace r2d2::robot_arm {
     /**
      * Template Interface class for generating gcodes.
      * Has a few helper functions such as converting an int to a char.
      * Size represents the size of the char buffer array.
-     * Note that a string of 4 characters, has a size of 5 with the '\0' character
+     * Note that a string of 4 characters, has a size of 5 with the '\0'
+     * character
      * @param Size buffer size
      * */
     template <size_t Size>
