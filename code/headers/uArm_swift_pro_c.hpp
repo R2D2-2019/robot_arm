@@ -7,19 +7,17 @@
 #include <robot_arm_interface_c.hpp>
 #include <vector3_c.hpp>
 
+
+
 namespace r2d2::robot_arm{
-    class uArm_swift_pro : public robot_arm_interface{
-
-
+    class uArm_swift_pro_c : public robot_arm_interface{
+    public:
 
         void move_head_to_coordinate(const vector3_c< uint16_t > &v);
 
-
-
         void rotate_head(const uint16_t &r);
 
+    private:
 
     };
-
-
 }

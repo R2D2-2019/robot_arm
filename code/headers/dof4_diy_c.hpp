@@ -1,8 +1,23 @@
 //
 // Created by Slimmerik on 13/04/2019.
 //
+#pragma once
 
-#ifndef R2D2_4DOF_DIY_HPP
-#define R2D2_4DOF_DIY_HPP
+#include <hwlib.hpp>
+#include <robot_arm_interface_c.hpp>
+#include <vector3_c.hpp>
 
-#endif //R2D2_4DOF_DIY_HPP
+
+
+namespace r2d2::robot_arm{
+    class dof4_diy : public robot_arm_interface{
+    public:
+
+        void move_head_to_coordinate(const vector3_c< uint16_t > &v);
+
+        void rotate_head(const uint16_t &r);
+
+    private:
+
+    };
+}

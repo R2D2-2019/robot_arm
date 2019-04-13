@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include "vector3_c.hpp"
+#include <vector3_c.hpp>
 #include <hwlib.hpp>
 
 namespace r2d2::robot_arm{

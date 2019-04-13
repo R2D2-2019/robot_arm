@@ -3,9 +3,9 @@
  */
 #pragma once
 
-#include "robot_arm_interface_c.h"
-#include "hwlib.hpp"
-#include "robot_arm_interface-new.hpp"
+#include <robot_arm_interface_c.hpp>
+#include <hwlib.hpp>
+
 
 namespace r2d2::robot_arm {
     class test_arm_c : public robot_arm_interface {
