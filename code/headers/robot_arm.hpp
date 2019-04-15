@@ -1,5 +1,6 @@
 #pragma once
 
+#include "vector3_c.hpp"
 #include <hardware_usart.hpp>
 #include <hwlib.hpp>
 
@@ -37,7 +38,8 @@ namespace r2d2::robot_arm {
          * @param z
          * @param speed
          */
-        virtual void move_head_towards(int x, int y, int z, int speed = 500){};
+        virtual void move_head_to_coordinate(vector3i_c coordinate,
+                                             int speed = 500){};
     };
 
 } // namespace r2d2::robot_arm

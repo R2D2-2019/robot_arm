@@ -131,6 +131,6 @@ namespace r2d2::robot_arm {
          * @return char* to buffer
          * */
         virtual char *coordinate_to_gcode(const vector3i_c &coordinate,
-                                          const uint8_t &speed = 0) = 0;
+                                          const uint16_t &speed = 500) = 0;
     };
 } // namespace r2d2::robot_arm

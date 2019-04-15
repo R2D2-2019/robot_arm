@@ -19,9 +19,11 @@ namespace r2d2::robot_arm {
     void uarm_swift_c::move_joint(int joint_id, int angle) {
     }
 
-    void uarm_swift_c::move_head_towards(int x, int y, int z, int speed) {
-        char command[] = "#n G0 X100 Y100 Z100 F1000\n";
-        usart_bus << command;
+    void uarm_swift_c::move_head_to_coordinate(vector3i_c coordinate,
+                                               int speed) {
+        auto command = gcode_generator.coordinate_to_gcode(coordinate, speed);
+
+        this->send_command(command);
     }
 
 } // namespace r2d2::robot_arm

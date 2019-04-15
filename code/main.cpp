@@ -27,10 +27,8 @@ int main(void) {
     uarm.send_command("#n M2122 V1\n");
 
     while (1) {
-        uarm.send_command("#n G0 X320 Y100 Z120 F4000\n");
-        uarm.send_command("#n G0 X320 Y100 Z20 F4000\n");
-        uarm.send_command("#n G0 X80 Y80 Z50 F6000\n");
-
-        // hwlib::wait_ms(1000);
+        uarm.move_head_to_coordinate({320, 100, 120}, 4000);
+        uarm.move_head_to_coordinate({320, 100, 20}, 4000);
+        uarm.move_head_to_coordinate({80, 80, 50}, 6000);
     }
 }
