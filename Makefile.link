@@ -12,6 +12,10 @@
 # add Catch
 SEARCH            += ../../../libraries/Catch2/single_include/catch2
 
+# add internal communication module
+internal_comm 	  ?= ../../../libraries/internal_communication
+include 		  $(internal_comm)/Makefile.inc
+
 # add hwlib
 HWLIB             ?= ../../../libraries/hwlib
 include           $(HWLIB)/Makefile.inc
