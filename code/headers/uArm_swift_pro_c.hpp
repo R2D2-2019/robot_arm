@@ -14,13 +14,13 @@ namespace r2d2::robot_arm{
         /**
          * This function moves the uArm swift pro head to a certain 3d location.
          *
-         * @param v
+         * @param coordinate
          */
         void move_head_to_coordinate( const vector3i_c &coordinate) override;
         /**
         * This function rotates the head of the 4dof diy robot arm.
         *
-        * @param r
+        * @param rotation
         */
         void rotate_head(const int16_t &rotation) override;
 

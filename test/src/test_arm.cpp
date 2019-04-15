@@ -1,13 +1,13 @@
 #include <test_arm_c.h>
 
 
-void r2d2::robot_arm::test_arm_c::move_head_to_coordinate(const vector3_c< uint16_t > &v) {
+void r2d2::robot_arm::test_arm_c::move_head_to_coordinate(const vector3i_c &coordinate) {
     //if (in_range(x, y, z)) {
         hwlib::cout << "checks out move head \n" ; //<< "x " << x << "y " << y << "z " << z << "\n";
     //}
 }
 
-void r2d2::robot_arm::test_arm_c::rotate_head(const uint16_t &r) {
+void r2d2::robot_arm::test_arm_c::rotate_head(const int16_t &rotation) {
     //if (in_range(r)) {
         hwlib::cout << "checks out rotate head " << r << "\n";
     //}
