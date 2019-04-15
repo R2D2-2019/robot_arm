@@ -21,10 +21,8 @@ int main(void) {
     testArm2.rotate_head(4);
 
     r2d2::uart_ports_c port_one = r2d2::uart_ports_c::uart1;
-    auto uarm = r2d2::robot_arm::uarm_swift_c(115200, port_one);
-
-    uarm.send_command("#n M17\n");
-    uarm.send_command("#n M2122 V1\n");
+    r2d2::robot_arm::robot_arm_c uarm =
+        r2d2::robot_arm::uarm_swift_c(115200, port_one);
 
     while (1) {
         uarm.move_head_to_coordinate({320, 100, 120}, 4000);

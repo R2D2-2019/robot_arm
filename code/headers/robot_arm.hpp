@@ -13,30 +13,44 @@ namespace r2d2::robot_arm {
         robot_arm_c(r2d2::hardware_usart_c usart_bus);
         robot_arm_c(unsigned int bautrate, r2d2::uart_ports_c usart_port);
         /**
-         * Virtual function
-         * This function sends a command to the arm.
+         * @brief Initialization function
+         * This function is for actions that need to be executed at
+         * initialization of the object
+         *
+         */
+        virtual void init(){};
+        /**
+         * @brief Check connection
+         * Function to check whether the connection with the arm is right or not
+         *
+         * @return true means connection is right
+         * @return false means connection is wrong
+         */
+        virtual bool check_connection(){return false};
+        /**
+         * @brief Sending command to arm
+         * Sends false as default
          *
          * @param command
-         * @return boolean
+         * @return false when something went wrong with sending
+         * @return true when command correctly sent
          */
         virtual bool send_command(const char *command) {
             return false;
         };
         /**
-         * Virtual function
+         * Move specific joint of the arm
          * Moves the robot arm joint [joint_id] in a given angle
          *
          */
         virtual void move_joint(int joint_id, int angle){};
         /**
-         * Virtual function
+         * Move arm's head to 3D coordinate
          * Moves head of robot arm head/end effector towards the 3D coordinate
          * [x,y,z] The speed is default at 500 mm/min
          *
-         * @param x
-         * @param y
-         * @param z
-         * @param speed
+         * @param coordinate 3D integer coordinate for the head
+         * @param speed movement speed in mm/min
          */
         virtual void move_head_to_coordinate(vector3i_c coordinate,
                                              int speed = 500){};
