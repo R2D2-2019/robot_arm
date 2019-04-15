@@ -1,12 +1,11 @@
-/**
- * Class robot_arm_interface provides the interface for different robot arms.
- */
-
 #pragma once
 
 #include "vector3_c.hpp"
 #include <hwlib.hpp>
 
+/**
+ * Class robot_arm_interface provides the interface for different robot arms.
+ */
 namespace r2d2::robot_arm{
      class robot_arm_interface{
 
@@ -17,7 +16,7 @@ namespace r2d2::robot_arm{
          *
          * @param v
          */
-         virtual void move_head_to_coordinate(const vector3i_c &vector) = 0;
+         virtual void move_head_to_coordinate(const vector3i_c &coordinate) = 0;
 
 
          /**

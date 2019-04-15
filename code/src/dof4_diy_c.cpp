@@ -1,6 +1,6 @@
 #include "dof4_diy_c.hpp"
 
-void r2d2::robot_arm::dof4_diy::move_head_to_coordinate(const r2d2::robot_arm::vector3i_c &vector) {
+void r2d2::robot_arm::dof4_diy::move_head_to_coordinate(const r2d2::robot_arm::vector3i_c &coordinate) {
     //TODO impl 4dof diy move head
 
 }
