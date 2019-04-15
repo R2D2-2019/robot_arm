@@ -14,10 +14,7 @@ namespace r2d2::robot_arm {
         /**
          * This function moves the robot arm to a certain 3d location.
          *
-         * @param x
-         * @param y
-         * @param z
-         * @return bool
+         * @param v
          */
         void move_head_to_coordinate(const vector3_c< uint16_t > &v);
 
@@ -25,10 +22,7 @@ namespace r2d2::robot_arm {
         /**
          * This function rotates the head of the robot arm.
          *
-         * @param x
-         * @param y
-         * @param z
-         * @return bool
+         * @param r
          */
         void rotate_head(const uint16_t &r);
 
