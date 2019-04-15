@@ -31,7 +31,7 @@ namespace r2d2::robot_arm {
         char *int_to_string(int axis, char *string) const {
             int i = 0;
             bool is_negative = axis < 0;
-            unsigned int n = is_negative ? -axis : axis;
+            int n = is_negative ? -axis : axis;
             if (n == 0) {
                 string[0] = '0';
                 string[1] = '\0';
