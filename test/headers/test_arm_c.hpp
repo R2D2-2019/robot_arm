@@ -8,7 +8,7 @@
 
 
 namespace r2d2::robot_arm {
-    class test_arm_c : public robot_arm_interface {
+    class test_arm_c : public robot_arm_interface_c {
     public:
 
         /**

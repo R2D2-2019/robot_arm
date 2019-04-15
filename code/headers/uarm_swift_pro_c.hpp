@@ -16,7 +16,7 @@ namespace r2d2::robot_arm{
          *
          * @param coordinate
          */
-        void move_head_to_coordinate( const vector3i_c &coordinate) override;
+        void move_head_to_coordinate(const vector3i_c &coordinate) override;
         /**
         * This function rotates the head of the 4dof diy robot arm.
         *
