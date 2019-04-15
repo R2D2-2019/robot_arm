@@ -8,7 +8,7 @@
  * Class uArm_swift_pro provides a implementation for uArm swift pro.
  */
 namespace r2d2::robot_arm{
-    class uArm_swift_pro_c : public robot_arm_interface{
+    class uarm_swift_pro_c : public robot_arm_interface{
     public:
 
         /**
