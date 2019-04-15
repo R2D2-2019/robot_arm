@@ -7,7 +7,7 @@
  * Class robot_arm_interface provides the interface for different robot arms.
  */
 namespace r2d2::robot_arm{
-     class robot_arm_interface{
+     class robot_arm_interface_c{
 
      public:
 
