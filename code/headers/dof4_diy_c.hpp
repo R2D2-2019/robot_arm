@@ -8,7 +8,7 @@
  * Class dof4_diy_c provides a implementation for 4dof_diy robot arm.
  */
 namespace r2d2::robot_arm{
-    class dof4_diy : public robot_arm_interface{
+    class dof4_diy_c : public robot_arm_interface{
     public:
 
         /**
