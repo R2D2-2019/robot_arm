@@ -13,16 +13,13 @@ namespace r2d2::robot_arm {
 
     bool uarm_swift_c::send_command(const char *command) {
         this->usart_bus << command;
-        // hwlib::wait_ms(1000);
-        // auto c = this->usart_bus.receive();
-        // hwlib::cout << c;
-        return 1;
+        return true;
     }
 
     void uarm_swift_c::move_joint(int joint_id, int angle) {
     }
 
-    void uarm_swift_c::move_head_towards(int X, int Y, int Z, int speed) {
+    void uarm_swift_c::move_head_towards(int x, int y, int z, int speed) {
         char command[] = "#n G0 X100 Y100 Z100 F1000\n";
         usart_bus << command;
     }
