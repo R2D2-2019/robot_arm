@@ -3,33 +3,28 @@
  */
 #pragma once
 
-#include "robot_arm_interface_c.h"
-#include "hwlib.hpp"
+#include <robot_arm_interface_c.hpp>
+#include <hwlib.hpp>
+
 
 namespace r2d2::robot_arm {
-    class test_arm_c : public r2d2::robot_arm::robot_arm_interface_c<test_arm_c> {
+    class test_arm_c : public robot_arm_interface_c {
     public:
 
         /**
          * This function moves the robot arm to a certain 3d location.
          *
-         * @param x
-         * @param y
-         * @param z
-         * @return bool
+         * @param coordinate
          */
-        void move_head_to_coordinate_impl(const uint16_t &x, const uint16_t &y, const uint16_t &z);
+        void move_head_to_coordinate(const vector3i_c &coordinate);
 
 
         /**
          * This function rotates the head of the robot arm.
          *
-         * @param x
-         * @param y
-         * @param z
-         * @return bool
+         * @param rotation
          */
-        void rotate_head_impl(const uint16_t &r);
+        void rotate_head(const int16_t &rotation);
 
     private:
 
@@ -51,7 +46,6 @@ namespace r2d2::robot_arm {
          */
         bool in_range(const uint16_t &r);
 
-        //TODO probably dosnt work with mulitple robot arm implementations
         const static uint16_t max_range_x = 10;
         const static uint16_t min_range_x = 0;
 
