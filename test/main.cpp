@@ -1,11 +1,28 @@
-#include "vector3_c.hpp"
-#include <iostream>
-
+#include "uarm_gcode_generator_c.hpp"
 #define CATCH_CONFIG_MAIN
 #include <catch.hpp>
 
-#include <iostream>
 
+TEST_CASE("Appending") {
+    r2d2::robot_arm::uarm_gcode_generator_c<100> generator;
+    generator.append("a");
+    generator.append("b");
+    REQUIRE(std::strcmp(generator.get_buffer(), "ab") == 0); // std::strcmp will not be needed later for debug only
+}
+
+TEST_CASE("Appending front") {
+    r2d2::robot_arm::uarm_gcode_generator_c<100> generator;
+    generator.append("123");
+    generator.append_front("abcd");
+    REQUIRE(std::strcmp(generator.get_buffer(), "abcd123") == 0); // std::strcmp will not be needed later for debug only
+}
+
+TEST_CASE("Converting vector to gcode command") {
+    r2d2::robot_arm::uarm_gcode_generator_c<100> generator;
+    generator.coordinate_to_gcode(r2d2::robot_arm::vector3i_c(1, 2, 3), 200);
+    std::cout << generator.get_buffer() << std::endl;
+    REQUIRE(std::strcmp(generator.get_buffer(), "#n G0 X1 Y2 Z3 F200\n") == 0); // std::strcmp will not be needed later for debug only
+}
 
 TEST_CASE("Operator==") {
     r2d2::robot_arm::vector3i_c c(1.f, 5.f, 6.f);
