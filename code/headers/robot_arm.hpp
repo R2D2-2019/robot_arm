@@ -32,7 +32,9 @@ namespace r2d2::robot_arm {
          * @return true means connection is right
          * @return false means connection is wrong
          */
-        virtual bool check_connection(){return false};
+        virtual bool check_connection() {
+            return false;
+        };
         /**
          * @brief Sending command to arm
          * Sends false as default

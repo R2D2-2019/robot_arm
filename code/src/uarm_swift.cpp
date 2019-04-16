@@ -18,6 +18,7 @@ namespace r2d2::robot_arm {
     }
 
     bool check_connection() {
+        return true;
     }
 
     bool uarm_swift_c::send_command(const char *command) {

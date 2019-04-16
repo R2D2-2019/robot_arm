@@ -16,6 +16,7 @@ namespace r2d2::robot_arm {
         uarm_swift_c(unsigned int bautrate, r2d2::uart_ports_c usart_port);
 
         void init() override;
+
         bool check_connection() override;
 
         bool send_command(const char *command) override;
