@@ -12,7 +12,7 @@ namespace r2d2::robot_arm {
         uarm_gcode_generator_c<50> gcode_generator;
 
     public:
-        uarm_swift_c(r2d2::hardware_usart_c &usart_bus);
+        uarm_swift_c(const r2d2::hardware_usart_c &usart_bus);
         uarm_swift_c(unsigned int &bautrate, r2d2::uart_ports_c &usart_port);
         ~uarm_swift_c(){};
 
@@ -21,9 +21,9 @@ namespace r2d2::robot_arm {
         bool check_connection() override;
 
         bool send_command(const char *command) override;
-        void move_joint(int &joint_id, int &angle) override;
-        void move_head_to_coordinate(vector3i_c &coordinate,
-                                     int speed) override;
+        void move_joint(const int &joint_id, const int &angle) override;
+        void move_head_to_coordinate(const vector3i_c &coordinate,
+                                     const int speed) override;
     };
 
 } // namespace r2d2::robot_arm

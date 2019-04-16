@@ -13,7 +13,7 @@ namespace r2d2::robot_arm {
         /**
          * Robot arm constructor, needs an usart bus for communication
          */
-        robot_arm_c(r2d2::hardware_usart_c &usart_bus);
+        robot_arm_c(const r2d2::hardware_usart_c &usart_bus);
         /**
          * robot arm constructor, creates a usart bus from the bautrate and port
          **/
@@ -22,7 +22,7 @@ namespace r2d2::robot_arm {
          * Destroy the robot arm object
          *
          */
-        ~robot_arm_c(){};
+        virtual ~robot_arm_c(){};
         /**
          * @brief Initialization function
          * This function is for actions that need to be executed at
@@ -52,7 +52,7 @@ namespace r2d2::robot_arm {
          * Moves the robot arm joint [joint_id] in a given angle
          *
          */
-        virtual void move_joint(int &joint_id, int &angle) = 0;
+        virtual void move_joint(const int &joint_id, const int &angle) = 0;
         /**
          * Move arm's head to 3D coordinate
          * Moves head of robot arm head/end effector towards the 3D coordinate
@@ -61,8 +61,8 @@ namespace r2d2::robot_arm {
          * @param coordinate 3D integer coordinate for the head
          * @param speed movement speed in mm/min
          */
-        virtual void move_head_to_coordinate(vector3i_c &coordinate,
-                                             int speed = 500) = 0;
+        virtual void move_head_to_coordinate(const vector3i_c &coordinate,
+                                             const int speed = 500) = 0;
     };
 
 } // namespace r2d2::robot_arm
