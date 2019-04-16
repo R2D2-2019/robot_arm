@@ -13,11 +13,16 @@ namespace r2d2::robot_arm {
         /**
          * Robot arm constructor, needs an usart bus for communication
          */
-        robot_arm_c(r2d2::hardware_usart_c usart_bus);
+        robot_arm_c(r2d2::hardware_usart_c &usart_bus);
         /**
          * robot arm constructor, creates a usart bus from the bautrate and port
          **/
-        robot_arm_c(unsigned int bautrate, r2d2::uart_ports_c usart_port);
+        robot_arm_c(unsigned int &bautrate, r2d2::uart_ports_c &usart_port);
+        /**
+         * Destroy the robot arm object
+         *
+         */
+        ~robot_arm_c(){};
         /**
          * @brief Initialization function
          * This function is for actions that need to be executed at
@@ -32,9 +37,7 @@ namespace r2d2::robot_arm {
          * @return true means connection is right
          * @return false means connection is wrong
          */
-        virtual bool check_connection() {
-            return false;
-        };
+        virtual bool check_connection() = 0;
         /**
          * @brief Sending command to arm
          * Sends false as default
@@ -43,15 +46,13 @@ namespace r2d2::robot_arm {
          * @return false when something went wrong with sending
          * @return true when command correctly sent
          */
-        virtual bool send_command(const char *command) {
-            return false;
-        };
+        virtual bool send_command(const char *command) = 0;
         /**
          * Move specific joint of the arm
          * Moves the robot arm joint [joint_id] in a given angle
          *
          */
-        virtual void move_joint(int joint_id, int angle){};
+        virtual void move_joint(int &joint_id, int &angle) = 0;
         /**
          * Move arm's head to 3D coordinate
          * Moves head of robot arm head/end effector towards the 3D coordinate
@@ -60,8 +61,8 @@ namespace r2d2::robot_arm {
          * @param coordinate 3D integer coordinate for the head
          * @param speed movement speed in mm/min
          */
-        virtual void move_head_to_coordinate(vector3i_c coordinate,
-                                             int speed = 500){};
+        virtual void move_head_to_coordinate(vector3i_c &coordinate,
+                                             int speed = 500) = 0;
     };
 
 } // namespace r2d2::robot_arm
