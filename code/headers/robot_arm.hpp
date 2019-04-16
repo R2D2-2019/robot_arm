@@ -1,8 +1,8 @@
 #pragma once
 
-#include "vector3_c.hpp"
 #include <hardware_usart.hpp>
 #include <hwlib.hpp>
+#include <vector3_c.hpp>
 
 namespace r2d2::robot_arm {
     class robot_arm_c {

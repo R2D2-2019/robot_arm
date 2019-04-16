@@ -1,5 +1,5 @@
-#include "uarm_swift.hpp"
 #include <cstring>
+#include <uarm_swift.hpp>
 
 namespace r2d2::robot_arm {
     uarm_swift_c::uarm_swift_c(r2d2::hardware_usart_c usart_bus)
