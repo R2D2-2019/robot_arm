@@ -10,7 +10,13 @@ namespace r2d2::robot_arm {
         r2d2::hardware_usart_c usart_bus;
 
     public:
+        /**
+         * Robot arm constructor, needs an usart bus for communication
+         */
         robot_arm_c(r2d2::hardware_usart_c usart_bus);
+        /**
+         * robot arm constructor, creates a usart bus from the bautrate and port
+         **/
         robot_arm_c(unsigned int bautrate, r2d2::uart_ports_c usart_port);
         /**
          * @brief Initialization function
