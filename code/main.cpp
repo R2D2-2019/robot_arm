@@ -1,7 +1,7 @@
-#include "dof4_diy_c.hpp"
-#include "robot_arm_interface_c.hpp"
-#include "uarm_swift_pro_c.hpp"
+#include <dof4_diy.hpp>
 #include <hwlib.hpp>
+#include <robot_arm_interface.hpp>
+#include <uarm_swift_pro.hpp>
 
 using namespace r2d2::robot_arm;
 

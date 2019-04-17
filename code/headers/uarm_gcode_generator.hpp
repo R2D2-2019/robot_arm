@@ -1,4 +1,4 @@
-#include "gcode_generator_c.hpp"
+#include <gcode_generator.hpp>
 
 namespace r2d2::robot_arm {
     template <size_t Size>

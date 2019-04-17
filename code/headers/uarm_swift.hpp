@@ -3,8 +3,8 @@
 #include <hardware_usart.hpp>
 #include <hwlib.hpp>
 #include <robot_arm.hpp>
-#include <uarm_gcode_generator_c.hpp>
-#include <vector3_c.hpp>
+#include <uarm_gcode_generator.hpp>
+#include <vector3.hpp>
 
 namespace r2d2::robot_arm {
     class uarm_swift_c : public robot_arm_c {

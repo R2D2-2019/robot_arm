@@ -1,5 +1,5 @@
 #pragma once
-#include "vector3_c.hpp"
+#include "vector3.hpp"
 #include <hwlib.hpp> // size_t, (u)intx_t
 
 namespace r2d2::robot_arm {
