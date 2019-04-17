@@ -179,6 +179,50 @@ namespace r2d2::robot_arm {
         }
 
         /**
+         * vector3_c operator*
+         * Multiplies x, y, z with rhs.x, y, z
+         * 
+         * @param vector3_c<Type>
+         * @return vector3c<Type>
+         * */
+        vector3_c<Type> operator*(const vector3_c &rhs) const {
+            return vector3_c<Type>(x * rhs.x, y * rhs.y, z * rhs.z);
+        }
+
+        /**
+         * vector3_c operator*
+         * 
+         * Multiplies x y z with rhs
+         * @param Type
+         * @return vector3_c<Type>
+         * */
+        vector3_c<Type> operator*(const Type &rhs) const {
+            return *this * vector3_c<Type>(rhs);
+        }
+
+        /**
+         * vector3_c operator*=
+         * Multiplies xyz with rhs
+         * 
+         * @param vector3_c 
+         * @return vector3_c<Type>&
+         * */
+        vector3_c<Type> &operator*=(const vector3_c<Type> &rhs) {
+            *this = *this * rhs;
+            return *this;
+        }
+        /**
+         * vector3_c operator*=
+         * Multiplies xyz with rhs
+         * 
+         * @param Type 
+         * @return vector3_c<Type>&
+         * */
+        vector3_c<Type> &operator*=(const Type &rhs) {
+            return *this *= vector3_c<Type>(rhs);
+        }
+
+        /**
          * vector3_c operator/
          * Devides all values with rhs.
          * Note that this class contains of ints only
