@@ -16,9 +16,6 @@ SEARCH            += ../../../libraries/Catch2/single_include/catch2
 internal_comm 	  ?= ../../../libraries/internal_communication
 include 		  $(internal_comm)/Makefile.inc
 
-USART             ?= ../../../libraries/USART_library
-include           $(USART)/Makefile.inc
-
 DATA              ?= ../../../libraries/datastructures/code/headers/queue.hpp
 
 # add hwlib
