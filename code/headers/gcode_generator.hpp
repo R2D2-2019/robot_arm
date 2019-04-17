@@ -75,7 +75,7 @@ namespace r2d2::robot_arm {
         /**
          * Default destructor
          * */
-        virtual ~gcode_generator_c() = default;
+        ~gcode_generator_c()= default;
 
         /**
          * Returns a pointer to the buffer.
