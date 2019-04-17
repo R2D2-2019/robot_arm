@@ -107,6 +107,30 @@ TEST_CASE("Operator--") {
     REQUIRE(c == r2d2::robot_arm::vector3i_c(4, 3, 2));
 }
 
+TEST_CASE("Operator * with vector") {
+    r2d2::robot_arm::vector3_c c(1, 2, 3);
+    r2d2::robot_arm::vector3_c result = c * r2d2::robot_arm::vector3_c(3, 2, 1);
+    REQUIRE(result == r2d2::robot_arm::vector3_c(3, 4, 3));
+}
+
+TEST_CASE("Operator * with type") {
+    r2d2::robot_arm::vector3_c c(1, 2, 3);
+    r2d2::robot_arm::vector3_c result = c * 3;
+    REQUIRE(result == r2d2::robot_arm::vector3_c(3, 6, 9));
+}
+
+TEST_CASE("Operator *= with vector") {
+    r2d2::robot_arm::vector3_c c(1, 2, 3);
+    c *= r2d2::robot_arm::vector3_c(3, 3, 3);
+    REQUIRE(c == r2d2::robot_arm::vector3_c(3, 6, 9));
+}
+
+TEST_CASE("Operator *= with type") {
+    r2d2::robot_arm::vector3_c c(1, 2, 3);
+    c *= 5;
+    REQUIRE(c == r2d2::robot_arm::vector3_c(5, 10, 15));
+}
+
 TEST_CASE("Operator/ with coordinate") {
     r2d2::robot_arm::vector3i_c c(5, 4, 3);
     r2d2::robot_arm::vector3i_c result =
