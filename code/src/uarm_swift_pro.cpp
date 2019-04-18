@@ -17,8 +17,7 @@ namespace r2d2::robot_arm {
 
     void
     uarm_swift_pro_c::move_head_to_coordinate(const vector3i_c &coordinate) {
-        uarm_swift_pro_c::gcode_generator.coordinate_to_gcode(coordinate,
-                                                              default_speed);
+        gcode_generator.coordinate_to_gcode(coordinate, default_speed);
         this->send_command(gcode_generator.get_buffer());
     }
 
