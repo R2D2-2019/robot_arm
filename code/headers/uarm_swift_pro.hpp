@@ -7,7 +7,6 @@
 #include <uarm_gcode_generator.hpp>
 #include <vector3.hpp>
 
-
 /**
  * Class uArm_swift_pro provides a implementation for uArm swift pro.
  */

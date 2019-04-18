@@ -14,7 +14,6 @@ namespace r2d2::robot_arm {
          * */
         ~uarm_gcode_generator_c() = default;
 
-
         /**
          * Converts a vector3i_c to a gcode command for uArm
          *
