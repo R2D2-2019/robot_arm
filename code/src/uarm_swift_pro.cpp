@@ -1,52 +1,47 @@
 #include <uarm_swift_pro.hpp>
 
-r2d2::robot_arm::uarm_swift_pro_c::uarm_swift_pro_c(const r2d2::hardware_usart_c &usart_bus)
+namespace r2d2::robot_arm {
+    uarm_swift_pro_c::uarm_swift_pro_c(const r2d2::hardware_usart_c &usart_bus)
         : usart_bus(usart_bus) {
-}
-r2d2::robot_arm::uarm_swift_pro_c::uarm_swift_pro_c(unsigned int &bautrate,
-                         r2d2::uart_ports_c &usart_port)
+    }
+    uarm_swift_pro_c::uarm_swift_pro_c(unsigned int &bautrate,
+                                       r2d2::uart_ports_c &usart_port)
         : usart_bus(bautrate, usart_port) {
-}
+    }
 
+    void uarm_swift_pro_c::move_head_to_coordinate(const vector3i_c &coordinate,
+                                                   const uint16_t &speed) {
+        gcode_generator.coordinate_to_gcode(coordinate, speed);
+        this->send_command(gcode_generator.get_buffer());
+    }
 
-void r2d2::robot_arm::uarm_swift_pro_c::move_head_to_coordinate(const vector3i_c &coordinate,
-                                                                const uint16_t speed) {
+    void
+    uarm_swift_pro_c::move_head_to_coordinate(const vector3i_c &coordinate) {
+        uarm_swift_pro_c::gcode_generator.coordinate_to_gcode(coordinate,
+                                                              default_speed);
+        this->send_command(gcode_generator.get_buffer());
+    }
 
-    auto command = r2d2::robot_arm::uarm_swift_pro_c::gcode_generator.coordinate_to_gcode(coordinate, speed);
+    void uarm_swift_pro_c::rotate_head(const int16_t &rotation) {
+        // TODO impl rotate head uarm swift pro
+    }
 
-    this->send_command(command);
-}
+    void uarm_swift_pro_c::init() {
+        this->send_command("#n M2122 V1\n"); // report when stop
+    }
 
-void r2d2::robot_arm::uarm_swift_pro_c::move_head_to_coordinate(const vector3i_c &coordinate) {
-    hwlib::cout << coordinate.x << coordinate.y << coordinate.z  << "\n";
+    bool uarm_swift_pro_c::check_connection() {
+        // TODO impl check_connection()
+        return true;
+    }
 
-    auto command = r2d2::robot_arm::uarm_swift_pro_c::gcode_generator.coordinate_to_gcode(coordinate, r2d2::robot_arm::uarm_swift_pro_c::default_speed);
-    hwlib::cout << command << "\n";
-    this->send_command(command);
-}
+    bool uarm_swift_pro_c::send_command(const char *command) {
+        this->usart_bus << command;
+        return true;
+    }
 
+    void uarm_swift_pro_c::move_joint(const int &joint_id, const int &angle) {
+        // TODO impl uarm_swift_c::move_joint
+    }
 
-void r2d2::robot_arm::uarm_swift_pro_c::rotate_head(const int16_t &rotation) {
-    // TODO impl rotate head uarm swift pro
-}
-
-
-
-void r2d2::robot_arm::uarm_swift_pro_c::init() {
-    this->send_command("#n M2122 V1\n"); // report when stop
-}
-
-bool r2d2::robot_arm::uarm_swift_pro_c::check_connection() {
-    // TODO impl check_connection()
-    return true;
-}
-
-bool r2d2::robot_arm::uarm_swift_pro_c::send_command(const char *command) {
-    this->usart_bus << command;
-    return true;
-}
-
-void r2d2::robot_arm::uarm_swift_pro_c::move_joint(const int &joint_id, const int &angle) {
-    // TODO impl uarm_swift_c::move_joint
-}
-
+} // namespace r2d2::robot_arm

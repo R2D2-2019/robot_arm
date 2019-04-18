@@ -18,7 +18,7 @@ namespace r2d2::robot_arm {
          * @param speed
          */
         virtual void move_head_to_coordinate(const vector3i_c &coordinate,
-                                             const uint16_t speed) = 0;
+                                             const uint16_t &speed) = 0;
 
         /**
          * This function moves the robot arm head to a certain 3d location.
@@ -26,7 +26,6 @@ namespace r2d2::robot_arm {
          * @param coordinate
          */
         virtual void move_head_to_coordinate(const vector3i_c &coordinate) = 0;
-
 
         /**
          * This function rotates the head of the robot arm.

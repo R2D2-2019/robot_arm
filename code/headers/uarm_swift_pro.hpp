@@ -1,11 +1,12 @@
 #pragma once
 
+#include <cstring>
+#include <hardware_usart.hpp>
 #include <hwlib.hpp>
 #include <robot_arm_interface.hpp>
-#include <vector3.hpp>
-#include <hardware_usart.hpp>
-#include <cstring>
 #include <uarm_gcode_generator.hpp>
+#include <vector3.hpp>
+
 
 /**
  * Class uArm_swift_pro provides a implementation for uArm swift pro.
@@ -13,14 +14,13 @@
 namespace r2d2::robot_arm {
     class uarm_swift_pro_c : public robot_arm_interface_c {
     protected:
-
         const uint16_t default_speed = 1000;
 
     private:
         uarm_gcode_generator_c<50> gcode_generator;
-        hardware_usart_c usart_bus ;
-    public:
+        hardware_usart_c usart_bus;
 
+    public:
         /**
          * Robot arm constructor, needs an usart bus for communication
          */
@@ -28,7 +28,8 @@ namespace r2d2::robot_arm {
         /**
          * robot arm constructor, creates a usart bus from the bautrate and port
          **/
-        uarm_swift_pro_c(unsigned int &bautrate, r2d2::uart_ports_c &usart_port);
+        uarm_swift_pro_c(unsigned int &bautrate,
+                         r2d2::uart_ports_c &usart_port);
         /**
          * Destroy the robot arm object
          *
@@ -36,11 +37,11 @@ namespace r2d2::robot_arm {
         ~uarm_swift_pro_c(){};
 
         /**
-       * @brief Initialization function
-       * This function is for actions that need to be executed at
-       * initialization of the object
-       *
-       */
+         * @brief Initialization function
+         * This function is for actions that need to be executed at
+         * initialization of the object
+         *
+         */
         void init();
         /**
          * @brief Check connection
@@ -74,7 +75,7 @@ namespace r2d2::robot_arm {
          * @param speed movement speed in mm/min
          */
         void move_head_to_coordinate(const vector3i_c &coordinate,
-                                             const uint16_t speed) override;
+                                     const uint16_t &speed) override;
         /**
          * This function moves the uArm swift pro head to a certain 3d location.
          *
