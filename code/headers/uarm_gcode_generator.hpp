@@ -1,4 +1,4 @@
-#include "gcode_generator_c.hpp"
+#include <gcode_generator.hpp>
 
 namespace r2d2::robot_arm {
     template <size_t Size>
@@ -22,7 +22,7 @@ namespace r2d2::robot_arm {
          * @return char* to buffer
          * */
         char *coordinate_to_gcode(const vector3i_c &coordinate,
-                                  const uint8_t &speed) {
+                                  const uint16_t &speed) {
             char x_string[11]; // max number of int digits (10) + '\0' = 11
             char y_string[11];
             char z_string[11];

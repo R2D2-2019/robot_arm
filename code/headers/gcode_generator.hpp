@@ -1,5 +1,5 @@
 #pragma once
-#include "vector3_c.hpp"
+#include "vector3.hpp"
 #include <hwlib.hpp> // size_t, (u)intx_t
 
 namespace r2d2::robot_arm {
@@ -75,7 +75,7 @@ namespace r2d2::robot_arm {
         /**
          * Default destructor
          * */
-        virtual ~gcode_generator_c() = default;
+        ~gcode_generator_c() = default;
 
         /**
          * Returns a pointer to the buffer.
@@ -131,6 +131,6 @@ namespace r2d2::robot_arm {
          * @return char* to buffer
          * */
         virtual char *coordinate_to_gcode(const vector3i_c &coordinate,
-                                          const uint8_t &speed = 0) = 0;
+                                          const uint16_t &speed = 500) = 0;
     };
 } // namespace r2d2::robot_arm
