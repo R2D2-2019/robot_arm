@@ -75,7 +75,14 @@ namespace r2d2::robot_arm {
         /**
          * Default destructor
          * */
-        ~gcode_generator_c()= default;
+        virtual ~gcode_generator_c()= default;
+
+        /**
+         * Bogus operator for delete. 
+         * Since the virtual dtor causes a call to operator delete, 
+         * which'll give us an undefined ref error to operator delete.
+         * */
+        void operator delete(void* ptr) {} 
 
         /**
          * Returns a pointer to the buffer.
