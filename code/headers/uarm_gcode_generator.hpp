@@ -5,16 +5,6 @@ namespace r2d2::robot_arm {
     class uarm_gcode_generator_c : public gcode_generator_c<Size> {
     public:
         /**
-         * Default constructor
-         * */
-        uarm_gcode_generator_c() = default;
-
-        /**
-         * Default destructor
-         * */
-        ~uarm_gcode_generator_c() = default;
-
-        /**
          * Converts a vector3i_c to a gcode command for uArm
          *
          * @param vector3i

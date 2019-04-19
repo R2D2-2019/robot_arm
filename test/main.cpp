@@ -2,6 +2,19 @@
 #define CATCH_CONFIG_MAIN
 #include <catch.hpp>
 
+TEST_CASE("Appending gone wrong!") {
+    r2d2::robot_arm::uarm_gcode_generator_c<2> generator;
+    generator.append("a");
+    generator.append("b");
+    REQUIRE(std::strcmp(generator.get_buffer(), "a") == 0);
+}
+
+TEST_CASE("Requesting size") {
+    r2d2::robot_arm::uarm_gcode_generator_c<10> generator;
+    generator.append("a");
+    generator.append_front("b");
+    REQUIRE(generator.length() == 2);
+}
 
 TEST_CASE("Appending") {
     r2d2::robot_arm::uarm_gcode_generator_c<100> generator;
@@ -20,7 +33,6 @@ TEST_CASE("Appending front") {
 TEST_CASE("Converting vector to gcode command") {
     r2d2::robot_arm::uarm_gcode_generator_c<100> generator;
     generator.coordinate_to_gcode(r2d2::robot_arm::vector3i_c(1, 2, 3), 200);
-    std::cout << generator.get_buffer() << std::endl;
     REQUIRE(std::strcmp(generator.get_buffer(), "#n G0 X1 Y2 Z3 F200\n") == 0); // std::strcmp will not be needed later for debug only
 }
 
