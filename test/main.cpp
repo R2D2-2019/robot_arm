@@ -20,20 +20,23 @@ TEST_CASE("Appending", "Testing generator") {
     r2d2::robot_arm::uarm_gcode_generator_c<100> generator;
     generator.append("a");
     generator.append("b");
-    REQUIRE(std::strcmp(generator.get_buffer(), "ab") == 0); // std::strcmp will not be needed later for debug only
+    REQUIRE(std::strcmp(generator.get_buffer(), "ab") ==
+            0); // std::strcmp will not be needed later for debug only
 }
 
 TEST_CASE("Appending front", "Testing generator") {
     r2d2::robot_arm::uarm_gcode_generator_c<100> generator;
     generator.append("123");
     generator.append_front("abcd");
-    REQUIRE(std::strcmp(generator.get_buffer(), "abcd123") == 0); // std::strcmp will not be needed later for debug only
+    REQUIRE(std::strcmp(generator.get_buffer(), "abcd123") ==
+            0); // std::strcmp will not be needed later for debug only
 }
 
 TEST_CASE("Converting vector to gcode command", "Testing generator") {
     r2d2::robot_arm::uarm_gcode_generator_c<100> generator;
     generator.coordinate_to_gcode(r2d2::robot_arm::vector3i_c(1, 2, 3), 200);
-    REQUIRE(std::strcmp(generator.get_buffer(), "#n G0 X1 Y2 Z3 F200\n") == 0); // std::strcmp will not be needed later for debug only
+    REQUIRE(std::strcmp(generator.get_buffer(), "#n G0 X1 Y2 Z3 F200\n") ==
+            0); // std::strcmp will not be needed later for debug only
 }
 
 TEST_CASE("Operator==", "Testing vector3i") {

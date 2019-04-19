@@ -1,6 +1,7 @@
 #pragma once
-#include <vector3.hpp>
 #include <hwlib.hpp> // size_t, (u)intx_t
+#include <vector3.hpp>
+
 
 namespace r2d2::robot_arm {
     /**
@@ -14,20 +15,14 @@ namespace r2d2::robot_arm {
     template <size_t Size>
     class gcode_generator_c {
     private:
+        /** Checks whether the string to be added fits into the buffer
+         * @true if it fits
+         * @return false otherwise
+         * */
         bool string_fits(const char *string) {
             return get_string_length(string) + 1 + str_len <= Size;
         }
 
-    protected:
-        /**
-         * Buffer with Size as size.
-         * */
-        char buffer[Size] = {'\0'};
-
-        /**
-         * Represents the size of the string currently in buffer
-         * */
-        size_t str_len = 0;
         /**
          * Reverses a string
          *
@@ -45,6 +40,18 @@ namespace r2d2::robot_arm {
             }
             return string;
         }
+
+    protected:
+        /**
+         * Buffer with Size as size.
+         * */
+        char buffer[Size] = {'\0'};
+
+        /**
+         * Represents the size of the string currently in buffer
+         * */
+        size_t str_len = 0;
+
         /**
          * Converts an int to a string.
          * Please note that the destination size must be 11 if you
@@ -74,7 +81,7 @@ namespace r2d2::robot_arm {
             this->reverse(string, i);
             return string;
         }
-        
+
         /**
          * Get string length
          *
