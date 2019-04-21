@@ -61,11 +61,6 @@ namespace r2d2::robot_arm {
         }
 
         /**
-         * vector3_c default destructor.
-         **/
-        ~vector3_c() = default;
-
-        /**
          * vector3_c operator+.
          * Sums a point3_d with another vector3_c, returns the result
          *

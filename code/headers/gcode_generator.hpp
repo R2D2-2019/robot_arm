@@ -1,6 +1,6 @@
 #pragma once
-#include "vector3.hpp"
 #include <hwlib.hpp> // size_t, (u)intx_t
+#include <vector3.hpp>
 
 namespace r2d2::robot_arm {
     /**
@@ -13,6 +13,36 @@ namespace r2d2::robot_arm {
      * */
     template <size_t Size>
     class gcode_generator_c {
+    private:
+        /**
+         * Represents the size of the string currently in buffer
+         * */
+        size_t str_len = 0;
+
+        /** Checks whether the string to be added fits into the buffer
+         * @true if it fits
+         * @return false otherwise
+         * */
+        bool string_fits(const char *string) {
+            return get_string_length(string) + 1 + str_len <= Size;
+        }
+
+        /**
+         * Reverses a string
+         *
+         * @param char*
+         * @param int length
+         * */
+        void reverse(char *string, int length) {
+            int start = 0;
+            length--;
+            while (start < length) {
+                std::swap(*(string + start), *(string + length));
+                start++;
+                length--;
+            }
+        }
+
     protected:
         /**
          * Buffer with Size as size.
@@ -26,16 +56,15 @@ namespace r2d2::robot_arm {
          *
          * @param int axis
          * @param char array
-         * @return char* to string
          * */
-        char *int_to_string(int axis, char *string) const {
+        void int_to_string(int axis, char *string) {
             int i = 0;
             bool is_negative = axis < 0;
             int n = is_negative ? -axis : axis;
             if (n == 0) {
                 string[0] = '0';
                 string[1] = '\0';
-                return string;
+                return;
             }
             while (n != 0) {
                 string[i++] = n % 10 + '0';
@@ -45,13 +74,9 @@ namespace r2d2::robot_arm {
                 string[i++] = '-';
             }
             string[i] = '\0';
-            for (int t = 0; t < i / 2; t++) { // Reverse string
-                string[t] ^= string[i - t - 1];
-                string[i - t - 1] ^= string[t];
-                string[t] ^= string[i - t - 1];
-            }
-            return string;
+            reverse(string, i);
         }
+
         /**
          * Get string length
          *
@@ -67,16 +92,13 @@ namespace r2d2::robot_arm {
         }
 
     public:
-        /**
-         * Default constructor
+        /** Returns the length of the string
+         *
+         * @return size_t
          * */
-        gcode_generator_c() = default;
-
-        /**
-         * Default destructor
-         * */
-        ~gcode_generator_c() = default;
-
+        size_t length() {
+            return str_len;
+        }
         /**
          * Returns a pointer to the buffer.
          *
@@ -88,37 +110,43 @@ namespace r2d2::robot_arm {
 
         /**
          * Appends a string (source) at the end of the buffer (array)
+         * Returns if source does not fit into buffer
          *
-         * @param const char* source
-         * @return char* to buffer
+         * @param const char* sourcer
          * */
-        char *append(const char *source) {
+        void append(const char *source) {
+            if (!string_fits(source)) {
+                return;
+            }
             int i = 0;
             size_t start = get_string_length(buffer);
             while (source[i]) {
                 buffer[start++] = source[i++];
             }
             buffer[start] = '\0';
-            return buffer;
+            str_len += get_string_length(source);
         }
 
         /**
          * Appends a string (source) at the front of buffer (array)
+         * Returns if source does not fit into buffer
          *
          * @param const char* source
-         * @preturn char* to buffer
          * */
-        char *append_front(const char *source) {
-            const size_t length = get_string_length(source);
+        void append_front(const char *source) {
+            if (!string_fits(source)) {
+                return;
+            }
+            const size_t string_len = get_string_length(source);
+            str_len += string_len;
             unsigned int i = 0;
             for (; source[i]; i++) { // Make space for source
-                buffer[i + length] = buffer[i];
+                buffer[i + string_len] = buffer[i];
             }
-            buffer[i + length] = '\0';
-            for (i = 0; i < length; i++) { // Put source in front of buffer
+            buffer[i + string_len] = '\0';
+            for (i = 0; i < string_len; i++) { // Put source in front of buffer
                 buffer[i] = source[i];
             }
-            return buffer;
         }
 
         /**
@@ -128,9 +156,8 @@ namespace r2d2::robot_arm {
          *
          * @param coordinate_3D_c
          * @param uint8_t speed = 0
-         * @return char* to buffer
          * */
-        virtual char *coordinate_to_gcode(const vector3i_c &coordinate,
-                                          const uint16_t &speed = 500) = 0;
+        virtual void coordinate_to_gcode(const vector3i_c &coordinate,
+                                         const uint16_t &speed = 500) = 0;
     };
 } // namespace r2d2::robot_arm

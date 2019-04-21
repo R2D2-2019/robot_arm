@@ -5,24 +5,13 @@ namespace r2d2::robot_arm {
     class uarm_gcode_generator_c : public gcode_generator_c<Size> {
     public:
         /**
-         * Default constructor
-         * */
-        uarm_gcode_generator_c() = default;
-
-        /**
-         * Default destructor
-         * */
-        ~uarm_gcode_generator_c() = default;
-
-        /**
          * Converts a vector3i_c to a gcode command for uArm
          *
          * @param vector3i
          * @param uint8_t speed
-         * @return char* to buffer
          * */
-        char *coordinate_to_gcode(const vector3i_c &coordinate,
-                                  const uint16_t &speed) {
+        void coordinate_to_gcode(const vector3i_c &coordinate,
+                                 const uint16_t &speed) {
             char x_string[11]; // max number of int digits (10) + '\0' = 11
             char y_string[11];
             char z_string[11];
@@ -40,7 +29,6 @@ namespace r2d2::robot_arm {
             this->append(" F");
             this->append(speed_string);
             this->append("\n");
-            return this->buffer;
         }
     };
 } // namespace r2d2::robot_arm
