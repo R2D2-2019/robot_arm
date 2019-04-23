@@ -29,11 +29,6 @@ namespace r2d2::robot_arm {
          **/
         uarm_swift_pro_c(unsigned int &bautrate,
                          r2d2::uart_ports_c &usart_port);
-        /**
-         * Destroy the robot arm object
-         *
-         */
-        ~uarm_swift_pro_c(){};
 
         /**
          * @brief Initialization function
