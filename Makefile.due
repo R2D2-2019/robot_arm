@@ -15,6 +15,7 @@ CONSOLE_BAUDRATE  ?= 2400
 STACK_SIZE        ?= 81920
 HEAP              ?= BMPTK
 
+# include USART library
 USART   ?= ../../../libraries/USART_library
 include $(USART)/Makefile.inc
 
