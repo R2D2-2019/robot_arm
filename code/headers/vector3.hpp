@@ -33,7 +33,7 @@ namespace r2d2::robot_arm {
 
         /**
         * vector3_c
-         default constructor.
+        * default constructor.
         **/
         vector3_c() : x(), y(), z() {
         }
@@ -154,7 +154,7 @@ namespace r2d2::robot_arm {
 
         /**
          * vector3_c operator -=
-         * Decreases all values with int rhs
+         * Decreases all values with Type rhs
          *
          * @param vector3_c rhs
          * @return vector3_c&
