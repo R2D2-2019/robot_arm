@@ -19,6 +19,10 @@ HEAP              ?= BMPTK
 USART   ?= ../../../libraries/USART_library
 include $(USART)/Makefile.inc
 
+# include PWM library
+PWM   ?= ../../../libraries/PWM_library
+include $(PWM)/Makefile.inc
+
 # defer to the Makefile.link
 include           $(RELATIVE)/Makefile.link
 
