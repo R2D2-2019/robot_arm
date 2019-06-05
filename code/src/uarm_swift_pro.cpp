@@ -1,13 +1,14 @@
 #include <uarm_swift_pro.hpp>
 
 namespace r2d2::robot_arm {
-    uarm_swift_pro_c::uarm_swift_pro_c(const r2d2::hardware_usart_c &usart_bus)
+    uarm_swift_pro_c::uarm_swift_pro_c(usart_c &usart_bus)
         : usart_bus(usart_bus) {
     }
-    uarm_swift_pro_c::uarm_swift_pro_c(unsigned int &bautrate,
-                                       r2d2::uart_ports_c &usart_port)
-        : usart_bus(bautrate, usart_port) {
-    }
+
+    // uarm_swift_pro_c::uarm_swift_pro_c(unsigned int &bautrate,
+    //                                 r2d2::usart::uart_ports_c &usart_port)
+    //  : usart_bus(bautrate, usart_port) {
+    //}
 
     void uarm_swift_pro_c::move_head_to_coordinate(const vector3i_c &coordinate,
                                                    const uint16_t &speed) {
