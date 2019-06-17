@@ -25,11 +25,6 @@ namespace r2d2::robot_arm {
          * Robot arm constructor, needs an usart bus for communication
          */
         uarm_swift_pro_c(usart_c &usart_bus);
-        /**
-         * robot arm constructor, creates a usart bus from the bautrate and port
-         **/
-        //  uarm_swift_pro_c(unsigned int &bautrate,
-        //                 r2d2::usart::uart_ports_c &usart_port);
 
         /**
          * @brief Initialization function
