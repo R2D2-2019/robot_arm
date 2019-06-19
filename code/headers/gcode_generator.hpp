@@ -1,6 +1,8 @@
 #pragma once
 #include <vector3.hpp>
 #include <cstddef> // size_t, (u)intx_t
+#include <cstdint>
+#include <algorithm>
 
 namespace r2d2::robot_arm {
     /**
