@@ -61,15 +61,15 @@ namespace r2d2::robot_arm {
         void int_to_string(int number, char *string) {
             int i = 0;
             bool is_negative = number < 0;
-            int n = is_negative ? -number : number;
-            if (n == 0) {
+            int positive_number = is_negative ? -number : number;
+            if (positive_number == 0) {
                 string[0] = '0';
                 string[1] = '\0';
                 return;
             }
-            while (n != 0) {
-                string[i++] = n % 10 + '0';
-                n /= 10;
+            while (positive_number != 0) {
+                string[i++] = positive_number % 10 + '0';
+                positive_number /= 10;
             }
             if (is_negative) {
                 string[i++] = '-';
