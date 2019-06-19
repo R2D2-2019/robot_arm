@@ -1,6 +1,6 @@
 #pragma once
 
-#include <hwlib.hpp>
+#include <cstdint> // size_t, (u)intx_t
 #include <robot_arm_interface.hpp>
 #include <vector3.hpp>
 
