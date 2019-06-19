@@ -55,13 +55,13 @@ namespace r2d2::robot_arm {
          * Please note that the destination size must be 11 if you
          * want to store a max integer value (2.147.483.647) + '\0' = 11
          *
-         * @param int axis
+         * @param int number
          * @param char array
          */
-        void int_to_string(int axis, char *string) {
+        void int_to_string(int number, char *string) {
             int i = 0;
-            bool is_negative = axis < 0;
-            int n = is_negative ? -axis : axis;
+            bool is_negative = number < 0;
+            int n = is_negative ? -number : number;
             if (n == 0) {
                 string[0] = '0';
                 string[1] = '\0';
