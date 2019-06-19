@@ -156,7 +156,7 @@ namespace r2d2::robot_arm {
          *
          *
          * @param coordinate_3D_c
-         * @param uint8_t speed = 0
+         * @param uint8_t speed = 500
          */
         virtual void coordinate_to_gcode(const vector3i_c &coordinate,
                                          const uint16_t &speed = 500) = 0;
