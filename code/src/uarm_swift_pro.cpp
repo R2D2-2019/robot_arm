@@ -6,7 +6,7 @@ namespace r2d2::robot_arm {
     }
 
     void uarm_swift_pro_c::move_head_to_coordinate(const vector3i_c &coordinate,
-                                                   const uint16_t &speed) {
+                                                   uint16_t speed) {
         gcode_generator.coordinate_to_gcode(coordinate, speed);
         this->send_command(gcode_generator.get_buffer());
     }
@@ -17,7 +17,7 @@ namespace r2d2::robot_arm {
         this->send_command(gcode_generator.get_buffer());
     }
 
-    void uarm_swift_pro_c::rotate_head(const int16_t &rotation) {
+    void uarm_swift_pro_c::rotate_head(int16_t rotation) {
         // TODO impl rotate head uarm swift pro
     }
 

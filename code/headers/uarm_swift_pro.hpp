@@ -65,7 +65,7 @@ namespace r2d2::robot_arm {
          * @param speed movement speed in mm/min
          */
         void move_head_to_coordinate(const vector3i_c &coordinate,
-                                     const uint16_t &speed) override;
+                                     uint16_t speed) override;
         /**
          * This function moves the uArm swift pro head to a certain 3d location.
          *
@@ -77,6 +77,6 @@ namespace r2d2::robot_arm {
          *
          * @param rotation
          */
-        void rotate_head(const int16_t &rotation) override;
+        void rotate_head(int16_t rotation) override;
     };
 } // namespace r2d2::robot_arm
