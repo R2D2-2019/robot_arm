@@ -24,7 +24,7 @@ namespace r2d2::robot_arm {
          * @true if it fits
          * @return false otherwise
          */
-        bool string_fits(const char *string) {
+        bool string_fits(const char *string) const{
             return get_string_length(string) + 1 + str_len <= Size;
         }
 
@@ -84,7 +84,7 @@ namespace r2d2::robot_arm {
          * @param const char *
          * @return size_t length of string
          */
-        size_t get_string_length(const char *string) {
+        size_t get_string_length(const char *string) const{
             size_t counter = 0;
             while (string[counter]) {
                 counter++;
@@ -97,7 +97,7 @@ namespace r2d2::robot_arm {
          *
          * @return size_t
          */
-        size_t length() {
+        size_t length() const{
             return str_len;
         }
         /**
