@@ -1,10 +1,10 @@
 #pragma once
 
 #include <cstring>
-#include <hardware_usart.hpp>
 #include <hwlib.hpp>
 #include <robot_arm_interface.hpp>
 #include <uarm_gcode_generator.hpp>
+#include <usart_connection.hpp>
 #include <vector3.hpp>
 
 /**
@@ -16,19 +16,15 @@ namespace r2d2::robot_arm {
         const uint16_t default_speed = 1000;
 
     private:
+        using usart_c = r2d2::usart::usart_connection_c;
         uarm_gcode_generator_c<50> gcode_generator;
-        hardware_usart_c usart_bus;
+        usart_c &usart_bus;
 
     public:
         /**
          * Robot arm constructor, needs an usart bus for communication
          */
-        uarm_swift_pro_c(const r2d2::hardware_usart_c &usart_bus);
-        /**
-         * robot arm constructor, creates a usart bus from the bautrate and port
-         **/
-        uarm_swift_pro_c(unsigned int &bautrate,
-                         r2d2::uart_ports_c &usart_port);
+        uarm_swift_pro_c(usart_c &usart_bus);
 
         /**
          * @brief Initialization function
@@ -69,7 +65,7 @@ namespace r2d2::robot_arm {
          * @param speed movement speed in mm/min
          */
         void move_head_to_coordinate(const vector3i_c &coordinate,
-                                     const uint16_t &speed) override;
+                                     uint16_t speed) override;
         /**
          * This function moves the uArm swift pro head to a certain 3d location.
          *
@@ -81,6 +77,6 @@ namespace r2d2::robot_arm {
          *
          * @param rotation
          */
-        void rotate_head(const int16_t &rotation) override;
+        void rotate_head(int16_t rotation) override;
     };
 } // namespace r2d2::robot_arm

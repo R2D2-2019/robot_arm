@@ -1,6 +1,8 @@
 #pragma once
-#include <hwlib.hpp> // size_t, (u)intx_t
 #include <vector3.hpp>
+#include <cstddef> // size_t, (u)intx_t
+#include <cstdint>
+#include <algorithm>
 
 namespace r2d2::robot_arm {
     /**
@@ -10,20 +12,21 @@ namespace r2d2::robot_arm {
      * Note that a string of 4 characters, has a size of 5 with the '\0'
      * character
      * @param Size buffer size
-     * */
+     *
+     */
     template <size_t Size>
     class gcode_generator_c {
     private:
         /**
          * Represents the size of the string currently in buffer
-         * */
+         */
         size_t str_len = 0;
 
         /** Checks whether the string to be added fits into the buffer
          * @true if it fits
          * @return false otherwise
-         * */
-        bool string_fits(const char *string) {
+         */
+        bool string_fits(const char *string) const{
             return get_string_length(string) + 1 + str_len <= Size;
         }
 
@@ -32,7 +35,7 @@ namespace r2d2::robot_arm {
          *
          * @param char*
          * @param int length
-         * */
+         */
         void reverse(char *string, int length) {
             int start = 0;
             length--;
@@ -46,7 +49,7 @@ namespace r2d2::robot_arm {
     protected:
         /**
          * Buffer with Size as size.
-         * */
+         */
         char buffer[Size] = {'\0'};
 
         /**
@@ -54,21 +57,21 @@ namespace r2d2::robot_arm {
          * Please note that the destination size must be 11 if you
          * want to store a max integer value (2.147.483.647) + '\0' = 11
          *
-         * @param int axis
+         * @param int number
          * @param char array
-         * */
-        void int_to_string(int axis, char *string) {
+         */
+        void int_to_string(int number, char *string) {
             int i = 0;
-            bool is_negative = axis < 0;
-            int n = is_negative ? -axis : axis;
-            if (n == 0) {
+            bool is_negative = number < 0;
+            int positive_number = is_negative ? -number : number;
+            if (positive_number == 0) {
                 string[0] = '0';
                 string[1] = '\0';
                 return;
             }
-            while (n != 0) {
-                string[i++] = n % 10 + '0';
-                n /= 10;
+            while (positive_number != 0) {
+                string[i++] = positive_number % 10 + '0';
+                positive_number /= 10;
             }
             if (is_negative) {
                 string[i++] = '-';
@@ -82,8 +85,8 @@ namespace r2d2::robot_arm {
          *
          * @param const char *
          * @return size_t length of string
-         * */
-        size_t get_string_length(const char *string) {
+         */
+        size_t get_string_length(const char *string) const{
             size_t counter = 0;
             while (string[counter]) {
                 counter++;
@@ -95,15 +98,15 @@ namespace r2d2::robot_arm {
         /** Returns the length of the string
          *
          * @return size_t
-         * */
-        size_t length() {
+         */
+        size_t length() const{
             return str_len;
         }
         /**
          * Returns a pointer to the buffer.
          *
          * @return char* to buffer
-         * */
+         */
         char *get_buffer() {
             return buffer;
         }
@@ -113,7 +116,7 @@ namespace r2d2::robot_arm {
          * Returns if source does not fit into buffer
          *
          * @param const char* sourcer
-         * */
+         */
         void append(const char *source) {
             if (!string_fits(source)) {
                 return;
@@ -132,7 +135,7 @@ namespace r2d2::robot_arm {
          * Returns if source does not fit into buffer
          *
          * @param const char* source
-         * */
+         */
         void append_front(const char *source) {
             if (!string_fits(source)) {
                 return;
@@ -155,8 +158,8 @@ namespace r2d2::robot_arm {
          *
          *
          * @param coordinate_3D_c
-         * @param uint8_t speed = 0
-         * */
+         * @param uint8_t speed = 500
+         */
         virtual void coordinate_to_gcode(const vector3i_c &coordinate,
                                          const uint16_t &speed = 500) = 0;
     };

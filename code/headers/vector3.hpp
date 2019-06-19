@@ -15,7 +15,7 @@ namespace r2d2::robot_arm {
          * @param x
          * @param y
          * @param z
-         **/
+         */
         Type x;
         Type y;
         Type z;
@@ -26,15 +26,15 @@ namespace r2d2::robot_arm {
          *
          * @param vector3_c rhs
          * @return bool
-         **/
+         */
         bool operator==(const vector3_c<Type> &rhs) const {
             return x == rhs.x && y == rhs.y && z == rhs.z;
         }
 
         /**
-        * vector3_c
-         default constructor.
-        **/
+         * vector3_c
+         * default constructor.
+         */
         vector3_c() : x(), y(), z() {
         }
 
@@ -45,7 +45,7 @@ namespace r2d2::robot_arm {
          * @param x
          * @param y
          * @param z
-         **/
+         */
         vector3_c(const Type &x, const Type &y, const Type &z)
             : x(x), y(y), z(z) {
         }
@@ -55,7 +55,7 @@ namespace r2d2::robot_arm {
          * Initializes x, y, z in with all_values.
          *
          * @param int all_values
-         **/
+         */
         vector3_c(const Type &all_values)
             : vector3_c(all_values, all_values, all_values) {
         }
@@ -66,8 +66,7 @@ namespace r2d2::robot_arm {
          *
          * @param vector3_c rhs
          * @return vector3_c
-        
-        **/
+         */
         vector3_c<Type> operator+(const vector3_c<Type> &rhs) const {
             return vector3_c<Type>(x + rhs.x, y + rhs.y, z + rhs.z);
         }
@@ -79,7 +78,7 @@ namespace r2d2::robot_arm {
          *
          * @param int rhs
          * @return vector3_c
-         **/
+         */
         vector3_c<Type> operator+(const Type &rhs) const {
             return *this + vector3_c<Type>(rhs);
         }
@@ -91,7 +90,7 @@ namespace r2d2::robot_arm {
          * @param vector3_c rhs
          * @return vector3_c&
          *
-         **/
+         */
         vector3_c<Type> &operator+=(const vector3_c<Type> &rhs) {
             *this = *this + rhs;
             return *this;
@@ -102,7 +101,7 @@ namespace r2d2::robot_arm {
          *
          * @param int rhs
          * @return vector3_c&
-         **/
+         */
         vector3_c<Type> &operator+=(const Type &rhs) {
             return *this += vector3_c(rhs);
         }
@@ -112,7 +111,7 @@ namespace r2d2::robot_arm {
          * Increases all values from vector3_c (x, y, z) with 1
          *
          * @return vector3_c&
-         **/
+         */
         vector3_c<Type> &operator++(int) {
             return *this += 1;
         }
@@ -123,7 +122,7 @@ namespace r2d2::robot_arm {
          *
          * @param vector3_c
          * @return vector3_c
-         **/
+         */
         vector3_c<Type> operator-(const vector3_c<Type> &rhs) const {
             return vector3_c<Type>(x - rhs.x, y - rhs.y, z - rhs.z);
         }
@@ -135,7 +134,7 @@ namespace r2d2::robot_arm {
          *
          * @param int rhs
          * @return vector3_c
-         **/
+         */
         vector3_c<Type> operator-(const Type &rhs) const {
             return *this - vector3_c<Type>(rhs);
         }
@@ -146,7 +145,7 @@ namespace r2d2::robot_arm {
          *
          * @param vector3_c rhs
          * @return vector3_c&
-         **/
+         */
         vector3_c<Type> &operator-=(const vector3_c<Type> &rhs) {
             *this = *this - rhs;
             return *this;
@@ -154,11 +153,11 @@ namespace r2d2::robot_arm {
 
         /**
          * vector3_c operator -=
-         * Decreases all values with int rhs
+         * Decreases all values with Type rhs
          *
          * @param vector3_c rhs
          * @return vector3_c&
-         **/
+         */
         vector3_c<Type> &operator-=(const Type &rhs) {
             return *this -= vector3_c<Type>(rhs);
         }
@@ -168,7 +167,7 @@ namespace r2d2::robot_arm {
          * Decreases all values from vector3_c (x, y, z) with 1
          *
          * @return vector3_c&
-         **/
+         */
         vector3_c<Type> &operator--(int) {
             return *this -= 1;
         }
@@ -179,7 +178,7 @@ namespace r2d2::robot_arm {
          *
          * @param vector3_c<Type>
          * @return vector3c<Type>
-         * */
+         */
         vector3_c<Type> operator*(const vector3_c &rhs) const {
             return vector3_c<Type>(x * rhs.x, y * rhs.y, z * rhs.z);
         }
@@ -190,7 +189,7 @@ namespace r2d2::robot_arm {
          * Multiplies x y z with rhs
          * @param Type
          * @return vector3_c<Type>
-         * */
+         */
         vector3_c<Type> operator*(const Type &rhs) const {
             return *this * vector3_c<Type>(rhs);
         }
@@ -201,7 +200,7 @@ namespace r2d2::robot_arm {
          *
          * @param vector3_c
          * @return vector3_c<Type>&
-         * */
+         */
         vector3_c<Type> &operator*=(const vector3_c<Type> &rhs) {
             *this = *this * rhs;
             return *this;
@@ -212,7 +211,7 @@ namespace r2d2::robot_arm {
          *
          * @param Type
          * @return vector3_c<Type>&
-         * */
+         */
         vector3_c<Type> &operator*=(const Type &rhs) {
             return *this *= vector3_c<Type>(rhs);
         }
@@ -224,7 +223,7 @@ namespace r2d2::robot_arm {
          *
          * @param vector3_c rhs
          * @return vector3_c
-         **/
+         */
         vector3_c<Type> operator/(const vector3_c<Type> &rhs) const {
             return vector3_c<Type>((x / rhs.x), (y / rhs.y), (z / rhs.z));
         }
@@ -236,7 +235,7 @@ namespace r2d2::robot_arm {
          *
          * @param int rhs
          * @return vector3_c
-         **/
+         */
         vector3_c<Type> operator/(const Type &rhs) const {
             return *this / vector3_c<Type>(rhs);
         }
@@ -248,7 +247,7 @@ namespace r2d2::robot_arm {
          *
          * @param coordinate3D_c rhs
          * @return vector3_c&
-         **/
+         */
         vector3_c<Type> &operator/=(const vector3_c<Type> &rhs) {
             *this = *this / rhs;
             return *this;
@@ -261,7 +260,7 @@ namespace r2d2::robot_arm {
          *
          * @param int rhs
          * @return vector3_c&
-         **/
+         */
         vector3_c<Type> &operator/=(const Type &rhs) {
             return *this /= vector3_c<Type>(rhs);
         }

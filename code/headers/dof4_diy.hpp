@@ -1,9 +1,8 @@
 #pragma once
 
-#include <hwlib.hpp>
+#include <cstdint> // size_t, (u)intx_t
 #include <robot_arm_interface.hpp>
 #include <vector3.hpp>
-
 
 /**
  * Class dof4_diy_c provides a implementation for 4dof_diy robot arm.
@@ -26,12 +25,12 @@ namespace r2d2::robot_arm {
          * @param speed
          */
         void move_head_to_coordinate(const vector3i_c &coordinate,
-                                     const uint16_t &speed) override;
+                                     uint16_t speed) override;
         /**
          * This function rotates the head of the 4dof diy robot arm.
          *
          * @param rotation
          */
-        void rotate_head(const int16_t &rotation) override;
+        void rotate_head(int16_t rotation) override;
     };
 } // namespace r2d2::robot_arm

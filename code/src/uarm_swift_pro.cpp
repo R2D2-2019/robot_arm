@@ -1,16 +1,12 @@
 #include <uarm_swift_pro.hpp>
 
 namespace r2d2::robot_arm {
-    uarm_swift_pro_c::uarm_swift_pro_c(const r2d2::hardware_usart_c &usart_bus)
+    uarm_swift_pro_c::uarm_swift_pro_c(usart_c &usart_bus)
         : usart_bus(usart_bus) {
-    }
-    uarm_swift_pro_c::uarm_swift_pro_c(unsigned int &bautrate,
-                                       r2d2::uart_ports_c &usart_port)
-        : usart_bus(bautrate, usart_port) {
     }
 
     void uarm_swift_pro_c::move_head_to_coordinate(const vector3i_c &coordinate,
-                                                   const uint16_t &speed) {
+                                                   uint16_t speed) {
         gcode_generator.coordinate_to_gcode(coordinate, speed);
         this->send_command(gcode_generator.get_buffer());
     }
@@ -21,7 +17,7 @@ namespace r2d2::robot_arm {
         this->send_command(gcode_generator.get_buffer());
     }
 
-    void uarm_swift_pro_c::rotate_head(const int16_t &rotation) {
+    void uarm_swift_pro_c::rotate_head(int16_t rotation) {
         // TODO impl rotate head uarm swift pro
     }
 
