@@ -32,9 +32,9 @@ namespace r2d2::robot_arm {
         }
 
         /**
-        * vector3_c
-        * default constructor.
-        */
+         * vector3_c
+         * default constructor.
+         */
         vector3_c() : x(), y(), z() {
         }
 
@@ -66,7 +66,7 @@ namespace r2d2::robot_arm {
          *
          * @param vector3_c rhs
          * @return vector3_c
-        */
+         */
         vector3_c<Type> operator+(const vector3_c<Type> &rhs) const {
             return vector3_c<Type>(x + rhs.x, y + rhs.y, z + rhs.z);
         }

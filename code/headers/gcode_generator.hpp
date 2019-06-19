@@ -10,19 +10,20 @@ namespace r2d2::robot_arm {
      * Note that a string of 4 characters, has a size of 5 with the '\0'
      * character
      * @param Size buffer size
-     * */
+     *
+     */
     template <size_t Size>
     class gcode_generator_c {
     private:
         /**
          * Represents the size of the string currently in buffer
-         * */
+         */
         size_t str_len = 0;
 
         /** Checks whether the string to be added fits into the buffer
          * @true if it fits
          * @return false otherwise
-         * */
+         */
         bool string_fits(const char *string) {
             return get_string_length(string) + 1 + str_len <= Size;
         }
@@ -32,7 +33,7 @@ namespace r2d2::robot_arm {
          *
          * @param char*
          * @param int length
-         * */
+         */
         void reverse(char *string, int length) {
             int start = 0;
             length--;
@@ -46,7 +47,7 @@ namespace r2d2::robot_arm {
     protected:
         /**
          * Buffer with Size as size.
-         * */
+         */
         char buffer[Size] = {'\0'};
 
         /**
@@ -56,7 +57,7 @@ namespace r2d2::robot_arm {
          *
          * @param int axis
          * @param char array
-         * */
+         */
         void int_to_string(int axis, char *string) {
             int i = 0;
             bool is_negative = axis < 0;
@@ -82,7 +83,7 @@ namespace r2d2::robot_arm {
          *
          * @param const char *
          * @return size_t length of string
-         * */
+         */
         size_t get_string_length(const char *string) {
             size_t counter = 0;
             while (string[counter]) {
@@ -95,7 +96,7 @@ namespace r2d2::robot_arm {
         /** Returns the length of the string
          *
          * @return size_t
-         * */
+         */
         size_t length() {
             return str_len;
         }
@@ -103,7 +104,7 @@ namespace r2d2::robot_arm {
          * Returns a pointer to the buffer.
          *
          * @return char* to buffer
-         * */
+         */
         char *get_buffer() {
             return buffer;
         }
@@ -113,7 +114,7 @@ namespace r2d2::robot_arm {
          * Returns if source does not fit into buffer
          *
          * @param const char* sourcer
-         * */
+         */
         void append(const char *source) {
             if (!string_fits(source)) {
                 return;
@@ -132,7 +133,7 @@ namespace r2d2::robot_arm {
          * Returns if source does not fit into buffer
          *
          * @param const char* source
-         * */
+         */
         void append_front(const char *source) {
             if (!string_fits(source)) {
                 return;
@@ -156,7 +157,7 @@ namespace r2d2::robot_arm {
          *
          * @param coordinate_3D_c
          * @param uint8_t speed = 0
-         * */
+         */
         virtual void coordinate_to_gcode(const vector3i_c &coordinate,
                                          const uint16_t &speed = 500) = 0;
     };

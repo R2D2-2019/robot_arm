@@ -4,7 +4,6 @@
 #include <robot_arm_interface.hpp>
 #include <vector3.hpp>
 
-
 /**
  * Class dof4_diy_c provides a implementation for 4dof_diy robot arm.
  */

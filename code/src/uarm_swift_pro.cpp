@@ -4,7 +4,7 @@ namespace r2d2::robot_arm {
     uarm_swift_pro_c::uarm_swift_pro_c(usart_c &usart_bus)
         : usart_bus(usart_bus) {
     }
-    
+
     void uarm_swift_pro_c::move_head_to_coordinate(const vector3i_c &coordinate,
                                                    const uint16_t &speed) {
         gcode_generator.coordinate_to_gcode(coordinate, speed);
