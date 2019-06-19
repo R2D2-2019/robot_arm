@@ -5,15 +5,18 @@ namespace r2d2::robot_arm {
         : usart_bus(usart_bus) {
     }
     
-    void uarm_swift_pro_c::move_head_to_coordinate(const vector3i_c &coordinate,
-                                                   const uint16_t &speed) {
+    void uarm_swift_pro_c::move_head_to_coordinate(const vector3i_c &coordinate, const uint16_t &speed) {
         gcode_generator.coordinate_to_gcode(coordinate, speed);
         this->send_command(gcode_generator.get_buffer());
     }
 
-    void
-    uarm_swift_pro_c::move_head_to_coordinate(const vector3i_c &coordinate) {
+    void uarm_swift_pro_c::move_head_to_coordinate(const vector3i_c &coordinate) {
         gcode_generator.coordinate_to_gcode(coordinate, default_speed);
+        this->send_command(gcode_generator.get_buffer());
+    }
+
+    void uarm_swift_pro_c::move_head_to_polar_coordinate(const vector3i_c &coordinate, const uint16_t &speed){
+        gcode_generator.coordinate_to_gcode(coordinate, speed);
         this->send_command(gcode_generator.get_buffer());
     }
 

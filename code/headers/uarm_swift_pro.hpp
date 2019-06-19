@@ -12,13 +12,13 @@
  */
 namespace r2d2::robot_arm {
     class uarm_swift_pro_c : public robot_arm_interface_c {
-    protected:
-        const uint16_t default_speed = 1000;
-
     private:
         using usart_c = r2d2::usart::usart_connection_c;
         uarm_gcode_generator_c<50> gcode_generator;
         usart_c &usart_bus;
+
+    protected:
+        const uint16_t default_speed = 1000;
 
     public:
         /**
@@ -64,14 +64,16 @@ namespace r2d2::robot_arm {
          * @param coordinate 3D integer coordinate for the head
          * @param speed movement speed in mm/min
          */
-        void move_head_to_coordinate(const vector3i_c &coordinate,
-                                     const uint16_t &speed) override;
+        void move_head_to_coordinate(const vector3i_c &coordinate, const uint16_t &speed) override;
         /**
          * This function moves the uArm swift pro head to a certain 3d location.
          *
          * @param coordinate
          */
         void move_head_to_coordinate(const vector3i_c &coordinate) override;
+        
+        void move_head_to_polar_coordinate(const vector3i_c &coordinate, const uint16_t &speed);
+         
         /**
          * This function rotates the head of the 4dof diy robot arm.
          *
