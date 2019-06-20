@@ -1,7 +1,10 @@
 #pragma once
 
 /**
- * Class point_3d is used for xyz 3D coordinates
+ * @brief
+ * Class point_3d is used for xyz 3D coordinates 
+ * 
+ * @tparam Type The type of the vector_c x, y and z
  */
 
 namespace r2d2::robot_arm {
@@ -9,29 +12,32 @@ namespace r2d2::robot_arm {
     class vector3_c {
     public:
         /**
+         * @brief
          * 3 public member variables x y z.
          * Public member variables x y z.
          *
-         * @param x
-         * @param y
-         * @param z
+         * @param x The x Type parameter
+         * @param y The y Type parameter
+         * @param z The z Type parameter
          */
         Type x;
         Type y;
         Type z;
 
         /**
+         * @brief
          * Operator == for equality checking.
          * Required for catch2.
          *
-         * @param vector3_c rhs
-         * @return bool
+         * @param rhs Vector3_c<Type> that needs to be compared
+         * @return true if equal false if not equal
          */
         bool operator==(const vector3_c<Type> &rhs) const {
             return x == rhs.x && y == rhs.y && z == rhs.z;
         }
 
         /**
+         * @brief
          * vector3_c
          * default constructor.
          */
@@ -39,8 +45,9 @@ namespace r2d2::robot_arm {
         }
 
         /**
+         * @brief
          * vector3_c constructor.
-         * Initializes x, y, z in respectively.
+         * Initializes x, y & z respectively.
          *
          * @param x
          * @param y
@@ -51,32 +58,35 @@ namespace r2d2::robot_arm {
         }
 
         /**
+         * @brief
          * vector3_c constructor.
-         * Initializes x, y, z in with all_values.
+         * Initializes x, y & z in with all_values.
          *
-         * @param int all_values
+         * @param all_values
          */
         vector3_c(const Type &all_values)
             : vector3_c(all_values, all_values, all_values) {
         }
 
         /**
+         * @brief
          * vector3_c operator+.
          * Sums a point3_d with another vector3_c, returns the result
          *
-         * @param vector3_c rhs
-         * @return vector3_c
+         * @param rhs vector3_c<Type>
+         * @return vector3_c<Type>
          */
         vector3_c<Type> operator+(const vector3_c<Type> &rhs) const {
             return vector3_c<Type>(x + rhs.x, y + rhs.y, z + rhs.z);
         }
 
         /**
+         * @brief
          * vector3_c operator+.
-         * Increases all values from vector3_c (x, y, z) with the int
-         *parameter rhs
+         * Increases all values from vector3_c (x, y, z) with the Type
+         * parameter rhs
          *
-         * @param int rhs
+         * @param rhs
          * @return vector3_c
          */
         vector3_c<Type> operator+(const Type &rhs) const {
@@ -84,11 +94,12 @@ namespace r2d2::robot_arm {
         }
 
         /**
+         * @brief
          * vector3_c operator +=
          * increases all values with rhs
          *
-         * @param vector3_c rhs
-         * @return vector3_c&
+         * @param rhs The value that needs to be added as vector3_c<Type>
+         * @return Returns vector3_c&
          *
          */
         vector3_c<Type> &operator+=(const vector3_c<Type> &rhs) {
@@ -96,10 +107,12 @@ namespace r2d2::robot_arm {
             return *this;
         }
 
-        /** vector3_c operator +=
+        /** 
+         * @brief
+         * vector3_c operator +=
          * increases all values with rhs
          *
-         * @param int rhs
+         * @param rhs The value that needs to be added as Type
          * @return vector3_c&
          */
         vector3_c<Type> &operator+=(const Type &rhs) {
@@ -107,6 +120,7 @@ namespace r2d2::robot_arm {
         }
 
         /**
+         * @brief
          * vector3_c operator++.
          * Increases all values from vector3_c (x, y, z) with 1
          *
@@ -117,10 +131,11 @@ namespace r2d2::robot_arm {
         }
 
         /**
+         * @brief
          * vector3_c operator-
          * Decreases all values from point_3d (x, y, z) with rhs
          *
-         * @param vector3_c
+         * @param rhs Value that needs to be subtracted
          * @return vector3_c
          */
         vector3_c<Type> operator-(const vector3_c<Type> &rhs) const {
@@ -128,11 +143,12 @@ namespace r2d2::robot_arm {
         }
 
         /**
+         * @brief
          * vector3_c operator-.
-         * Decreases all values from vector3_c (x, y, z) with the int
-         *parameter rhs
+         * Decreases all values from vector3_c (x, y, z) with the Type value
+         * parameter rhs
          *
-         * @param int rhs
+         * @param rhs the value that needs to be subtracted
          * @return vector3_c
          */
         vector3_c<Type> operator-(const Type &rhs) const {
@@ -140,10 +156,11 @@ namespace r2d2::robot_arm {
         }
 
         /**
+         * @brief
          * vector3_c operator -=
          * Decreases all values with vector3_c rhs
          *
-         * @param vector3_c rhs
+         * @param rhs The value that needs to be subtracted
          * @return vector3_c&
          */
         vector3_c<Type> &operator-=(const vector3_c<Type> &rhs) {
@@ -152,10 +169,11 @@ namespace r2d2::robot_arm {
         }
 
         /**
+         * @brief
          * vector3_c operator -=
          * Decreases all values with Type rhs
          *
-         * @param vector3_c rhs
+         * @param rhs The value that needs to be subtracted
          * @return vector3_c&
          */
         vector3_c<Type> &operator-=(const Type &rhs) {
@@ -163,6 +181,7 @@ namespace r2d2::robot_arm {
         }
 
         /**
+         * @brief
          * vector3_c operator--.
          * Decreases all values from vector3_c (x, y, z) with 1
          *
@@ -173,10 +192,11 @@ namespace r2d2::robot_arm {
         }
 
         /**
+         * @brief
          * vector3_c operator*
          * Multiplies x, y, z with rhs.x, y, z
          *
-         * @param vector3_c<Type>
+         * @param rhs vector3_c<Type> the value that is multiplied with
          * @return vector3c<Type>
          */
         vector3_c<Type> operator*(const vector3_c &rhs) const {
@@ -184,10 +204,11 @@ namespace r2d2::robot_arm {
         }
 
         /**
+         * @brief
          * vector3_c operator*
          *
          * Multiplies x y z with rhs
-         * @param Type
+         * @param rhs the value that is multiplied with
          * @return vector3_c<Type>
          */
         vector3_c<Type> operator*(const Type &rhs) const {
@@ -195,10 +216,11 @@ namespace r2d2::robot_arm {
         }
 
         /**
+         * @brief
          * vector3_c operator*=
          * Multiplies xyz with rhs
          *
-         * @param vector3_c
+         * @param rhs the value that is multiplied with
          * @return vector3_c<Type>&
          */
         vector3_c<Type> &operator*=(const vector3_c<Type> &rhs) {
@@ -206,10 +228,11 @@ namespace r2d2::robot_arm {
             return *this;
         }
         /**
+         * @brief
          * vector3_c operator*=
          * Multiplies xyz with rhs
          *
-         * @param Type
+         * @param rhs the value that is multiplied with
          * @return vector3_c<Type>&
          */
         vector3_c<Type> &operator*=(const Type &rhs) {
@@ -217,11 +240,12 @@ namespace r2d2::robot_arm {
         }
 
         /**
+         * @brief
          * vector3_c operator/
          * Devides all values with rhs.
          * Note that this class contains of ints only
          *
-         * @param vector3_c rhs
+         * @param rhs The value of the divider
          * @return vector3_c
          */
         vector3_c<Type> operator/(const vector3_c<Type> &rhs) const {
@@ -229,11 +253,12 @@ namespace r2d2::robot_arm {
         }
 
         /**
+         * @brief
          * vector3_c operator/
          * Devides all values with rhs.
          * Note that this class contains of ints only
          *
-         * @param int rhs
+         * @param rhs The value of the divider
          * @return vector3_c
          */
         vector3_c<Type> operator/(const Type &rhs) const {
@@ -241,11 +266,12 @@ namespace r2d2::robot_arm {
         }
 
         /**
+         * @brief
          * vector3_c operator/=
          * Devides all values with rhs.
          * Note that this class contains of ints only
          *
-         * @param coordinate3D_c rhs
+         * @param rhs The value of the divider
          * @return vector3_c&
          */
         vector3_c<Type> &operator/=(const vector3_c<Type> &rhs) {
@@ -254,11 +280,12 @@ namespace r2d2::robot_arm {
         }
 
         /**
+         * @brief
          * vector3_c operator/=
          * Devides all values with rhs.
          * Note that this class contains of ints only
          *
-         * @param int rhs
+         * @param rhs The value of the divider
          * @return vector3_c&
          */
         vector3_c<Type> &operator/=(const Type &rhs) {
