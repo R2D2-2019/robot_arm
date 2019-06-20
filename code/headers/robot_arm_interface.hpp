@@ -16,7 +16,7 @@ namespace r2d2::robot_arm {
          * at a given speed.
          *
          * @param coordinate The coordinate the head needs to move to
-         * @param speed Te speed the head moves at
+         * @param speed The speed the head moves at
          */
         virtual void move_head_to_coordinate(const vector3i_c &coordinate,
                                              uint16_t speed) = 0;
