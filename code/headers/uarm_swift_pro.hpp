@@ -53,10 +53,10 @@ namespace r2d2::robot_arm {
         /**
          * @brief
          * Move specific joint of the arm
-         * Moves the robot arm joint [joint_id] in a given angle
+         * Moves the robot arm joint [joint_id] to a given angle in degrees limited from 0 to 180
          *
          * @param joint_id the id of the joint that needs to be moved
-         * @param angle the angel at which the joint needs to be
+         * @param angle the angle at which the joint needs to be
          */
         void move_joint(const int &joint_id, const int &angle);
         /**
@@ -64,7 +64,7 @@ namespace r2d2::robot_arm {
          * Move arm's head to 3D coordinate
          * Moves head of robot arm head/end effector towards the 3D coordinate
          * [x,y,z] The speed is default at 500 mm/min
-         *
+         * 
          * @param coordinate 3D integer coordinate for the head
          * @param speed movement speed in mm/min
          */
@@ -79,9 +79,9 @@ namespace r2d2::robot_arm {
         void move_head_to_coordinate(const vector3i_c &coordinate) override;
         /**
          * @brief
-         * This function rotates the head of the 4dof diy robot arm.
+         * This function rotates the head of the uarm swift pro robot arm.
          *
-         * @param rotation The rotation the head needs to move
+         * @param rotation The rotational position the head needs to move to, in degrees, limited from 0 to 180
          */
         void rotate_head(int16_t rotation) override;
     };
