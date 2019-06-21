@@ -30,9 +30,9 @@ namespace r2d2::robot_arm {
                                      uint16_t speed) override;
         /**
          * @brief
-         * This function rotates the head of the 4dof diy robot arm.
+         * This function rotates the head of the dof4 diy robot arm.
          *
-         * @param rotation The rotation value the head needs to move
+         * @param rotation The rotational position the head needs to move to, in degrees.
          */
         void rotate_head(int16_t rotation) override;
     };

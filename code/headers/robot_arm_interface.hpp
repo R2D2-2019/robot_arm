@@ -31,9 +31,9 @@ namespace r2d2::robot_arm {
 
         /**
          * @brief
-         * This function rotates the head of the robot arm.
+         * This function rotates the head of the a robot arm.
          *
-         * @param rotation The rotation value the head needs to move
+         * @param rotation The rotational position the head needs to move to in degrees
          */
         virtual void rotate_head(int16_t rotation) = 0;
     };
