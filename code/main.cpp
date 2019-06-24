@@ -12,7 +12,7 @@ int main() {
 
 
     // driver code
-    uarm.init();
+    uarm.init(1);
     //uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(100, 100, 100));
     //uarm.rotate_id_motor_to_degree(0,60);
     //hwlib::wait_ms(20000);

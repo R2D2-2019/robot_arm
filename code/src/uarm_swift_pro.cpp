@@ -33,8 +33,9 @@ namespace r2d2::robot_arm {
         // TODO impl rotate head uarm swift pro
     }
 
-    void uarm_swift_pro_c::init() {
-        this->send_command("#1 M2122 V1\n"); // report when stop
+    void uarm_swift_pro_c::init(const uint8_t &on_off) {
+        gcode_generator.init(on_off);
+        this->send_command(gcode_generator.get_buffer()); // report when stop
         this->debug();
     }
 

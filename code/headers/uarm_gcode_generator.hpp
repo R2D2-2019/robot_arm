@@ -61,5 +61,13 @@ namespace r2d2::robot_arm {
             this->append(degree_string);
             this->append("\n");
         }
+
+        void init(const uint8_t &on_off){
+            char on_off_string[2];
+            this->int_to_string(on_off, on_off_string);
+            this->append("#1 M2122 V");
+            this->append(on_off_string);
+            this->append("\n");
+        }
     };
 } // namespace r2d2::robot_arm

@@ -85,6 +85,8 @@ namespace r2d2::robot_arm {
 
         void debug();
 
+        void init(const uint8_t &on_off);
+
         /**
          * This function rotates the head of the 4dof diy robot arm.
          *
