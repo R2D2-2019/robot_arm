@@ -31,22 +31,34 @@ namespace r2d2::robot_arm {
         }
 
         void polar_coordinate_to_gcode(const vector3i_c &coordinate, const uint16_t &speed){
-            char x_string[11]; // max number of int digits (10) + '\0' = 11
-            char y_string[11];
-            char z_string[11];
+            char s_string[11]; // max number of int digits (10) + '\0' = 11
+            char r_string[11];
+            char h_string[11];
             char speed_string[11];
-            this->int_to_string(coordinate.x, x_string);
-            this->int_to_string(coordinate.y, y_string);
-            this->int_to_string(coordinate.z, z_string);
+            this->int_to_string(coordinate.x, s_string);
+            this->int_to_string(coordinate.y, r_string);
+            this->int_to_string(coordinate.z, h_string);
             this->int_to_string(speed, speed_string);
             this->append("#n G2201 S");
-            this->append(x_string);
+            this->append(s_string);
             this->append(" R");
-            this->append(y_string);
+            this->append(r_string);
             this->append(" H");
-            this->append(z_string);
+            this->append(h_string);
             this->append(" F");
             this->append(speed_string);
+            this->append("\n");
+        }
+
+        void rotate_id_motor_degree_to_gcode(const uint8_t &id, const uint16_t &degree){
+            char id_string[2];
+            char degree_string[4];
+            this->int_to_string(id, id_string);
+            this->int_to_string(degree, degree_string);
+            this->append("G2202 N");
+            this->append(id_string);
+            this->append(" V");
+            this->append(degree_string);
             this->append("\n");
         }
     };

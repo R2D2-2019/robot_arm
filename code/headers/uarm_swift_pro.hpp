@@ -72,8 +72,19 @@ namespace r2d2::robot_arm {
          */
         void move_head_to_coordinate(const vector3i_c &coordinate) override;
         
+        /**
+         * This function moves the uArm swift pro head to a certain polar coordination.
+         * 
+         * @param coordinate polar coordinates, S is stretch(mm), R is rotation(degree),H is height(mm)
+         * @param speed movement speed in mm/min
+         */
+
         void move_head_to_polar_coordinate(const vector3i_c &coordinate, const uint16_t &speed);
-         
+        
+        void rotate_id_motor_to_degree(const uint8_t &id, const uint16_t &degree);
+
+        void debug();
+
         /**
          * This function rotates the head of the 4dof diy robot arm.
          *
