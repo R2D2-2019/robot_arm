@@ -26,12 +26,5 @@ namespace r2d2::robot_arm {
          * @param coordinate
          */
         virtual void move_head_to_coordinate(const vector3i_c &coordinate) = 0;
-
-        /**
-         * This function rotates the head of the robot arm.
-         *
-         * @param rotation
-         */
-        virtual void rotate_head(const int16_t &rotation) = 0;
     };
 }; // namespace r2d2::robot_arm

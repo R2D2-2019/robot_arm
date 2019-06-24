@@ -4,8 +4,10 @@ namespace r2d2::robot_arm {
     uarm_swift_pro_c::uarm_swift_pro_c(usart_c &usart_bus)
         : usart_bus(usart_bus) {
     }
-    
-    void uarm_swift_pro_c::move_head_to_coordinate(const vector3i_c &coordinate, const uint16_t &speed) {
+
+   //------------------MOVING COMMANDS------------------//
+    void uarm_swift_pro_c::move_head_to_coordinate(const vector3i_c &coordinate, 
+                                                            const uint16_t &speed) {
         gcode_generator.coordinate_to_gcode(coordinate, speed);
         this->send_command(gcode_generator.get_buffer());
         this->debug();
@@ -17,7 +19,8 @@ namespace r2d2::robot_arm {
         this->debug();
     }
 
-    void uarm_swift_pro_c::move_head_to_polar_coordinate(const vector3i_c &coordinate, const uint16_t &speed){
+    void uarm_swift_pro_c::move_head_to_polar_coordinate(const vector3i_c &coordinate, 
+                                                            const uint16_t &speed){
         gcode_generator.polar_coordinate_to_gcode(coordinate, speed);
         this->send_command(gcode_generator.get_buffer());
         this->debug();
@@ -29,15 +32,15 @@ namespace r2d2::robot_arm {
         this->debug();
     }
 
-    void uarm_swift_pro_c::rotate_head(const int16_t &rotation) {
-        // TODO impl rotate head uarm swift pro
-    }
+    //------------------SETTING COMMANDS------------------//
 
     void uarm_swift_pro_c::init(const uint8_t &on_off) {
         gcode_generator.init(on_off);
         this->send_command(gcode_generator.get_buffer()); // report when stop
         this->debug();
     }
+
+    //------------------ESSENTIAL METHODS------------------//
 
     void uarm_swift_pro_c::debug(){
         char debug = '0';
@@ -50,10 +53,6 @@ namespace r2d2::robot_arm {
     bool uarm_swift_pro_c::send_command(const char *command) {
         this->usart_bus << command;
         return true;
-    }
-
-    void uarm_swift_pro_c::move_joint(const int &joint_id, const int &angle) {
-        // TODO impl uarm_swift_c::move_joint
     }
 
 } // namespace r2d2::robot_arm

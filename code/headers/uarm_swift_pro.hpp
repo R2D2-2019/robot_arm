@@ -33,6 +33,7 @@ namespace r2d2::robot_arm {
          *
          */
         void init();
+
         /**
          * @brief Check connection
          * Function to check whether the connection with the arm is right or not
@@ -41,6 +42,7 @@ namespace r2d2::robot_arm {
          * @return false means connection is wrong
          */
         bool check_connection();
+
         /**
          * @brief Sending command to arm
          * Sends false as default
@@ -50,12 +52,7 @@ namespace r2d2::robot_arm {
          * @return true when command correctly sent
          */
         bool send_command(const char *command);
-        /**
-         * Move specific joint of the arm
-         * Moves the robot arm joint [joint_id] in a given angle
-         *
-         */
-        void move_joint(const int &joint_id, const int &angle);
+
         /**
          * Move arm's head to 3D coordinate
          * Moves head of robot arm head/end effector towards the 3D coordinate
@@ -86,12 +83,5 @@ namespace r2d2::robot_arm {
         void debug();
 
         void init(const uint8_t &on_off);
-
-        /**
-         * This function rotates the head of the 4dof diy robot arm.
-         *
-         * @param rotation
-         */
-        void rotate_head(const int16_t &rotation) override;
     };
 } // namespace r2d2::robot_arm

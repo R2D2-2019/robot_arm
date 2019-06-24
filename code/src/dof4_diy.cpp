@@ -8,7 +8,4 @@ namespace r2d2::robot_arm {
                                              const uint16_t &speed) {
         // TODO impl 4dof diy move head + speed
     }
-    void dof4_diy_c::rotate_head(const int16_t &rotation) {
-        // TODO impl rotate head 4dof diy
-    }
 } // namespace r2d2::robot_arm
