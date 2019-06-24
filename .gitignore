@@ -1,0 +1,22 @@
+# c/c++ compiled files
+*.o
+*.elf
+*.bin
+*.map
+*.ld
+*.cbp
+*.lss
+*.exe
+*.lst
+
+## r2d2 build files
+bmptk_fixed_size_stack.c
+
+# editor specific files
+.idea/
+cmake*/
+CMakeLists.txt
+settings.json
+
+## vscode specific files
+.vscode/ipch
