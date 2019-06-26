@@ -105,7 +105,6 @@ namespace r2d2::robot_arm {
 
         void attach_all_joint_motors_to_gcode(){
             this->append("#6 M17\n");
-
         }
 
         void detach_all_joint_motors_to_gcode(){
@@ -117,6 +116,14 @@ namespace r2d2::robot_arm {
             this->int_to_string(speed, speed_string);
             this->append("#8 M2120 V");
             this->append(speed_string);
+            this->append("\n");
+        }
+
+        void attach_motor_by_id_to_gcode(const uint8_t &id){
+            char id_string[2];
+            this->int_to_string(id, id_string);
+            this->append("#9 M2201 N");
+            this->append(id_string);
             this->append("\n");
         }
 
