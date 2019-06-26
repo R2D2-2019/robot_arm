@@ -1,6 +1,7 @@
 #include <uarm_gcode_generator.hpp>
 #define CATCH_CONFIG_MAIN
 #include <catch.hpp>
+#include <mock_bus.hpp>
 
 TEST_CASE("Appending gone wrong!", "Testing generator") {
     r2d2::robot_arm::uarm_gcode_generator_c<2> generator;
