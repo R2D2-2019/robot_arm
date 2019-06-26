@@ -135,6 +135,14 @@ namespace r2d2::robot_arm {
             this->append("\n");
         }
 
+        void check_attached_motor_by_id_to_gcode(const uint8_t &id){
+            char id_string[2];
+            this->int_to_string(id, id_string);
+            this->append("#11 M2203 N");
+            this->append(id_string);
+            this->append("\n");
+        }
+
         void init(const uint8_t &on_off){
             char on_off_string[2];
             this->int_to_string(on_off, on_off_string);
