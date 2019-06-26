@@ -155,6 +155,22 @@ namespace r2d2::robot_arm {
             this->append("\n");
         }
 
+        void convert_coordinates_to_angle_of_joints_to_gcode(const vector3i_c &coordinate){
+            char x_string[11]; // max number of int digits (10) + '\0' = 11
+            char y_string[11];
+            char z_string[11];
+            this->int_to_string(coordinate.x, x_string);
+            this->int_to_string(coordinate.y, y_string);
+            this->int_to_string(coordinate.z, z_string);
+            this->append("#13 M2220 X");
+            this->append(x_string);
+            this->append(" Y");
+            this->append(y_string);
+            this->append(" Z");
+            this->append(z_string);
+            this->append("\n");
+        }
+
         void init(const uint8_t &on_off){
             char on_off_string[2];
             this->int_to_string(on_off, on_off_string);
@@ -162,5 +178,7 @@ namespace r2d2::robot_arm {
             this->append(on_off_string);
             this->append("\n");
         }
+
+
     };
 } // namespace r2d2::robot_arm
