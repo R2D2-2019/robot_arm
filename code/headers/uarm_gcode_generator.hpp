@@ -111,7 +111,7 @@ namespace r2d2::robot_arm {
             this->append("#7 M2019\n");
         }
 
-        void return_cartesian_coordinates_by_speed(const uint16_t &speed){
+        void return_cartesian_coordinates_by_speed_to_gcode(const uint16_t &speed){
             char speed_string[11];
             this->int_to_string(speed, speed_string);
             this->append("#8 M2120 V");
@@ -123,6 +123,14 @@ namespace r2d2::robot_arm {
             char id_string[2];
             this->int_to_string(id, id_string);
             this->append("#9 M2201 N");
+            this->append(id_string);
+            this->append("\n");
+        }
+
+        void detach_motor_by_id_to_gcode(const uint8_t &id){
+            char id_string[2];
+            this->int_to_string(id, id_string);
+            this->append("#10 M2202 N");
             this->append(id_string);
             this->append("\n");
         }
