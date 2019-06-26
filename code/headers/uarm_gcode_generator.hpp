@@ -104,7 +104,20 @@ namespace r2d2::robot_arm {
         }
 
         void attach_all_joint_motors_to_gcode(){
-            this->append("#7 M17\n");
+            this->append("#6 M17\n");
+
+        }
+
+        void detach_all_joint_motors_to_gcode(){
+            this->append("#7 M2019\n");
+        }
+
+        void return_cartesian_coordinates_by_speed(const uint16_t &speed){
+            char speed_string[11];
+            this->int_to_string(speed, speed_string);
+            this->append("#8 M2120 V");
+            this->append(speed_string);
+            this->append("\n");
         }
 
         void init(const uint8_t &on_off){
