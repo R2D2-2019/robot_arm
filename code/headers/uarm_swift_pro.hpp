@@ -27,14 +27,6 @@ namespace r2d2::robot_arm {
         uarm_swift_pro_c(usart_c &usart_bus, base_comm_c &comm);
 
         /**
-         * @brief Initialization function
-         * This function is for actions that need to be executed at
-         * initialization of the object
-         *
-         */
-        void init();
-
-        /**
          * @brief Check connection
          * Function to check whether the connection with the arm is right or not
          *
@@ -80,8 +72,18 @@ namespace r2d2::robot_arm {
         
         void rotate_id_motor_to_degree(const uint8_t &id, const uint16_t &degree);
 
-        void debug();
+        void relative_displacement_head(const vector3i_c &coordinate, const uint16_t &speed);
 
+        void relative_displacement_polar_head(const vector3i_c &coordinate, const uint16_t &speed);
+
+        /**
+         * @brief Initialization function
+         * This function is for actions that need to be executed at
+         * initialization of the object
+         *
+         */
         void init(const uint8_t &on_off);
+
+        void debug();
     };
 } // namespace r2d2::robot_arm

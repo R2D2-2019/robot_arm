@@ -33,6 +33,20 @@ namespace r2d2::robot_arm {
         this->debug();
     }
 
+    void uarm_swift_pro_c::relative_displacement_head(const vector3i_c &coordinate, const uint16_t &speed){
+        gcode_generator.relative_displacement_to_gcode(coordinate, speed);
+        this->send_command(gcode_generator.get_buffer());
+        this->debug();
+    }
+
+    void uarm_swift_pro_c::relative_displacement_polar_head(const vector3i_c &coordinate, const uint16_t &speed){
+        gcode_generator.relative_displacement_polar_to_gcode(coordinate, speed);
+        this->send_command(gcode_generator.get_buffer());
+        this->debug();
+    }
+
+    
+
     //------------------SETTING COMMANDS------------------//
 
     void uarm_swift_pro_c::init(const uint8_t &on_off) {
