@@ -143,6 +143,18 @@ namespace r2d2::robot_arm {
             this->append("\n");
         }
 
+        void set_buzzer_to_gcode(const uint16_t &frequency, const uint16_t &time){
+            char frequency_string[11];
+            char time_string[11];
+            this->int_to_string(frequency, frequency_string);
+            this->int_to_string(time, time_string);
+            this->append("#12 M2210 F");
+            this->append(frequency);
+            this->append(" T");
+            this->append(time);
+            this->append("\n");
+        }
+
         void init(const uint8_t &on_off){
             char on_off_string[2];
             this->int_to_string(on_off, on_off_string);
