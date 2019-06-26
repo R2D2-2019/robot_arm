@@ -2,14 +2,38 @@
 
 #include "vector3.hpp"
 #include <hwlib.hpp>
+#include <base_module.hpp>
 
 /**
  * Class robot_arm_interface provides the interface for different robot arms.
  */
 namespace r2d2::robot_arm {
-    class robot_arm_interface_c {
+    class robot_arm_interface_c: public base_module_c {
 
     public:
+
+        robot_arm_interface_c(base_comm_c &comm) : base_module_c(comm){
+
+            comm.listen_for_frames({r2d2::frame_type::ROBOT_ARM});
+        }
+
+        void process()override{
+            comm.request(r2d2::frame_type::ROBOT_ARM);
+            while (comm.has_data()){
+                auto frame = comm.get_data();
+                // Process the frame
+
+                // Don't handle requests
+                if (frame.request) {
+                    continue;
+                }
+
+                const auto data = frame.as_frame_type<frame_type::ROBOT_ARM>();
+
+                move_head_to_coordinate(vector3i_c(data.x, data.y, data.z), data.speed);
+
+            }
+        }
         /**
          * This function moves the robot arm head to a certain 3d location
          * at a given speed.

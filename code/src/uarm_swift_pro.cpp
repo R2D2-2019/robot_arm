@@ -1,8 +1,9 @@
 #include <uarm_swift_pro.hpp>
 
 namespace r2d2::robot_arm {
-    uarm_swift_pro_c::uarm_swift_pro_c(usart_c &usart_bus)
-        : usart_bus(usart_bus) {
+    uarm_swift_pro_c::uarm_swift_pro_c(usart_c &usart_bus,base_comm_c &comm): 
+            robot_arm_interface_c(comm),
+            usart_bus(usart_bus) {
     }
 
    //------------------MOVING COMMANDS------------------//

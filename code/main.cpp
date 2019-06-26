@@ -1,14 +1,20 @@
 #include <vector3.hpp>
 #include <hardware_usart.hpp>
 #include <hwlib.hpp>
+#include <comm.hpp>
 #include <uarm_swift_pro.hpp>
+#include <mock_bus.hpp>
 
 int main() {
     WDT->WDT_MR = WDT_MR_WDDIS;
     hwlib::wait_ms(1000);
     auto usart = r2d2::usart::hardware_usart_c<r2d2::usart::usart0>(115200);
-    r2d2::robot_arm::uarm_swift_pro_c uarm(usart);
+    
+    r2d2::comm_c comm;
+    
+    r2d2::robot_arm::uarm_swift_pro_c uarm(usart, comm);
 
+    
 
 
     // driver code
