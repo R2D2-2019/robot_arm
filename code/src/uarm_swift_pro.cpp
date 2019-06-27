@@ -61,6 +61,12 @@ namespace r2d2::robot_arm {
         this->debug();
     }
 
+    void uarm_swift_pro_c::detach_all_joint_motors() {
+        gcode_generator.detach_all_joint_motors_to_gcode();
+        this->send_command(gcode_generator.get_buffer());
+        this->debug();
+    }
+
     
 
     //------------------ESSENTIAL METHODS------------------//

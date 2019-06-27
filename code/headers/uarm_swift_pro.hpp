@@ -77,6 +77,8 @@ namespace r2d2::robot_arm {
         void relative_displacement_polar_head(const vector3i_c &coordinate, const uint16_t &speed);
 
         void attach_all_joint_motors();
+        
+        void detach_all_joint_motors();
 
         /**
          * @brief Initialization function
