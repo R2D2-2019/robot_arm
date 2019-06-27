@@ -45,7 +45,7 @@ namespace r2d2::robot_arm {
         this->debug();
     }
 
-    
+
 
     //------------------SETTING COMMANDS------------------//
 
@@ -54,6 +54,14 @@ namespace r2d2::robot_arm {
         this->send_command(gcode_generator.get_buffer()); // report when stop
         this->debug();
     }
+
+    void uarm_swift_pro_c::attach_all_joint_motors() {
+        gcode_generator.attach_all_joint_motors_to_gcode();
+        this->send_command(gcode_generator.get_buffer());
+        this->debug();
+    }
+
+    
 
     //------------------ESSENTIAL METHODS------------------//
 
