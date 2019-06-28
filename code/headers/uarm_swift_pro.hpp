@@ -95,6 +95,8 @@ namespace r2d2::robot_arm {
         void convert_angle_of_joints_to_coordinates(const vector3i_c &angle);
 
         void check_posibility_of_coordinates_cartesian_polar(const vector3i_c &coordinate, const uint8_t &id);
+
+        void set_current_position_head_to_reference_position();        
         /**
          * @brief Initialization function
          * This function is for actions that need to be executed at

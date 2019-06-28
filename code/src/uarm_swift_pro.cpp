@@ -115,6 +115,12 @@ namespace r2d2::robot_arm {
         this->debug();
     }
 
+    void uarm_swift_pro_c::set_current_position_head_to_reference_position(){
+        gcode_generator.set_current_position_head_to_reference_position_to_gcode();
+        this->send_command(gcode_generator.get_buffer());
+        this->debug();
+    }
+
     //------------------ESSENTIAL METHODS------------------//
 
     void uarm_swift_pro_c::debug(){
