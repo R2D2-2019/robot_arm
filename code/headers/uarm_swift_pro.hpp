@@ -89,6 +89,8 @@ namespace r2d2::robot_arm {
         void check_attached_motor_by_id(const uint8_t &id);
 
         void set_buzzer(const uint16_t &frequence, const uint16_t &time);
+
+        void convert_coordinates_to_angle_of_joints(const vector3i_c &coordinate);
         /**
          * @brief Initialization function
          * This function is for actions that need to be executed at
