@@ -75,11 +75,15 @@ namespace r2d2::robot_arm {
 
     void uarm_swift_pro_c::attach_motor_by_id(const uint8_t &id){
         gcode_generator.attach_motor_by_id_to_gcode(id);
-        this->send_command(gcode_generator.get_buffer);
+        this->send_command(gcode_generator.get_buffer());
         this->debug();
     }
 
-    
+    void uarm_swift_pro_c::detach_motor_by_id(const uint8_t &id){
+        gcode_generator.detach_motor_by_id_to_gcode(id);
+        this->send_command(gcode_generator.get_buffer());
+        this->debug();
+    }
 
     //------------------ESSENTIAL METHODS------------------//
 
