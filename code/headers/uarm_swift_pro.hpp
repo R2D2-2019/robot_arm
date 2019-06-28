@@ -91,6 +91,8 @@ namespace r2d2::robot_arm {
         void set_buzzer(const uint16_t &frequence, const uint16_t &time);
 
         void convert_coordinates_to_angle_of_joints(const vector3i_c &coordinate);
+
+        void convert_angle_of_joints_to_coordinates(const vector3i_c &angle);
         /**
          * @brief Initialization function
          * This function is for actions that need to be executed at

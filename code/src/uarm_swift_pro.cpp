@@ -103,6 +103,12 @@ namespace r2d2::robot_arm {
         this->debug();
     }
 
+    void uarm_swift_pro_c::convert_angle_of_joints_to_coordinates(const vector3i_c &angle){
+        gcode_generator.convert_angle_of_joints_to_coordinates_to_gcode(angle);
+        this->send_command(gcode_generator.get_buffer());
+        this->debug();
+    }
+
     //------------------ESSENTIAL METHODS------------------//
 
     void uarm_swift_pro_c::debug(){
