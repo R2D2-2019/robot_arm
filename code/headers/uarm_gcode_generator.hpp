@@ -211,7 +211,7 @@ namespace r2d2::robot_arm {
             this->append("#16 M2401\n");
         }
 
-        void init(const uint8_t &on_off){
+        void init_to_gcode(const uint8_t &on_off){
             char on_off_string[2];
             this->int_to_string(on_off, on_off_string);
             this->append("#1 M2122 V");
@@ -219,6 +219,53 @@ namespace r2d2::robot_arm {
             this->append("\n");
         }
 
+        void get_current_angle_of_joints_to_gecode(){
+            this->append("#17 P2200\n");
+        }
+
+        void get_device_name_to_gecode(){
+            this->append("#18 P2201\n");
+        }
+
+        void get_hardware_version_to_gecode(){
+            this->append("#19 P2202\n");
+        }
+
+        void get_software_version_to_gcode(){
+            this->append("#20 P2203\n");
+        }
+        
+        void get_API_version_to_gcode(){
+            this->append("#21 P2204\n");
+        }
+
+        void get_UID_to_gcode(){
+            this->append("#22 P2205\n");
+        }
+
+        void get_angle_of_joint_id(const uint8_t &id){
+            char id_string[2];
+            this->int_to_string(id, id_string);
+            this->append("#23 P2206 N");
+            this->append(id);
+            this->append("\n");
+        }
+
+        void get_current_coordinates(){
+            this->append("#24 P2220\n");
+        }
+
+        void get_current_polar_coordinates(){
+            this->append("#25 P2221\n");
+        }
+
+        void get_status_power_connection(){
+            this->append("#26 P2234\n");
+        }
+
+        void check_current_status(){
+            this->append("#27 P2400\n");
+        }
 
     };
 } // namespace r2d2::robot_arm

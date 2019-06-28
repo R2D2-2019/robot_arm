@@ -50,7 +50,7 @@ namespace r2d2::robot_arm {
     //------------------SETTING COMMANDS------------------//
 
     void uarm_swift_pro_c::init(const uint8_t &on_off) {
-        gcode_generator.init(on_off);
+        gcode_generator.init_to_gcode(on_off);
         this->send_command(gcode_generator.get_buffer()); // report when stop
         this->debug();
     }
