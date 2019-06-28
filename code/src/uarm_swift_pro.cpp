@@ -85,6 +85,18 @@ namespace r2d2::robot_arm {
         this->debug();
     }
 
+    void uarm_swift_pro_c::check_attached_motor_by_id(const uint8_t &id){
+        gcode_generator.check_attached_motor_by_id_to_gcode(id);
+        this->send_command(gcode_generator.get_buffer());
+        this->debug();
+    }
+
+    void uarm_swift_pro_c::set_buzzer(const uint16_t &frequence, const uint16_t &time){
+        gcode_generator.set_buzzer_to_gcode(frequence,time);
+        this->send_command(gcode_generator.get_buffer());
+        this-debug();
+    }
+
     //------------------ESSENTIAL METHODS------------------//
 
     void uarm_swift_pro_c::debug(){

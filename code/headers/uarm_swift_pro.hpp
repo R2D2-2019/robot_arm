@@ -85,6 +85,8 @@ namespace r2d2::robot_arm {
         void attach_motor_by_id(const uint8_t &id);
 
         void detach_motor_by_id(const uint8_t &id);
+
+        void check_attached_motor_by_id(const uint8_t &id);
         
         /**
          * @brief Initialization function
