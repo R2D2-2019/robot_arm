@@ -80,6 +80,10 @@ namespace r2d2::robot_arm {
         
         void detach_all_joint_motors();
 
+        void return_cartesian_coordinates_by_speed(const uint16_t &speed);
+
+        void attach_motor_by_id(const uint8_t &id);
+
         /**
          * @brief Initialization function
          * This function is for actions that need to be executed at

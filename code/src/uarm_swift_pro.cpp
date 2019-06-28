@@ -67,6 +67,18 @@ namespace r2d2::robot_arm {
         this->debug();
     }
 
+    void uarm_swift_pro_c::return_cartesian_coordinates_by_speed(const uint16_t &speed){
+        gcode_generator.return_cartesian_coordinates_by_speed_to_gcode(speed);
+        this->send_command(gcode_generator.get_buffer());
+        this->debug();
+    }
+
+    void uarm_swift_pro_c::attach_motor_by_id(const uint8_t &id){
+        gcode_generator.attach_motor_by_id_to_gcode(id);
+        this->send_command(gcode_generator.get_buffer);
+        this->debug();
+    }
+
     
 
     //------------------ESSENTIAL METHODS------------------//
