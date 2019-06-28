@@ -94,7 +94,7 @@ namespace r2d2::robot_arm {
     void uarm_swift_pro_c::set_buzzer(const uint16_t &frequence, const uint16_t &time){
         gcode_generator.set_buzzer_to_gcode(frequence,time);
         this->send_command(gcode_generator.get_buffer());
-        this-debug();
+        this->debug();
     }
 
     //------------------ESSENTIAL METHODS------------------//

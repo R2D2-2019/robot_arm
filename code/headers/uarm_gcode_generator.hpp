@@ -149,9 +149,9 @@ namespace r2d2::robot_arm {
             this->int_to_string(frequency, frequency_string);
             this->int_to_string(time, time_string);
             this->append("#12 M2210 F");
-            this->append(frequency);
+            this->append(frequency_string);
             this->append(" T");
-            this->append(time);
+            this->append(time_string);
             this->append("\n");
         }
 
