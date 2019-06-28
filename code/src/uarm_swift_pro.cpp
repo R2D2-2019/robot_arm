@@ -109,6 +109,12 @@ namespace r2d2::robot_arm {
         this->debug();
     }
 
+    void uarm_swift_pro_c::check_posibility_of_coordinates_cartesian_polar(const vector3i_c &coordinate, const uint8_t &id){
+        gcode_generator.check_posibility_of_coordinates_cartesian_polar_to_gecode(coordinate, id);
+        this->send_command(gcode_generator.get_buffer());
+        this->debug();
+    }
+
     //------------------ESSENTIAL METHODS------------------//
 
     void uarm_swift_pro_c::debug(){
