@@ -96,7 +96,29 @@ namespace r2d2::robot_arm {
 
         void check_posibility_of_coordinates_cartesian_polar(const vector3i_c &coordinate, const uint8_t &id);
 
-        void set_current_position_head_to_reference_position();        
+        void set_current_position_head_to_reference_position();   
+
+        void get_current_angle_of_joints();
+
+        void get_device_name();
+
+        void get_hardware_version();
+
+        void get_software_version();
+
+        void get_API_version();
+
+        void get_UID();
+
+        void get_angle_of_joint_id(const uint8_t &id);
+
+        void get_current_coordinates();
+
+        void get_current_polar_coordinates();
+
+        void get_status_power_connection();
+
+        void check_current_status();
         /**
          * @brief Initialization function
          * This function is for actions that need to be executed at

@@ -121,6 +121,76 @@ namespace r2d2::robot_arm {
         this->debug();
     }
 
+
+    //-------------------QUERYING METHODS------------------//
+
+    void uarm_swift_pro_c::get_current_angle_of_joints(){
+        gcode_generator.get_current_angle_of_joints_to_gecode();
+        this->send_command(gcode_generator.get_buffer());
+        this->debug();
+    }
+
+    void uarm_swift_pro_c::get_device_name(){
+        gcode_generator.get_device_name_to_gecode();
+        this->send_command(gcode_generator.get_buffer());
+        this->debug();
+    }
+
+    void uarm_swift_pro_c::get_hardware_version(){
+        gcode_generator.get_hardware_version_to_gecode();
+        this->send_command(gcode_generator.get_buffer());
+        this->debug();
+    }
+
+    void uarm_swift_pro_c::get_software_version(){
+        gcode_generator.get_software_version_to_gcode();
+        this->send_command(gcode_generator.get_buffer());
+        this->debug();
+    }
+
+    void uarm_swift_pro_c::get_API_version(){
+        gcode_generator.get_API_version_to_gcode();
+        this->send_command(gcode_generator.get_buffer());
+        this->debug();
+    }
+
+    void uarm_swift_pro_c::get_UID(){
+        gcode_generator.get_UID_to_gcode();
+        this->send_command(gcode_generator.get_buffer());
+        this->debug();
+    }
+
+    void uarm_swift_pro_c::get_angle_of_joint_id(const uint8_t &id){
+        gcode_generator.get_angle_of_joint_id_to_gcode(id);
+        this->send_command(gcode_generator.get_buffer());
+        this->debug();
+    }
+
+    void uarm_swift_pro_c::get_current_coordinates(){
+        gcode_generator.get_current_coordinate_to_gcode();
+        this->send_command(gcode_generator.get_buffer());
+        this->debug();
+    }
+
+    void uarm_swift_pro_c::get_current_polar_coordinates(){
+        gcode_generator.get_current_polar_coordinates_to_gcode();
+        this->send_command(gcode_generator.get_buffer());
+        this->debug();
+    }
+
+    void uarm_swift_pro_c::get_status_power_connection(){
+        gcode_generator.get_status_power_connection_to_gcode();
+        this->send_command(gcode_generator.get_buffer());
+        this->debug();
+    }
+
+    void uarm_swift_pro_c::check_current_status(){
+        gcode_generator.check_current_status_to_gcode();
+        this->send_command(gcode_generator.get_buffer());
+        this->debug();
+    }
+
+
     //------------------ESSENTIAL METHODS------------------//
 
     void uarm_swift_pro_c::debug(){

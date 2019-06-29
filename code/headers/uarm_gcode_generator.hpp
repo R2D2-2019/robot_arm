@@ -243,27 +243,27 @@ namespace r2d2::robot_arm {
             this->append("#22 P2205\n");
         }
 
-        void get_angle_of_joint_id(const uint8_t &id){
+        void get_angle_of_joint_id_to_gcode(const uint8_t &id){
             char id_string[2];
             this->int_to_string(id, id_string);
             this->append("#23 P2206 N");
-            this->append(id);
+            this->append(id_string);
             this->append("\n");
         }
 
-        void get_current_coordinates(){
+        void get_current_coordinate_to_gcode(){
             this->append("#24 P2220\n");
         }
 
-        void get_current_polar_coordinates(){
+        void get_current_polar_coordinates_to_gcode(){
             this->append("#25 P2221\n");
         }
 
-        void get_status_power_connection(){
+        void get_status_power_connection_to_gcode(){
             this->append("#26 P2234\n");
         }
 
-        void check_current_status(){
+        void check_current_status_to_gcode(){
             this->append("#27 P2400\n");
         }
 
