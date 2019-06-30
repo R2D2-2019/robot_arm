@@ -9,17 +9,13 @@ namespace r2d2::robot_arm {
    //------------------MOVING COMMANDS------------------//
     void uarm_swift_pro_c::move_head_to_coordinate(const vector3i_c &coordinate, 
                                                             const uint16_t &speed) {
-
-        hwlib::cout << "coordinaat x " <<coordinate.x << hwlib::endl;
         gcode_generator.coordinate_to_gcode(coordinate, speed);
-        hwlib::cout << gcode_generator.get_buffer() << hwlib::endl;
-        //this->send_command(gcode_generator.get_buffer());
-        //this->debug();
+        this->send_command(gcode_generator.get_buffer());
+        this->debug();
     }
 
     void uarm_swift_pro_c::move_head_to_coordinate(const vector3i_c &coordinate) {
         gcode_generator.coordinate_to_gcode(coordinate, default_speed);
-        hwlib::cout << gcode_generator.get_buffer() << hwlib::endl;
         this->send_command(gcode_generator.get_buffer());
         this->debug();
     }
@@ -27,8 +23,6 @@ namespace r2d2::robot_arm {
     void uarm_swift_pro_c::move_head_to_polar_coordinate(const vector3i_c &coordinate, 
                                                             const uint16_t &speed){
         gcode_generator.polar_coordinate_to_gcode(coordinate, speed);
-        hwlib::cout << "kip" << hwlib::endl;
-        hwlib::cout << gcode_generator.get_buffer() << hwlib::endl;
         this->send_command(gcode_generator.get_buffer());
         this->debug();
     }
