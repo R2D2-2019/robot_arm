@@ -1,3 +1,4 @@
+#pragma once
 #include <gcode_generator.hpp>
 
 namespace r2d2::robot_arm {
@@ -214,7 +215,7 @@ namespace r2d2::robot_arm {
         void init_to_gcode(const uint8_t &on_off){
             char on_off_string[2];
             this->int_to_string(on_off, on_off_string);
-            this->append("#1 M2122 V");
+            this->append("#17 M2122 V");
             this->append(on_off_string);
             this->append("\n");
         }

@@ -19,18 +19,18 @@ namespace r2d2::robot_arm {
 
         void process()override{
             comm.request(r2d2::frame_type::ROBOT_ARM);
+            hwlib::cout << comm.has_data() << hwlib::endl;
             while (comm.has_data()){
+                hwlib::cout << "test" << hwlib::endl;
                 auto frame = comm.get_data();
                 // Process the frame
 
-                // Don't handle requests
-                if (frame.request) {
-                    continue;
-                }
-
                 const auto data = frame.as_frame_type<frame_type::ROBOT_ARM>();
 
+                hwlib::cout << "mock bus data x"<< data.x << hwlib::endl;
+
                 move_head_to_coordinate(vector3i_c(data.x, data.y, data.z), data.speed);
+                hwlib::cout << "test" << hwlib::endl;
 
             }
         }

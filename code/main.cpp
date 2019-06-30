@@ -18,8 +18,8 @@ int main() {
 
 
     // driver code
-    uarm.init(1);
-    //uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(100, 100, 100));
+    //uarm.init(1);
+    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(100, 100, 100),90);
     //uarm.rotate_id_motor_to_degree(0,60);
     //hwlib::wait_ms(20000);
     //uarm.move_head_to_polar_coordinate(r2d2::robot_arm::vector3i_c(200, 200, 200),1000);
