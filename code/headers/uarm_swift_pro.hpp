@@ -89,7 +89,7 @@ namespace r2d2::robot_arm {
 
         /**
          * @brief relative displacement head
-         * This function displace relative the head from his starting point with to a cartesian location.
+         * This function displace relative the head from his starting point with a cartesian location.
          * 
          * @param coordinate cartesian integer coordinate for the head (XYZ)
          * @param speed movement speed in mm/min
@@ -112,7 +112,7 @@ namespace r2d2::robot_arm {
         void attach_all_joint_motors();
         
         /**
-         * @brief detach all joint motors
+         * @brief de/tach all joint motors
          * This setting function attach all the joint motors.
          */
         void detach_all_joint_motors();
@@ -231,6 +231,8 @@ namespace r2d2::robot_arm {
         /**
          * @brief get angle of joint id
          * This function wil get the angle of number 0 joint (0~2)
+         * 
+         *  @param id id of joints (0 ~ 2)
          */
         void get_angle_of_joint_id(const uint8_t &id);
 
@@ -259,10 +261,11 @@ namespace r2d2::robot_arm {
         void check_current_status();
 
         /**
-         * @brief Initialization function
+         * @brief Initialization
          * This function is for actions that need to be executed at
          * initialization of the object
          *
+         * @parram on_off to set the uarm on or off
          */
         void init(const uint8_t &on_off);
 
