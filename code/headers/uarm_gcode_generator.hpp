@@ -1,5 +1,7 @@
 #pragma once
+
 #include <gcode_generator.hpp>
+
 
 namespace r2d2::robot_arm {
     template <size_t Size>
@@ -89,6 +91,7 @@ namespace r2d2::robot_arm {
          * @param speed movement speed in mm/min
          */
         void relative_displacement_to_gcode(const vector3i_c &coordinate, const uint16_t &speed) {
+
             char x_string[11]; // max number of int digits (10) + '\0' = 11
             char y_string[11];
             char z_string[11];

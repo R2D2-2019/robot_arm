@@ -6,6 +6,7 @@ namespace r2d2::robot_arm {
             usart_bus(usart_bus) {
     }
 
+
    //------------------MOVING COMMANDS------------------//
     void uarm_swift_pro_c::move_head_to_coordinate(const vector3i_c &coordinate, 
                                                             const uint16_t &speed) {
@@ -25,6 +26,7 @@ namespace r2d2::robot_arm {
         gcode_generator.polar_coordinate_to_gcode(coordinate, speed);
         this->send_command(gcode_generator.get_buffer());
         this->debug();
+
     }
 
     void uarm_swift_pro_c::rotate_id_motor_to_degree(const uint8_t &id, const uint16_t &degree){

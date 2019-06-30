@@ -51,6 +51,7 @@ namespace r2d2::robot_arm {
         bool send_command(const char *command);
 
         /**
+
          * @brief Move arm's head to cartesian coordinate
          * Moves head of robot arm head/end effector towards the 3D coordinate
          * [x,y,z] The speed is default at 500 mm/min
