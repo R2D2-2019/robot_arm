@@ -3,6 +3,7 @@
 #include <cstddef> // size_t, (u)intx_t
 #include <cstdint>
 #include <algorithm>
+#include <string.h>
 
 namespace r2d2::robot_arm {
     /**
@@ -122,6 +123,10 @@ namespace r2d2::robot_arm {
             return buffer;
         }
 
+        void reset_buffer() {
+            memset(buffer, 0, sizeof(buffer));
+        }
+
         /**
          * @brief
          * Appends a string (source) at the end of the buffer (array)
@@ -130,9 +135,6 @@ namespace r2d2::robot_arm {
          * @param source The string that needs to be added to the end of the buffer
          */
         void append(const char *source) {
-            if (!string_fits(source)) {
-                return;
-            }
             int i = 0;
             size_t start = get_string_length(buffer);
             while (source[i]) {

@@ -108,7 +108,7 @@ namespace r2d2::robot_arm {
 
         /**
          * @brief attach all joint motors
-         * This setting function attach all the joint motors.
+         * This function attach all the joint motors.cd
          */
         void attach_all_joint_motors();
         

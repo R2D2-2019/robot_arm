@@ -274,7 +274,7 @@ namespace r2d2::robot_arm {
 
         /**
          * @brief check posibility of coordinates cartesian polar to gcode
-         * Makes the check posibility of coordinates cartesian polar gcode command for the uarm
+         * Makes the gcode command who checks if it's possible to reach the chosen coordinates (cartesian or polar) for the uarm
          * 
          * @param coordinate cartesian integer coordinate(XYZ) 
          * @param id 0 = cartesian , 1 = polar
@@ -301,7 +301,7 @@ namespace r2d2::robot_arm {
 
     	/**
          * @brief set current position head to reference position to gcode
-         * Makes the set current position head to reference position gcode command for the uarm
+         * Makes the gcode command who set the current position of the head to reference position for the uarm
          */
         void set_current_position_head_to_reference_position_to_gcode(){
             this->append("#16 M2401\n");
@@ -316,8 +316,8 @@ namespace r2d2::robot_arm {
         void init_to_gcode(const uint8_t &on_off){
             char on_off_string[2];
             this->int_to_string(on_off, on_off_string);
-            this->append("#17 M2122 V");
-            this->append(on_off_string);
+            this->append("#17 M2122 V1");
+            //this->append(on_off_string);
             this->append("\n");
         }
 
