@@ -1,7 +1,7 @@
 #pragma once
 #include <hwlib.hpp>
 namespace r2d2::robot_arm {
-    class servo {
+    class servo_c {
 
     private
         uint16_t pwm_lenght;
