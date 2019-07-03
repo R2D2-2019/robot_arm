@@ -141,6 +141,20 @@ namespace r2d2::robot_arm {
         this->debug();
     }
 
+    void uarm_swift_pro_c::switch_uart2_uart0(){
+        gcode_generator.switch_uart2_uart0();
+        this->send_command(gcode_generator.get_buffer());
+        gcode_generator.reset_buffer();
+        this->debug();
+
+    }
+
+    void uarm_swift_pro_c::gripper_close_open(){
+        gcode_generator.gripper_close_open();
+        this->send_command(gcode_generator.get_buffer());
+        gcode_generator.reset_buffer();
+        this->debug();
+    }
 
     //-------------------QUERYING METHODS------------------//
 

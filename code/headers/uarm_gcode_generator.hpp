@@ -307,6 +307,14 @@ namespace r2d2::robot_arm {
             this->append("#16 M2401\n");
         }
 
+        void switch_uart2_uart0(){
+            this->append("#0 M2500\n");
+        }
+
+        void gripper_close_open(){
+            this->append("#30 M2232 V1\n");
+        }
+
         /**
          * @brief Initialization to gcode
          * Makes the initialization gcode command for the uarm

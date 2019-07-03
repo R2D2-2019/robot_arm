@@ -261,6 +261,9 @@ namespace r2d2::robot_arm {
          */
         void check_current_status();
 
+        void switch_uart2_uart0();
+
+        void gripper_close_open();
         /**
          * @brief Initialization
          * This function is for actions that need to be executed at
