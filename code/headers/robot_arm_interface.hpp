@@ -2,14 +2,30 @@
 
 #include "vector3.hpp"
 #include <hwlib.hpp>
+#include <base_module.hpp>
 
 /**
  * Class robot_arm_interface provides the interface for different robot arms.
  */
 namespace r2d2::robot_arm {
-    class robot_arm_interface_c {
+    class robot_arm_interface_c: public base_module_c {
 
     public:
+
+        robot_arm_interface_c(base_comm_c &comm) : base_module_c(comm){
+
+            comm.listen_for_frames({r2d2::frame_type::ROBOT_ARM});
+        }
+
+        void process()override{
+            comm.request(r2d2::frame_type::ROBOT_ARM);
+            while (comm.has_data()){
+                auto frame = comm.get_data();
+                const auto data = frame.as_frame_type<frame_type::ROBOT_ARM>();
+                move_head_to_coordinate(vector3i_c(data.x, data.y, data.z), data.speed);
+
+            }
+        }
         /**
          * @brief
          * This function moves the robot arm head to a certain 3d location
@@ -19,7 +35,7 @@ namespace r2d2::robot_arm {
          * @param speed The speed the head moves at
          */
         virtual void move_head_to_coordinate(const vector3i_c &coordinate,
-                                             uint16_t speed) = 0;
+                                             const uint16_t &speed) = 0;
 
         /**
          * @brief
@@ -29,12 +45,5 @@ namespace r2d2::robot_arm {
          */
         virtual void move_head_to_coordinate(const vector3i_c &coordinate) = 0;
 
-        /**
-         * @brief
-         * This function rotates the head of the a robot arm.
-         *
-         * @param rotation The rotational position the head needs to move to in degrees
-         */
-        virtual void rotate_head(int16_t rotation) = 0;
     };
 }; // namespace r2d2::robot_arm

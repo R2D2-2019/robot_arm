@@ -27,13 +27,6 @@ namespace r2d2::robot_arm {
          * @param speed The speed the head moves at
          */
         void move_head_to_coordinate(const vector3i_c &coordinate,
-                                     uint16_t speed) override;
-        /**
-         * @brief
-         * This function rotates the head of the dof4 diy robot arm.
-         *
-         * @param rotation The rotational position the head needs to move to, in degrees.
-         */
-        void rotate_head(int16_t rotation) override;
+                                     const uint16_t &speed) override;
     };
 } // namespace r2d2::robot_arm

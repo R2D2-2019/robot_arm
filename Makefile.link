@@ -18,6 +18,11 @@ include 		  $(internal_comm)/Makefile.inc
 
 DATA              ?= ../../../libraries/datastructures/code/headers/queue.hpp
 
+#add USART_library
+USART               ?= ../../../libraries/USART_library
+include              $(USART)/Makefile.inc
+
+
 # add hwlib
 HWLIB             ?= ../../../libraries/hwlib
 include           $(HWLIB)/Makefile.inc

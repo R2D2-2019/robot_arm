@@ -1,6 +1,9 @@
 #include <uarm_gcode_generator.hpp>
+#include <uarm_swift_pro.hpp>
 #define CATCH_CONFIG_MAIN
 #include <catch.hpp>
+#include <test_usart.hpp>
+#include <mock_bus.hpp>
 
 TEST_CASE("Appending gone wrong!", "Testing generator") {
     r2d2::robot_arm::uarm_gcode_generator_c<2> generator;
@@ -35,7 +38,7 @@ TEST_CASE("Appending front", "Testing generator") {
 TEST_CASE("Converting vector to gcode command", "Testing generator") {
     r2d2::robot_arm::uarm_gcode_generator_c<100> generator;
     generator.coordinate_to_gcode(r2d2::robot_arm::vector3i_c(1, 2, 3), 200);
-    REQUIRE(std::strcmp(generator.get_buffer(), "#n G0 X1 Y2 Z3 F200\n") ==
+    REQUIRE(std::strcmp(generator.get_buffer(), "#1 G0 X1 Y2 Z3 F200\n") ==
             0); // std::strcmp will not be needed later for debug only
 }
 
@@ -169,4 +172,32 @@ TEST_CASE("Operator/= with test_data_type", "Testing vector3i") {
     r2d2::robot_arm::vector3i_c c(10, 100, 200);
     c /= 2;
     REQUIRE(c == r2d2::robot_arm::vector3i_c(5, 50, 100));
+}
+
+TEST_CASE("process function", "[canbus]"){
+    r2d2::mock_comm_c comm;
+
+    auto usart = r2d2::usart::test_usart_c();
+
+    comm.listen_for_frames({r2d2::frame_type::ALL});
+
+    REQUIRE(comm.accepts_frame(r2d2::frame_type::ROBOT_ARM));
+
+    r2d2::robot_arm::uarm_swift_pro_c uarm(usart, comm);
+
+
+    r2d2::frame_robot_arm_s frame;
+
+    frame.x = 8;
+    frame.y = 200;
+    frame.z = 200;
+    frame.speed = 300;
+
+    auto data2 = comm.create_frame<r2d2::frame_type::ROBOT_ARM>(frame);
+    
+    comm.accept_frame(data2);
+
+    uarm.process();
+
+
 }
