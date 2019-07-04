@@ -312,7 +312,7 @@ namespace r2d2::robot_arm {
         }
 
         void gripper_close_open(){
-            this->append("#30 M2232 V1\n");
+            this->append("#30 M2232 V0\n");
         }
 
         /**

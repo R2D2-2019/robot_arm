@@ -33,65 +33,90 @@ int main() {
 
     //----------------------------------DEMO----------------------------------------//
     // DOTS
-    // int x = 150;
-    // int y = 50;
+    while(true){
+    int x = 150;
+    int y = 50;
     // for(int i = 0; i < 10; i++){
     //     x = 150;
     //     for (int i = 0; i < 10; i++){
     //         x += 10;
-    //         uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(x, y, 75), 3000);
-    //         uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(x, y, 50), 3000);
-    //         uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(x, y, 75), 3000);
+    //         uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(x, y, 75), 6000);
+    //         uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(x, y, 50), 6000);
+    //         uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(x, y, 75), 6000);
     //     }
     //     y -= 10;
     //     //for(int i = 200; i > 0; i -= 10){
     //     //}
 
     // }
-    uarm.gripper_close_open();
-    hwlib::wait_ms(1000);
+
+    x = 150;
+    y = 50;
+    for(int i = 0; i < 10; i++){
+        x = 150;
+        for (int i = 0; i < 10; i++){
+            x += 10;
+            uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(x, y, 75), 6000);
+            uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(x, y, 50), 6000);
+            x -= 10;
+            y += 5;
+            uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(x, y, 50), 6000);
+            uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(x, y, 75), 6000);
+            y -= 5;
+            x += 10;
+
+        }
+        y -= 10;
+        //for(int i = 200; i > 0; i -= 10){
+        //}
+
+    }
+
     //----------------------------------DEMO----------------------------------------//
+    
+    // uarm.gripper_close_open();
+    // hwlib::wait_ms(1000);
 
     //smile:)
-    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(190, 50, 75), 3000);
-    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(190, 50, 50), 3000);
-    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(170, 30, 50), 3000);
-    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(170, -20, 50), 3000);
-    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(190, -40, 50), 3000);
-    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(190, -40, 75), 3000);
+    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(190, 50, 75), 6000);
+    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(190, 50, 50), 6000);
+    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(170, 30, 50), 6000);
+    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(170, -20, 50), 6000);
+    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(190, -40, 50), 6000);
+    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(190, -40, 75), 6000);
 
 
     // Eye see you
-    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(200, 30, 75), 3000);
-    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(200, 30, 50), 3000);
-    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(200, 10, 50), 3000);
-    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(200, 10, 75), 3000);
+    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(200, 30, 75), 6000);
+    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(200, 30, 50), 6000);
+    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(200, 10, 50), 6000);
+    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(200, 10, 75), 6000);
 
-    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(200, 0, 75), 3000);
-    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(200, 0, 50), 3000);
-    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(200, -20, 50), 3000);
-    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(200, -20, 75), 3000);
+    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(200, 0, 75), 6000);
+    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(200, 0, 50), 6000);
+    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(200, -20, 50), 6000);
+    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(200, -20, 75), 6000);
 
-    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(200, 20, 75), 3000);
-    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(200, 20, 50), 3000);
-    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(240, 20, 50), 3000);
-    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(240, 20, 75), 3000);
+    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(200, 20, 75), 6000);
+    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(200, 20, 50), 6000);
+    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(240, 20, 50), 6000);
+    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(240, 20, 75), 6000);
 
-    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(200, -10, 75), 3000);
-    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(200, -10, 50), 3000);
-    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(240, -10, 50), 3000);
-    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(240, -10, 75), 3000);
+    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(200, -10, 75), 6000);
+    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(200, -10, 50), 6000);
+    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(240, -10, 50), 6000);
+    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(240, -10, 75), 6000);
 
-    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(240, 30, 75), 3000);
-    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(240, 30, 50), 3000);
-    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(240, 10, 50), 3000);
-    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(240, 10, 75), 3000);
+    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(240, 30, 75), 6000);
+    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(240, 30, 50), 6000);
+    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(240, 10, 50), 6000);
+    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(240, 10, 75), 6000);
 
-    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(240, 0, 75), 3000);
-    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(240, 0, 50), 3000);
-    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(240, -20, 50), 3000);
-    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(240, -20, 75), 3000);
-
+    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(240, 0, 75), 6000);
+    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(240, 0, 50), 6000);
+    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(240, -20, 50), 6000);
+    uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(240, -20, 75), 6000);
+    }
     //----------------------------------TEST---------------------------------------//
 
     // uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(130, 90, 50));
