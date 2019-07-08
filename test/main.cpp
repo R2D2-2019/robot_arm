@@ -170,3 +170,15 @@ TEST_CASE("Operator/= with test_data_type", "Testing vector3i") {
     c /= 2;
     REQUIRE(c == r2d2::robot_arm::vector3i_c(5, 50, 100));
 }
+
+TEST_CASE("Testing calculator Inverse kinematics angle theta") {
+    auto calculator = r2d2::robot_arm::calculate_inverse_kinematics_c(100, 190);
+    calculator.set_position_end_effector;
+    REQUIRE(calculator.get_angle_theta == 63);
+}
+
+TEST_CASE("Testing calculator Inverse kinematics angle beta") {
+    auto calculator = r2d2::robot_arm::calculate_inverse_kinematics_c(100, 190);
+    calculator.set_position_end_effector;
+    REQUIRE(calculator.get_angle_beta == 40);
+}
