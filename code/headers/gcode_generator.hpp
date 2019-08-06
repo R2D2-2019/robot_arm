@@ -6,11 +6,13 @@
 
 namespace r2d2::robot_arm {
     /**
+     * @brief
      * Template Interface class for generating gcodes.
      * Has a few helper functions such as converting an int to a char.
      * Size represents the size of the char buffer array.
      * Note that a string of 4 characters, has a size of 5 with the '\0'
      * character
+     * 
      * @param Size buffer size
      *
      */
@@ -22,19 +24,23 @@ namespace r2d2::robot_arm {
          */
         size_t str_len = 0;
 
-        /** Checks whether the string to be added fits into the buffer
-         * @true if it fits
-         * @return false otherwise
+        /** 
+         * @brief
+         * Checks whether the string to be added fits into the buffer
+         * 
+         * @param string A pointer of the string that needs to be checked 
+         * @return A bool, True if the string fits False if it does not
          */
         bool string_fits(const char *string) const{
             return get_string_length(string) + 1 + str_len <= Size;
         }
 
         /**
+         * @brief
          * Reverses a string
          *
-         * @param char*
-         * @param int length
+         * @param string The string that needs to be reversed
+         * @param length The length of the string
          */
         void reverse(char *string, int length) {
             int start = 0;
@@ -53,12 +59,13 @@ namespace r2d2::robot_arm {
         char buffer[Size] = {'\0'};
 
         /**
+         * @brief
          * Converts an int to a string.
          * Please note that the destination size must be 11 if you
          * want to store a max integer value (2.147.483.647) + '\0' = 11
          *
-         * @param int number
-         * @param char array
+         * @param number The number that needs to be converted to a string
+         * @param string The char pointer that will contain the number
          */
         void int_to_string(int number, char *string) {
             int i = 0;
@@ -81,10 +88,11 @@ namespace r2d2::robot_arm {
         }
 
         /**
+         * @brief
          * Get string length
          *
-         * @param const char *
-         * @return size_t length of string
+         * @param string The string that we want the length of
+         * @return Length of string as size_t
          */
         size_t get_string_length(const char *string) const{
             size_t counter = 0;
@@ -95,27 +103,31 @@ namespace r2d2::robot_arm {
         }
 
     public:
-        /** Returns the length of the string
+        /** 
+         * @brief
+         * Returns the length of the string
          *
-         * @return size_t
+         * @return Saved length of string
          */
         size_t length() const{
             return str_len;
         }
         /**
+         * @brief
          * Returns a pointer to the buffer.
          *
-         * @return char* to buffer
+         * @return return buffer as char pointer
          */
         char *get_buffer() {
             return buffer;
         }
 
         /**
+         * @brief
          * Appends a string (source) at the end of the buffer (array)
          * Returns if source does not fit into buffer
          *
-         * @param const char* sourcer
+         * @param source The string that needs to be added to the end of the buffer
          */
         void append(const char *source) {
             if (!string_fits(source)) {
@@ -131,10 +143,11 @@ namespace r2d2::robot_arm {
         }
 
         /**
+         * @brief
          * Appends a string (source) at the front of buffer (array)
          * Returns if source does not fit into buffer
          *
-         * @param const char* source
+         * @param source The string that needs to be added to the front of the buffer
          */
         void append_front(const char *source) {
             if (!string_fits(source)) {
@@ -153,12 +166,12 @@ namespace r2d2::robot_arm {
         }
 
         /**
+         * @brief
          * Pure virtual function for gcode command.
          * Every robot arm might have different gcode commands.
          *
-         *
-         * @param coordinate_3D_c
-         * @param uint8_t speed = 500
+         * @param coordinate the coordinate that needs to be converted to gcode
+         * @param speed the speed the arm needs to move at defaulted at 500
          */
         virtual void coordinate_to_gcode(const vector3i_c &coordinate,
                                          const uint16_t &speed = 500) = 0;
