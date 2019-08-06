@@ -1,5 +1,4 @@
 #pragma once
-//#include <calculate_inverse_kinematics.hpp>
 #include <hwlib.hpp>
 #include <pwm.hpp>
 namespace r2d2::robot_arm {
@@ -11,13 +10,18 @@ namespace r2d2::robot_arm {
         uint8_t pwm_duty_cycle;
         uint16_t rotation;
         r2d2::pwm_lib::pwm_c servo_channel;
+        r2d2::pwm_lib::frequencies freq = r2d2::pwm_lib::frequencies::f_320hz; 
 
     public:
         /**
          * @brief
-         *servo class constructor
+         * servo class constructor
+         * @detailed
+         * create a servo object to control a servo with. It expects a servo_channel_pin.
+         * @param
+         * int servo_channel_pin corresponds to a pin on the arduino. Find the pin table here: https://github.com/R2D2-2019/R2D2-2019/wiki/PWM_library#pin-layout
          */
-        servo_c(r2d2::pwm_lib::pwm_c servo_channel);
+        servo_c(int servo_channel_pin, r2d2::pwm_lib::clocks clock = r2d2::pwm_lib::clocks::CLOCKA);
         /**
          *brief
          * rotates the servo to a new position
