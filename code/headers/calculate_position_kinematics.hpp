@@ -3,6 +3,19 @@
 #include <hwlib.hpp>
 
 namespace r2d2::robot_arm {
+
+    struct data_point{
+        vector3i_c coordinate;
+        uint16_t direction[2];
+    public:
+        data_point(vector3i_c coordinate, uint16_t direction_m[2]):
+            coordinate(coordinate)
+        {
+            direction[0] = direction_m[0];
+            direction[1] = direction_m[1];
+        };
+    };
+
     class calculate_position_kinematics_c {
     private:
         uint16_t array_se[2] = {85, 115};
