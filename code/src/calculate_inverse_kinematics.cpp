@@ -3,14 +3,14 @@
 namespace r2d2::robot_arm {
     calculate_inverse_kinematics_c::calculate_inverse_kinematics_c(
         uint16_t arm_lengt1, uint16_t arm_lengt2)
-        : arm_lengt1(arm_lengt1), arm_lengt2(arm_lengt2) {
+        : arm_length1(arm_lengt1), arm_length2(arm_lengt2) {
     }
     void calculate_inverse_kinematics_c::set_position_end_effector(
         vector3i_c coordinate) {
 
-        int16_t line_a = arm_lengt2;
+        int16_t line_a = arm_length2;
         int16_t line_b = sqrt(pow(coordinate.x, 2.0) + pow(coordinate.y, 2.0));
-        int16_t line_c = arm_lengt1;
+        int16_t line_c = arm_length1;
 
         angle_aplha =
             acos((pow(line_c, 2.0) - pow(line_b, 2.0) - pow(line_c, 2.0)) /
