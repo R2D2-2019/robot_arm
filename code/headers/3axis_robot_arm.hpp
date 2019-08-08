@@ -6,8 +6,8 @@
 #include "vector3.hpp"
 namespace r2d2::robot_arm {
     /**
-     * class to controll robot arms wich has 3 axis and 2 joint and are
-     * controled with a servo.
+     * class to controll robot arms that have 3 axis and 2 joints and are
+     * controlled with servo's.
      */
 
     class axis_robot_arm_c : public robot_arm_interface_c {
@@ -18,33 +18,37 @@ namespace r2d2::robot_arm {
 
     public:
         /**
-         * 3 axis Robot arm constructor
+         * @brief
+         * 3 axis Robot arm constructor.
+         * @detailed
+         * Created a 3 axis robot arm object.
+         * @param servo_c servo1 - servo that controls the first joint.
+         * @param servo_c servo2 - servo that controls the second joint.
+         * @param servo_c servo3 - servo that controls the direction of the arm.
          */
         axis_robot_arm_c(servo_c servo1, servo_c servo2, servo_c servo3, calculate_inverse_kinematics_c &calculator);
 
         /**
-         * This function moves the robot arm head to a certain 3d location.
+         * This function moves the robot arm head to the given coordinate.
          *
-         * @param coordinate
+         * @param const vector3i_c &coordinate - int x, int y coordinate with int z as direction in degrees.
          */
         void move_head_to_coordinate(const vector3i_c &coordinate) override;
 
-
-
+        /**
+         * This function moves the robot arm head to the given coordinate.
+         *
+         * @param const vector3i_c &coordinate - int x, int y coordinate with int z as direction in degrees.
+         * @param uint16_t speed - the speed at witch the arm has to move.
+         */
         void move_head_to_coordinate(const vector3i_c &coordinate,
                                              uint16_t speed) override;
+
         /**
          * This function rotates the head of the robot arm to grab objects.
          *
-         * @return
-         */
-        // vector3i_c get_location_end_effector();
-        /**
-         * This function rotates the head of the robot arm to grab objects.
-         *
-         * @param rotation degrees of ratations of the head
+         * @param int16_t rotation - degrees of rotations of the head.
          */
         void rotate_head(int16_t rotation) override;
-        // void rotate_head(const int16_t &rotation) override;
     };
 } // namespace r2d2::robot_arm
