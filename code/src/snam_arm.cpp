@@ -9,10 +9,11 @@
 
 namespace r2d2::robot_arm {
 
-snam_arm_c::snam_arm_c(servo_c servo1, servo_c servo2, servo_c servo3, calculate_inverse_kinematics_c &calculator):
+snam_arm_c::snam_arm_c(servo_c servo1, servo_c servo2, servo_c servo3, servo_c servo4, calculate_inverse_kinematics_c &calculator):
     servo1(servo1),
     servo2(servo2),
     servo3(servo3),
+    servo4(servo4),
     calculator(calculator)
 {
     servo1.servo_rotate(180,r2d2::robot_arm::angles::theta),
@@ -76,10 +77,10 @@ void snam_arm_c::move_head_to_coordinate(const vector3i_c &coordinate, uint16_t 
 /**
  * This function rotates the head of the robot arm to grab objects.
  *
- * @param rotation degrees of ratations of the head
+ * @param rotation degrees of rotations of the head
  */
 void snam_arm_c::rotate_head(int16_t rotation){
-    hwlib::cout << "rotate head to " << rotation << " not implemented yet \n";
+    servo4.servo_rotate(rotation, r2d2::robot_arm::angles::theta);
 }
 
 

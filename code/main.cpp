@@ -14,10 +14,11 @@ int main() {
     auto servo1 = r2d2::robot_arm::servo_c(0); 
     auto servo2 = r2d2::robot_arm::servo_c(1); 
     auto servo3 = r2d2::robot_arm::servo_c(2, r2d2::pwm_lib::clocks::CLOCKB); 
+    auto servo4 = r2d2::robot_arm::servo_c(3); 
 
     r2d2::robot_arm::calculate_inverse_kinematics_c calculator = r2d2::robot_arm::calculate_inverse_kinematics_c(100, 190); 
 
-    auto snam_arm = r2d2::robot_arm::snam_arm_c(servo1, servo2, servo3, calculator); 
+    auto snam_arm = r2d2::robot_arm::snam_arm_c(servo1, servo2, servo3, servo4, calculator); 
 
     // driver code
     uarm.init();
@@ -31,8 +32,10 @@ int main() {
 
     while (1) { 
         snam_arm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(150, 200, 135)); 
+        snam_arm.rotate_head(0);
         hwlib::wait_ms(sleep_time); 
         snam_arm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(150, 40, 135)); 
+        snam_arm.rotate_head(180);
         hwlib::wait_ms(sleep_time); 
         snam_arm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(150, 200, 135)); 
         hwlib::wait_ms(sleep_time); 

@@ -13,7 +13,7 @@ namespace r2d2::robot_arm {
     class snam_arm_c : public robot_arm_interface_c {
     private:
         vector3i_c location_end_effector;
-        servo_c servo1, servo2, servo3;
+        servo_c servo1, servo2, servo3, servo4;
         calculate_inverse_kinematics_c &calculator;
 
     public:
@@ -25,8 +25,10 @@ namespace r2d2::robot_arm {
          * @param servo_c servo1 - servo that controls the first joint.
          * @param servo_c servo2 - servo that controls the second joint.
          * @param servo_c servo3 - servo that controls the direction of the arm.
+         * @param servo_c servo4 - servo that controls the rotation of the head/end effector.
+         * @param calculate_inverse_kinematics_c calculator - a class that calculates the angles for the two arm joints.
          */
-        snam_arm_c(servo_c servo1, servo_c servo2, servo_c servo3, calculate_inverse_kinematics_c &calculator);
+        snam_arm_c(servo_c servo1, servo_c servo2, servo_c servo3, servo_c servo4, calculate_inverse_kinematics_c &calculator);
 
         /**
          * This function moves the robot arm head to the given coordinate.
