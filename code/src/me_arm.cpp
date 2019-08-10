@@ -46,9 +46,9 @@ void me_arm_c::move_head_to_coordinate(const vector3i_c &coordinate){
 
 
 void me_arm_c::move_head_to_coordinate(const vector3i_c &coordinate, uint16_t speed){
-    //500 is max speed
-    if(speed > 500){
-        speed = 500;
+    //1000 is max speed
+    if(speed > 1000){
+        speed = 1000;
     }
     
     calculator.set_position_end_effector(coordinate);    
@@ -110,7 +110,7 @@ void me_arm_c::move_head_to_coordinate(const vector3i_c &coordinate, uint16_t sp
         biggest_rotation = gamma_rotation;
     }
     
-    speed = 500 - speed;
+    speed = 1000 - speed; //invert speed, 1000 is max speed.
     //step size per 90 degrees.
     step = float(90)/float(speed);
 
