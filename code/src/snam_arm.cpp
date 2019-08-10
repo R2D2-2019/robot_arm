@@ -1,4 +1,4 @@
-#include "3axis_robot_arm.hpp"
+#include "snam_arm.hpp"
 #include "servo.hpp"
 #include "vector3.hpp"
 #include "hwlib.hpp"
@@ -9,7 +9,7 @@
 
 namespace r2d2::robot_arm {
 
-axis_robot_arm_c::axis_robot_arm_c(servo_c servo1, servo_c servo2, servo_c servo3, calculate_inverse_kinematics_c &calculator):
+snam_arm_c::snam_arm_c(servo_c servo1, servo_c servo2, servo_c servo3, calculate_inverse_kinematics_c &calculator):
     servo1(servo1),
     servo2(servo2),
     servo3(servo3),
@@ -28,7 +28,7 @@ axis_robot_arm_c::axis_robot_arm_c(servo_c servo1, servo_c servo2, servo_c servo
  *
  * @param coordinate
  */
-void axis_robot_arm_c::move_head_to_coordinate(const vector3i_c &coordinate){
+void snam_arm_c::move_head_to_coordinate(const vector3i_c &coordinate){
     calculator.set_position_end_effector(coordinate);
 
     
@@ -67,7 +67,7 @@ void axis_robot_arm_c::move_head_to_coordinate(const vector3i_c &coordinate){
 }
 
 
-void axis_robot_arm_c::move_head_to_coordinate(const vector3i_c &coordinate, uint16_t speed){
+void snam_arm_c::move_head_to_coordinate(const vector3i_c &coordinate, uint16_t speed){
     calculator.set_position_end_effector(coordinate);
     servo2.servo_rotate(calculator.get_angle_theta(), r2d2::robot_arm::angles::theta);
     servo1.servo_rotate(calculator.get_angle_beta(), r2d2::robot_arm::angles::beta);
@@ -79,7 +79,7 @@ void axis_robot_arm_c::move_head_to_coordinate(const vector3i_c &coordinate, uin
  *
  * @param rotation degrees of ratations of the head
  */
-void axis_robot_arm_c::rotate_head(int16_t rotation){
+void snam_arm_c::rotate_head(int16_t rotation){
     hwlib::cout << "rotate head to " << rotation << " not implemented yet \n";
 }
 

@@ -4,7 +4,7 @@
 #include <uarm_swift_pro.hpp>
 #include <servo.hpp>
 #include <calculate_inverse_kinematics.hpp>
-#include <3axis_robot_arm.hpp>
+#include <snam_arm.hpp>
 
 int main() {
     WDT->WDT_MR = WDT_MR_WDDIS;
@@ -17,7 +17,7 @@ int main() {
 
     r2d2::robot_arm::calculate_inverse_kinematics_c calculator = r2d2::robot_arm::calculate_inverse_kinematics_c(100, 190); 
 
-    auto snam_arm = r2d2::robot_arm::axis_robot_arm_c(servo1, servo2, servo3, calculator); 
+    auto snam_arm = r2d2::robot_arm::snam_arm_c(servo1, servo2, servo3, calculator); 
 
     // driver code
     uarm.init();
