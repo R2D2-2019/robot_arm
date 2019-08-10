@@ -11,6 +11,8 @@ namespace r2d2::robot_arm {
         uint16_t rotation;
         r2d2::pwm_lib::pwm_c servo_channel;
         r2d2::pwm_lib::frequencies freq = r2d2::pwm_lib::frequencies::f_320hz;
+        uint8_t last_degree = 0;
+        angles last_angle = angles::theta;
 
     public:
         /**
@@ -34,6 +36,20 @@ namespace r2d2::robot_arm {
          * @param angles angle - How the servo rotates.
          */
         void servo_rotate(uint8_t degree_of_rotation, angles angle);
+
+        /**
+         * @brief
+         * Get the last given degrees the servo rotated to.
+         * @return uint8_t last_degrees - last given angle the servo rotated to.
+         */
+        uint8_t get_last_degree();
+
+        /**
+         * @brief
+         * Get the last angle used for rotating the servo.
+         * @return angles last_angle - the angle last used for rotating the servo.
+         */
+        angles get_last_angle();
     };
 
 } // namespace r2d2::robot_arm

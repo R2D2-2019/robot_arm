@@ -19,6 +19,16 @@ namespace r2d2::robot_arm {
             pwm_duty_cycle = 120 + 0.6666 * rotation;
         }
         servo_channel.set_duty_cycle(pwm_duty_cycle);
+        last_angle = angle;
+        last_degree = rotation_degree;
+    }
+
+    uint8_t servo_c::get_last_degree(){
+        return last_degree;
+    }
+
+    angles servo_c::get_last_angle(){
+        return last_angle;
     }
 
 } // namespace r2d2::robot_arm
