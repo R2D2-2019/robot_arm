@@ -35,28 +35,28 @@ int main() {
     // 100), 500);
 
     int sleep_time = 2000;
-
+    int speed = 10;
     // move the snam arm around
     while (1) {
         snam_arm.move_head_to_coordinate(
-            r2d2::robot_arm::vector3i_c(150, 200, 135));
+            r2d2::robot_arm::vector3i_c(150, 200, 135), speed);
         snam_arm.rotate_head(0);
         hwlib::wait_ms(sleep_time);
         snam_arm.move_head_to_coordinate(
-            r2d2::robot_arm::vector3i_c(150, 40, 135));
+            r2d2::robot_arm::vector3i_c(150, 40, 135), speed);
         snam_arm.rotate_head(180);
         hwlib::wait_ms(sleep_time);
         snam_arm.move_head_to_coordinate(
-            r2d2::robot_arm::vector3i_c(150, 200, 135));
+            r2d2::robot_arm::vector3i_c(150, 200, 135), speed);
         hwlib::wait_ms(sleep_time);
         snam_arm.move_head_to_coordinate(
-            r2d2::robot_arm::vector3i_c(150, 200, 90));
+            r2d2::robot_arm::vector3i_c(150, 200, 90), speed);
         hwlib::wait_ms(sleep_time);
         snam_arm.move_head_to_coordinate(
-            r2d2::robot_arm::vector3i_c(150, 40, 90));
+            r2d2::robot_arm::vector3i_c(150, 40, 90), speed);
         hwlib::wait_ms(sleep_time);
         snam_arm.move_head_to_coordinate(
-            r2d2::robot_arm::vector3i_c(150, 200, 90));
+            r2d2::robot_arm::vector3i_c(150, 200, 90), speed);
         hwlib::wait_ms(sleep_time);
     }
 
