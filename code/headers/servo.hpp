@@ -10,19 +10,23 @@ namespace r2d2::robot_arm {
         uint8_t pwm_duty_cycle;
         uint16_t rotation;
         r2d2::pwm_lib::pwm_c servo_channel;
-        r2d2::pwm_lib::frequencies freq = r2d2::pwm_lib::frequencies::f_320hz; 
+        r2d2::pwm_lib::frequencies freq = r2d2::pwm_lib::frequencies::f_320hz;
 
     public:
         /**
          * @brief
          * Servo class constructor.
          * @detailed
-         * Create a servo object to control a servo with. It expects a servo_channel_pin.
+         * Create a servo object to control a servo with. It expects a
+         * servo_channel_pin.
          * @param
-         * Int servo_channel_pin corresponds to a pin on the arduino. Find the pin table here: https://github.com/R2D2-2019/R2D2-2019/wiki/PWM_library#pin-layout
+         * Int servo_channel_pin corresponds to a pin on the arduino. Find the
+         * pin table here:
+         * https://github.com/R2D2-2019/R2D2-2019/wiki/PWM_library#pin-layout
          */
-        servo_c(int servo_channel_pin, r2d2::pwm_lib::clocks clock = r2d2::pwm_lib::clocks::CLOCKA);
-        
+        servo_c(int servo_channel_pin,
+                r2d2::pwm_lib::clocks clock = r2d2::pwm_lib::clocks::CLOCKA);
+
         /**
          * @brief
          * Rotates the servo to a new angle.
