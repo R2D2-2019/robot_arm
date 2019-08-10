@@ -46,6 +46,9 @@ void me_arm_c::move_head_to_coordinate(const vector3i_c &coordinate){
 
 
 void me_arm_c::move_head_to_coordinate(const vector3i_c &coordinate, uint16_t speed){
+    move_head_to_coordinate(coordinate);
+    //The me arm servo's do not have a variable speed. 
+    //A diffrent speed could be implemented by using steps but for that the steps have to be calculated first.
     hwlib::cout << "speed is not implemented" << "\n";
 }
 
