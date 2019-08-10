@@ -11,6 +11,7 @@ int main() {
     hwlib::wait_ms(1000);
     auto usart = r2d2::usart::hardware_usart_c<r2d2::usart::usart0>(115200);
     r2d2::robot_arm::uarm_swift_pro_c uarm(usart);
+
     auto servo1 = r2d2::robot_arm::servo_c(0); // servo for the first joint.
     auto servo2 = r2d2::robot_arm::servo_c(1); // servo for the second joint.
     auto servo3 = r2d2::robot_arm::servo_c(
@@ -34,31 +35,8 @@ int main() {
     // i.e. uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i(100, 100,
     // 100), 500);
 
-    int sleep_time = 2000;
-    int speed = 10;
-    // move the snam arm around
-    while (1) {
-        snam_arm.move_head_to_coordinate(
-            r2d2::robot_arm::vector3i_c(150, 200, 135), speed);
-        snam_arm.rotate_head(0);
-        hwlib::wait_ms(sleep_time);
-        snam_arm.move_head_to_coordinate(
-            r2d2::robot_arm::vector3i_c(150, 40, 135), speed);
-        snam_arm.rotate_head(180);
-        hwlib::wait_ms(sleep_time);
-        snam_arm.move_head_to_coordinate(
-            r2d2::robot_arm::vector3i_c(150, 200, 135), speed);
-        hwlib::wait_ms(sleep_time);
-        snam_arm.move_head_to_coordinate(
-            r2d2::robot_arm::vector3i_c(150, 200, 90), speed);
-        hwlib::wait_ms(sleep_time);
-        snam_arm.move_head_to_coordinate(
-            r2d2::robot_arm::vector3i_c(150, 40, 90), speed);
-        hwlib::wait_ms(sleep_time);
-        snam_arm.move_head_to_coordinate(
-            r2d2::robot_arm::vector3i_c(150, 200, 90), speed);
-        hwlib::wait_ms(sleep_time);
-    }
+    snam_arm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(150, 200, 135),
+                                     10);
 
     return 0;
 }
