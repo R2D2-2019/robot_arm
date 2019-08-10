@@ -53,7 +53,8 @@ void me_arm_c::move_head_to_coordinate(const vector3i_c &coordinate, uint16_t sp
 }
 
 void me_arm_c::rotate_head(int16_t rotation){
-    hwlib::cout << "rotate head to " << rotation << " not implemented yet \n";
+    //The me arm does not have a rotating head.
+    hwlib::cout << "Me arm does not have a rotating head\n";
 }
 
 
