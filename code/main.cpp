@@ -3,6 +3,7 @@
 #include <hwlib.hpp>
 #include <servo.hpp>
 #include <snam_arm.hpp>
+#include "me_arm.hpp"
 #include <uarm_swift_pro.hpp>
 #include <vector3.hpp>
 
@@ -11,6 +12,7 @@ int main() {
     hwlib::wait_ms(1000);
     auto usart = r2d2::usart::hardware_usart_c<r2d2::usart::usart0>(115200);
     r2d2::robot_arm::uarm_swift_pro_c uarm(usart);
+    
     auto servo1 = r2d2::robot_arm::servo_c(0); // servo for the first joint.
     auto servo2 = r2d2::robot_arm::servo_c(1); // servo for the second joint.
     auto servo3 = r2d2::robot_arm::servo_c(
@@ -25,6 +27,14 @@ int main() {
     auto snam_arm =
         r2d2::robot_arm::snam_arm_c(servo1, servo2, servo3, servo4, calculator);
 
+
+
+    auto servo5 = r2d2::robot_arm::servo_c(4); 
+    auto servo6 = r2d2::robot_arm::servo_c(5); 
+    auto servo7 = r2d2::robot_arm::servo_c(6, r2d2::pwm_lib::clocks::CLOCKB); 
+    auto me_calculator = r2d2::robot_arm::calculate_inverse_kinematics_c(80, 180); 
+    auto me_arm = r2d2::robot_arm::me_arm_c(servo5, servo6, servo7, me_calculator); 
+
     // driver code
     uarm.init();
     uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(100, 100, 100));
@@ -35,28 +45,21 @@ int main() {
     // 100), 500);
 
     int sleep_time = 2000;
+    uint16_t speed = 100;
 
-    // move the snam arm around
-    while (1) {
-        snam_arm.move_head_to_coordinate(
-            r2d2::robot_arm::vector3i_c(150, 200, 135));
-        snam_arm.rotate_head(0);
+    while(1) {
+        me_arm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(150, 180, 0), speed); 
         hwlib::wait_ms(sleep_time);
-        snam_arm.move_head_to_coordinate(
-            r2d2::robot_arm::vector3i_c(150, 40, 135));
-        snam_arm.rotate_head(180);
-        hwlib::wait_ms(sleep_time);
-        snam_arm.move_head_to_coordinate(
-            r2d2::robot_arm::vector3i_c(150, 200, 135));
-        hwlib::wait_ms(sleep_time);
-        snam_arm.move_head_to_coordinate(
-            r2d2::robot_arm::vector3i_c(150, 200, 90));
-        hwlib::wait_ms(sleep_time);
-        snam_arm.move_head_to_coordinate(
-            r2d2::robot_arm::vector3i_c(150, 40, 90));
-        hwlib::wait_ms(sleep_time);
-        snam_arm.move_head_to_coordinate(
-            r2d2::robot_arm::vector3i_c(150, 200, 90));
+
+        me_arm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(150, 10, 0), speed); 
+        hwlib::wait_ms(sleep_time); 
+        me_arm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(150, 180, 0), speed); 
+        hwlib::wait_ms(sleep_time); 
+        me_arm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(150, 180, 60), speed); 
+        hwlib::wait_ms(sleep_time); 
+        me_arm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(150, 10, 60), speed); 
+        hwlib::wait_ms(sleep_time); 
+        me_arm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(150, 180, 60), speed); 
         hwlib::wait_ms(sleep_time);
     }
 
