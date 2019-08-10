@@ -68,10 +68,9 @@ void snam_arm_c::move_head_to_coordinate(const vector3i_c &coordinate){
 
 
 void snam_arm_c::move_head_to_coordinate(const vector3i_c &coordinate, uint16_t speed){
-    calculator.set_position_end_effector(coordinate);
-    servo2.servo_rotate(calculator.get_angle_theta(), r2d2::robot_arm::angles::theta);
-    servo1.servo_rotate(calculator.get_angle_beta(), r2d2::robot_arm::angles::beta);
-    hwlib::cout << "speed is not implemented yet, speed: " << speed << "\n";
+    move_head_to_coordinate(coordinate);
+    // servo's do not have a speed setting. This could be done using steps. But you would have to calculate the path the arm has to travel.
+    hwlib::cout << "speed is not implemented yet" << "\n";
 }
 
 /**
