@@ -26,7 +26,7 @@ namespace r2d2::robot_arm {
          * pin table here:
          * https://github.com/R2D2-2019/R2D2-2019/wiki/PWM_library#pin-layout
          */
-        servo_c(int servo_channel_pin,
+        servo_c(uint8_t servo_channel_pin,
                 r2d2::pwm_lib::clocks clock = r2d2::pwm_lib::clocks::CLOCKA);
 
         /**
