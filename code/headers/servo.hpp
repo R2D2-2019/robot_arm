@@ -47,7 +47,8 @@ namespace r2d2::robot_arm {
         /**
          * @brief
          * Get the last angle used for rotating the servo.
-         * @return angles last_angle - the angle last used for rotating the servo.
+         * @return angles last_angle - the angle last used for rotating the
+         * servo.
          */
         angles get_last_angle();
     };

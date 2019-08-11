@@ -23,11 +23,11 @@ namespace r2d2::robot_arm {
         last_degree = rotation_degree;
     }
 
-    uint8_t servo_c::get_last_degree(){
+    uint8_t servo_c::get_last_degree() {
         return last_degree;
     }
 
-    angles servo_c::get_last_angle(){
+    angles servo_c::get_last_angle() {
         return last_angle;
     }
 
