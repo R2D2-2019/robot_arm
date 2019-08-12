@@ -141,7 +141,7 @@ namespace r2d2::robot_arm {
         speed = max_speed - speed;
 
         // get the step size.
-        step = static_cast<float>(90) / static_cast<float>(speed);
+        step = static_cast<float>(degrees_per_speed) / static_cast<float>(speed);
 
         // move servo's.
         while (biggest_rotation > 0) {
@@ -174,7 +174,7 @@ namespace r2d2::robot_arm {
                 }
             }
             biggest_rotation -= step;
-            hwlib::wait_ms(1);
+            hwlib::wait_ms(step_sleep_ms);
         }
 
         // make sure the servo's are at the final angle.
