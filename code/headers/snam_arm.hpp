@@ -1,9 +1,9 @@
 #pragma once
 
-#include "calculate_inverse_kinematics.hpp"
-#include "robot_arm_interface.hpp"
-#include "servo.hpp"
-#include "vector3.hpp"
+#include <calculate_inverse_kinematics.hpp>
+#include <robot_arm_interface.hpp>
+#include <servo.hpp>
+#include <vector3.hpp>
 namespace r2d2::robot_arm {
     /**
      * class to controll robot arms that have 3 axis and 2 joints and are

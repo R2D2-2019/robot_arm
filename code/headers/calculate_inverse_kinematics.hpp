@@ -2,7 +2,7 @@
 #include <cmath>
 #include <hwlib.hpp>
 #include <vector3.hpp>
-#define PI 3.14159265
+#define M_PI 3.14159265
 namespace r2d2::robot_arm {
 
     class calculate_inverse_kinematics_c {

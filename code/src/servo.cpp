@@ -1,10 +1,10 @@
-#include "pwm.hpp"
+#include <pwm.hpp>
 #include <servo.hpp>
 namespace r2d2::robot_arm {
 
     // For servo_channel_pin and corresponding pin, look at table:
     // https://github.com/R2D2-2019/R2D2-2019/wiki/PWM_library#pin-layout
-    servo_c::servo_c(int servo_channel_pin, r2d2::pwm_lib::clocks clock)
+    servo_c::servo_c(uint8_t servo_channel_pin, r2d2::pwm_lib::clocks clock)
         : servo_channel(r2d2::pwm_lib::pwm_c(servo_channel_pin)) {
         servo_channel.select_frequency(freq);
         servo_channel.set_global_pwm_clock(50, clock);
@@ -23,11 +23,11 @@ namespace r2d2::robot_arm {
         last_degree = rotation_degree;
     }
 
-    uint8_t servo_c::get_last_degree(){
+    uint8_t servo_c::get_last_degree() {
         return last_degree;
     }
 
-    angles servo_c::get_last_angle(){
+    angles servo_c::get_last_angle() {
         return last_angle;
     }
 

@@ -1,4 +1,4 @@
-#include "me_arm.hpp"
+#include <me_arm.hpp>
 #include <calculate_inverse_kinematics.hpp>
 #include <hardware_usart.hpp>
 #include <hwlib.hpp>
@@ -10,30 +10,10 @@
 int main() {
     WDT->WDT_MR = WDT_MR_WDDIS;
     hwlib::wait_ms(1000);
+
+    //_______________uarm__________________________
     auto usart = r2d2::usart::hardware_usart_c<r2d2::usart::usart0>(115200);
     r2d2::robot_arm::uarm_swift_pro_c uarm(usart);
-
-    auto servo1 = r2d2::robot_arm::servo_c(0); // servo for the first joint.
-    auto servo2 = r2d2::robot_arm::servo_c(1); // servo for the second joint.
-    auto servo3 = r2d2::robot_arm::servo_c(
-        2, r2d2::pwm_lib::clocks::CLOCKB);     // servo for the direction.
-    auto servo4 = r2d2::robot_arm::servo_c(3); // servo for rotating the head.
-
-    r2d2::robot_arm::calculate_inverse_kinematics_c calculator =
-        r2d2::robot_arm::calculate_inverse_kinematics_c(
-            100, 190); // 100 is the length of the bottom arm in mm, 190 is the
-                       // length of the top arm in mm
-
-    auto snam_arm =
-        r2d2::robot_arm::snam_arm_c(servo1, servo2, servo3, servo4, calculator);
-
-    auto servo5 = r2d2::robot_arm::servo_c(4);
-    auto servo6 = r2d2::robot_arm::servo_c(5);
-    auto servo7 = r2d2::robot_arm::servo_c(6, r2d2::pwm_lib::clocks::CLOCKB);
-    auto me_calculator =
-        r2d2::robot_arm::calculate_inverse_kinematics_c(80, 180);
-    auto me_arm =
-        r2d2::robot_arm::me_arm_c(servo5, servo6, servo7, me_calculator);
 
     // driver code
     uarm.init();
@@ -44,8 +24,41 @@ int main() {
     // i.e. uarm.move_head_to_coordinate(r2d2::robot_arm::vector3i(100, 100,
     // 100), 500);
 
-    me_arm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(150, 180, 0),
-                                   200);
+    //__________________snam_arm_________________________
+    auto servo1 = r2d2::robot_arm::servo_c(0); // servo for the first joint.
+    auto servo2 = r2d2::robot_arm::servo_c(1); // servo for the second joint.
+    auto servo3 = r2d2::robot_arm::servo_c(
+        2, r2d2::pwm_lib::clocks::CLOCKB);     // servo for the direction.
+    auto servo4 = r2d2::robot_arm::servo_c(3); // servo for rotating the head.
+
+    r2d2::robot_arm::calculate_inverse_kinematics_c snam_calculator =
+        r2d2::robot_arm::calculate_inverse_kinematics_c(
+            100, 190); // 100 is the length of the bottom arm in mm, 190 is the
+                       // length of the top arm in mm
+
+    auto snam_arm =
+        r2d2::robot_arm::snam_arm_c(servo1, servo2, servo3, servo4, snam_calculator);
+
+    snam_arm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(150, 200, 135),
+                                     10);
+
+
+    //__________________me_arm_______________________________________
+    auto servo5 = r2d2::robot_arm::servo_c(4); // servo for the first joint.
+    auto servo6 = r2d2::robot_arm::servo_c(5); // servo for the second joint.
+    auto servo7 = r2d2::robot_arm::servo_c(
+        6, r2d2::pwm_lib::clocks::CLOCKB);     // servo for the direction.
+
+    r2d2::robot_arm::calculate_inverse_kinematics_c me_calculator =
+        r2d2::robot_arm::calculate_inverse_kinematics_c(
+            100, 190); // 100 is the length of the bottom arm in mm, 190 is the
+                       // length of the top arm in mm
+
+    auto me_arm =
+        r2d2::robot_arm::me_arm_c(servo5, servo6, servo7, me_calculator);
+
+    me_arm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(150, 200, 135),
+                                     10);
 
     return 0;
 }

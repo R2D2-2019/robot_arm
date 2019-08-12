@@ -1,6 +1,6 @@
 #pragma once
 
-#include "vector3.hpp"
+#include <vector3.hpp>
 #include <hwlib.hpp>
 
 /**

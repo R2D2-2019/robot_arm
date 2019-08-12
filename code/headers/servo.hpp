@@ -26,7 +26,7 @@ namespace r2d2::robot_arm {
          * pin table here:
          * https://github.com/R2D2-2019/R2D2-2019/wiki/PWM_library#pin-layout
          */
-        servo_c(int servo_channel_pin,
+        servo_c(uint8_t servo_channel_pin,
                 r2d2::pwm_lib::clocks clock = r2d2::pwm_lib::clocks::CLOCKA);
 
         /**
@@ -47,7 +47,8 @@ namespace r2d2::robot_arm {
         /**
          * @brief
          * Get the last angle used for rotating the servo.
-         * @return angles last_angle - the angle last used for rotating the servo.
+         * @return angles last_angle - the angle last used for rotating the
+         * servo.
          */
         angles get_last_angle();
     };
