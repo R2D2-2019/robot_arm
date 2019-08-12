@@ -1,7 +1,7 @@
-#include "snam_arm.hpp"
-#include "hwlib.hpp"
-#include "servo.hpp"
-#include "vector3.hpp"
+#include <snam_arm.hpp>
+#include <hwlib.hpp>
+#include <servo.hpp>
+#include <vector3.hpp>
 #include <cmath>
 
 namespace r2d2::robot_arm {
