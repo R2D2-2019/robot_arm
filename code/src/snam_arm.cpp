@@ -14,10 +14,11 @@ namespace r2d2::robot_arm {
           servo3(servo3),
           servo4(servo4),
           calculator(calculator) {
-        // set arm at start position.
-        servo1.servo_rotate(180, r2d2::robot_arm::angles::theta),
-            servo2.servo_rotate(180, r2d2::robot_arm::angles::beta),
-            servo3.servo_rotate(100, r2d2::robot_arm::angles::theta);
+        // set arm at start position. set servo1, servo2 and servo3 at 180 degrees.
+        uint16_t start_position = 180;
+        servo1.servo_rotate(start_position, r2d2::robot_arm::angles::theta),
+        servo2.servo_rotate(start_position, r2d2::robot_arm::angles::beta),
+        servo3.servo_rotate(start_position, r2d2::robot_arm::angles::theta);
         hwlib::wait_ms(100);
     }
 
