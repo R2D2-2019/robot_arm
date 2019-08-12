@@ -48,7 +48,7 @@ namespace r2d2::robot_arm {
          *
          * @param const vector3i_c &coordinate - int x, int y coordinate with
          * int z as direction in degrees.
-         * @param uint16_t speed - the speed at witch the arm has to move.
+         * @param uint16_t speed - the speed at which the arm has to move.
          */
         void move_head_to_coordinate(const vector3i_c &coordinate,
                                      uint16_t speed) override;

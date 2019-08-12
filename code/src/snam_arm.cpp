@@ -30,7 +30,7 @@ namespace r2d2::robot_arm {
         float theta = calculator.get_angle_theta();
         float beta = calculator.get_angle_beta();
 
-        // get the angle in degrees for sero3
+        // get the angle in degrees for servo3
         uint16_t gamma = coordinate.z;
 
         // get the robot_arm::angles for servo1 and servo2.
