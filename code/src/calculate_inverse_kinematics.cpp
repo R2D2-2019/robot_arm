@@ -15,13 +15,13 @@ namespace r2d2::robot_arm {
         angle_aplha =
             acos((pow(line_c, 2.0) - pow(line_b, 2.0) - pow(line_c, 2.0)) /
                  (-2 * line_c * line_b)) *
-            180 / PI;
-        angle_phi = atan2(coordinate.y, coordinate.x) * 180 / PI;
+            180 / M_PI;
+        angle_phi = atan2(coordinate.y, coordinate.x) * 180 / M_PI;
 
         angle_beta =
             acos(((pow(line_b, 2.0)) - pow(line_c, 2.0) - pow(line_a, 2.0)) /
                  (-2 * line_a * line_c)) *
-            180 / PI;
+            180 / M_PI;
 
         angle_theta = angle_aplha + angle_phi;
     }
