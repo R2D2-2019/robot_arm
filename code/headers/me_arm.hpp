@@ -6,32 +6,32 @@
 #include <vector3.hpp>
 namespace r2d2::robot_arm {
     /**
-     * class to controll robot arms that have 3 axis and 2 joints and are
-     * controlled with servo's.
+     * @brief
+     * Class to controll robot arms that have 3 axis and 2 joints and are
+     * controlled with a servo.
      */
 
-    class snam_arm_c : public robot_arm_interface_c {
+    class me_arm_c : public robot_arm_interface_c {
     private:
         vector3i_c location_end_effector;
-        servo_c servo1, servo2, servo3, servo4;
+        servo_c servo1, servo2, servo3;
         calculate_inverse_kinematics_c &calculator;
 
     public:
         /**
          * @brief
-         * snam_arm_c constructor.
+         * me_arm_c constructor.
          * @detailed
-         * Created a snam_arm_c object.
+         * Created a me_arm_c object.
          * @param servo_c servo1 - servo that controls the first joint.
          * @param servo_c servo2 - servo that controls the second joint.
          * @param servo_c servo3 - servo that controls the direction of the arm.
-         * @param servo_c servo4 - servo that controls the rotation of the
          * head/end effector.
          * @param calculate_inverse_kinematics_c calculator - the class that
          * calculates the angles for the two arm joints.
          */
-        snam_arm_c(servo_c servo1, servo_c servo2, servo_c servo3,
-                   servo_c servo4, calculate_inverse_kinematics_c &calculator);
+        me_arm_c(servo_c servo1, servo_c servo2, servo_c servo3,
+                 calculate_inverse_kinematics_c &calculator);
 
         /**
          * @brief
@@ -52,10 +52,14 @@ namespace r2d2::robot_arm {
          */
         void move_head_to_coordinate(const vector3i_c &coordinate,
                                      uint16_t speed) override;
-
         /**
          * @brief
-         * This function rotates the head of the robot arm to grab objects.
+         * This function is not supported by the me arm.
+         * @detailed
+         * This function should rotate the head of the robot arm to grab
+         * objects. However the me arm does not have that capability. This
+         * function only contains a hwlib::cout that will tell you that this is
+         * not supported.
          *
          * @param int16_t rotation - degrees of rotations of the head.
          */

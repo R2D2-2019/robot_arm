@@ -1,3 +1,4 @@
+#include <me_arm.hpp>
 #include <calculate_inverse_kinematics.hpp>
 #include <hardware_usart.hpp>
 #include <hwlib.hpp>
@@ -30,15 +31,33 @@ int main() {
         2, r2d2::pwm_lib::clocks::CLOCKB);     // servo for the direction.
     auto servo4 = r2d2::robot_arm::servo_c(3); // servo for rotating the head.
 
-    r2d2::robot_arm::calculate_inverse_kinematics_c calculator =
+    r2d2::robot_arm::calculate_inverse_kinematics_c snam_calculator =
         r2d2::robot_arm::calculate_inverse_kinematics_c(
             100, 190); // 100 is the length of the bottom arm in mm, 190 is the
                        // length of the top arm in mm
 
     auto snam_arm =
-        r2d2::robot_arm::snam_arm_c(servo1, servo2, servo3, servo4, calculator);
+        r2d2::robot_arm::snam_arm_c(servo1, servo2, servo3, servo4, snam_calculator);
 
     snam_arm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(150, 200, 135),
+                                     10);
+
+
+    //__________________me_arm_______________________________________
+    auto servo5 = r2d2::robot_arm::servo_c(4); // servo for the first joint.
+    auto servo6 = r2d2::robot_arm::servo_c(5); // servo for the second joint.
+    auto servo7 = r2d2::robot_arm::servo_c(
+        6, r2d2::pwm_lib::clocks::CLOCKB);     // servo for the direction.
+
+    r2d2::robot_arm::calculate_inverse_kinematics_c me_calculator =
+        r2d2::robot_arm::calculate_inverse_kinematics_c(
+            100, 190); // 100 is the length of the bottom arm in mm, 190 is the
+                       // length of the top arm in mm
+
+    auto me_arm =
+        r2d2::robot_arm::me_arm_c(servo5, servo6, servo7, me_calculator);
+
+    me_arm.move_head_to_coordinate(r2d2::robot_arm::vector3i_c(150, 200, 135),
                                      10);
 
     return 0;
